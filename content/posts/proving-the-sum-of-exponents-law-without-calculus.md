@@ -1,6 +1,6 @@
 ---
 title: Proving the Sum of Exponents Law Without Calculus
-date: "2021-04-24"
+date: "2022-04-24"
 summary: |
   Recently, while reading about proofs of logarithm laws, I came across the sum of exponents law; b^x * b^y = b^(x + y).
 
