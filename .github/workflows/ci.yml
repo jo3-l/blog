@@ -29,6 +29,7 @@ jobs:
   deploy-website:
     name: Deploy website to GitHub pages
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
