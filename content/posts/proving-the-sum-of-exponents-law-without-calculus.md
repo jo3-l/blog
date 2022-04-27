@@ -278,8 +278,8 @@ _Proof._
 $$
 \begin{align*}
 b^{x + y} &= \lim_{n \to \infty} b^{P_n + R_n} && \text{(where $\lim_{n \to \infty} P_n = x, \lim_{n \to \infty} R_n = y$)} \\\\
-	&= b^{\lim_{n \to \infty} P_n + \lim_{n \to \infty} R_n} \\\\
-	&= b^{\lim_{n \to \infty} P_n} \cdot b^{\lim_{n \to \infty} R_n} \\\\
+	&= \lim_{n \to \infty} b^{P_n} \cdot b^{R_n} \\\\
+	&= \lim_{n \to \infty} b^{P_n} \cdot \lim_{n \to \infty} b^{R_n} \\\\
 	&= b^x \cdot b^y.
 \end{align*}
 $$
