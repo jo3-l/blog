@@ -9,6 +9,7 @@ params:
   description: Student, CS enthusiast, eternal nitpicker. Occasional competitive programmer.
   dateFormat: "2006-01-02"
   style: auto-without-switcher
+  rssAsSocialIcon: true
   social:
     - id: github
       url: https://github.com/jo3-l/
