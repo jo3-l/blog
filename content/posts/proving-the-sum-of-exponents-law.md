@@ -147,7 +147,7 @@ We now extend our proof to cover rational exponents. First, let us define what e
 For any real number $b > 0$ and positive integer $n$, let $b^{1/n}$ denote the unique positive rational number $r$ s.t. $r^n = b$.
 Then, for a rational number $\frac{p}{q}$ where $p \in \mathbb{Z}, q \in \mathbb{Z^+}$ are coprime, define $b^{\frac{p}{q}}$ to be equal to $(b^{1/q})^p$.
 
-Given this definition, we can reduce the sum of exponents law for rational exponents to integral exponents, which we know to be true. In order to perform this reduction, we will need a couple more lemmas:
+Given this definition, we can reduce the sum of exponents law for rational exponents to integral exponents, which is true by Theorem 1.3. In order to perform this reduction, we will need a couple more lemmas:
 
 ## Lemma 2.1
 
@@ -247,10 +247,10 @@ We are finally prepared to prove the sum of exponents law for real exponents. Ho
 While it was relatively trivial to define exponentiation for integral exponents as repeated multiplication and rational exponents using n-th roots and integral exponentiation,
 it is not clear at first how we should go about doing the same for real exponents. For example, what exactly does $2^\pi$ mean?
 
-It turns out that there are multiple ways of defining exponentiation for real exponents. The approach that we take here relies on the fact that any real number can be expressed as the limit of a sequence of rational numbers. Hence, we can define real exponents in terms of rational exponents by continuity. For example, we can define $2^\pi$ to be the limit of the sequence $2^3, 2^{3.1}, 2^{3.14}, 2^{3.141}, 2^{3.1415}, \cdots.$
+It turns out that there are multiple valid ways of defining exponentiation for real exponents. The approach that we take here relies on the fact that any real number can be expressed as the limit of a sequence of rational numbers. Hence, we can define real exponents in terms of rational exponents by continuity. For example, we can define $2^\pi$ to be the limit of the sequence $2^3, 2^{3.1}, 2^{3.14}, 2^{3.141}, 2^{3.1415}, \cdots.$
 
-Formally, for a real number $r$ and a base $b > 0$, we define $b^r$ thusly. Let $S$ be an infinite sequence of rational numbers that converges to $x$; that is, $\lim_{n \to \infty} S_n = x$.
-Then $b^x$ can be defined as
+Formally, for a real number $r$ and a base $b > 0$, we define $b^r$ thusly. Let $S$ be an infinite sequence of rational numbers that converges to $r$; that is, $\lim_{n \to \infty} S_n = r$.
+Then $b^r$ can be defined as
 
 $$
 \lim_{n \to \infty} b^{S_n}
@@ -258,7 +258,7 @@ $$
 
 ## Theorem 3.1
 
-> $b^{x + y} = b^x \cdot b^y$ for all $b > 0, x \in \mathbb{R}, y \in \mathbb{R}$.
+> $b^{x + y} = b^x \cdot b^y$ for all $b \in \mathbb{R^+}, x \in \mathbb{R}, y \in \mathbb{R}$.
 
 _Proof._
 
