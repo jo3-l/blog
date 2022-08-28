@@ -210,9 +210,11 @@ Taking the reciprocal of both sides gives $\frac{1}{a^n} = \frac{1}{b^n} \iff a^
 
 <div align="right">$\square$</div>
 
-## Theorem 2.2
+## Theorem 2.3
 
 > $b^{x + y} = b^x \cdot b^y$ for all $b \in \mathbb{R^+}, x \in \mathbb{Q}, y \in \mathbb{Q}$.
+
+_**Note:** Unfortunately the proof for this theorem is presently incomplete; the identity $(a^b)^c = a^{bc}$ is used without justification._
 
 Write $x$ as $p/q$ where $p \in \mathbb{Z}, q \in \mathbb{Z^+}$ and $p, q$ are coprime. Likewise write $y$ as $r/s$ where $r$ and $s$ are similarly restricted.
 
@@ -220,7 +222,7 @@ Then the R.S. of the equation becomes $b^{\frac{p}{q}} \cdot b^{\frac{r}{s}}$. T
 
 $$
 \begin{align*}
-(b^{\frac{p}{q}} \cdot b^{\frac{r}{s}})^{qs} &= b^{\frac{p}{q} \cdot qs} \cdot b^{\frac{r}{s} \cdot qs} && \text{(by Lemma 2.1)} \\\\
+(b^{\frac{p}{q}} \cdot b^{\frac{r}{s}})^{qs} &= b^{\frac{p}{q} \cdot qs} \cdot b^{\frac{r}{s} \cdot qs} \\\\
 	&= b^{ps} \cdot b^{qr} \\\\
 	&= b^{ps + qr} && \text{(by Theorem 1.3)}.
 \end{align*}
@@ -230,7 +232,7 @@ This is equivalent to the L.S. of the equation raised to the $qs$-th power, whic
 
 $$
 \begin{align*}
-(b^{\frac{p}{q} + \frac{r}{s}})^{qs} &= b^{(\frac{p}{q} + \frac{r}{s}) \cdot qs} && \text{(by Lemma 2.1)} \\\\
+(b^{\frac{p}{q} + \frac{r}{s}})^{qs} &= b^{(\frac{p}{q} + \frac{r}{s}) \cdot qs} \\\\
 	&= b^{\frac{p}{q} \cdot qs + \frac{r}{s} \cdot qs} \\\\
 	&= b^{ps + qr}.
 \end{align*}
