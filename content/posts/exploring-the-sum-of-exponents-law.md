@@ -10,27 +10,26 @@ katex: true
 The sum of exponents law, $b^x \cdot b^y = b^{x+y}$, is well-known -- indeed,
 it's one of the first properties that's taught when students are introduced to
 the concept of exponentiation. Though it's easy to reason intuitively as to why
-this property holds for integral exponents, for example,
+this property holds for integral exponents:
 
 $$
 2^{3 + 2} = 2^5 = \underbrace{2 \cdot 2 \cdot 2}\_{2^3} \cdot \underbrace{2 \cdot 2}\_{2^2}
 $$
 
 it's a little more difficult to provide a rigorous proof. In this post, we do
-just that. Not only is the result an interesting (albeit elementary) exercise in
-induction, but it also illustrates the complexity that can arise when trying to
-prove seemingly intuitive results.
+just that using induction. (There exist more straightforward approaches using
+comparatively advanced methods, such as the properties of $\exp$, but we stick
+to the basics here because it makes for a more interesting post.)
 
 # The Sum of Exponents Law
 
-We can state the sum of exponents law formally like such:
+Formally, the exponent law can be stated as follows:
 
-> For all $b \in \mathbb{R^+}$, $x, y \in \mathbb{R}$, we have $b^x \cdot b^y = b^{x + y}$.
+> For positive real $b$, the property $$ b^x \cdot b^y = b^{x + y} $$ holds for
+> integer $x$, $y$.
 
-_Note: we restrict the base to be positive as [fractional powers of negative numbers aren't uniquely defined](https://math.stackexchange.com/questions/3219025/why-22-5-isnt-equal-to-2251-10)._
-
-In this post, we'll only consider a more restricted variant of the property,
-where $x, y \in \mathbb{Z}$.
+It's worth noting that the law holds for $x$, $y$ real, but we concern ourselves
+only with the integer case in this blog.
 
 # Defining Exponentiation
 
@@ -39,15 +38,13 @@ We start by defining exponentiation for integral powers recursively:
 $$
 b^x =
     \begin{cases}
-        1 / b^{-x}, & \text{if $x < 0$} \\\\
+        \dfrac{1}{b^{-x}}, & \text{if $x < 0$} \\\\
         1, & \text{if $x = 0$} \\\\
         b \cdot b^{x-1}, & \text{if $x > 0$}
     \end{cases}
 $$
 
 # Lemma 1.1
-
-_Note: in the following statements, $b$ stands for an arbitrary positive real_.
 
 > $b^{x + y} = b^x \cdot b^y$ for all $x, y \in \mathbb{Z^+}$.
 
@@ -64,11 +61,11 @@ $$
 	b^{(x + 1) + y} &= b^{x + y + 1} \\\\
 		&= b \cdot b^{x + y} && \text{(by definition)} \\\\
 		&= b \cdot b^{x} \cdot b^y && \text{(by induction hypothesis)} \\\\
-		&= b^{x + 1} \cdot b^y && \text{(by definition)}.
+		&= b^{x + 1} \cdot b^y && \text{(by definition)}
 \end{align*}
 $$
 
-<div align="right">$\square$</div>
+as desired. $\square$
 
 # Lemma 1.2
 
@@ -89,11 +86,11 @@ $$
 	b^{(x + 1) - y} &= b^{x - y + 1} \\\\
 	&= b \cdot b^{x - y} && \text{(by definition)} \\\\
 	&= b \cdot b^x \cdot b^{-y} && \text{(by induction hypothesis)} \\\\
-	&= b^{x + 1} \cdot b^{-y} && \text{(by definition)}.
+	&= b^{x + 1} \cdot b^{-y} && \text{(by definition)}
 \end{align*}
 $$
 
-<div align="right">$\square$</div>
+as desired. $\square$
 
 # Theorem 1.3
 
@@ -148,6 +145,4 @@ $$
 **Case 3.** _One or more of $x$, $y$ is 0._
 
 Without loss of generality suppose $x = 0$. Then $b^x \cdot b^y = 1 \cdot b^y =
-b^y$ which is equal to $b^{x + y} = b^{0 + y} = b^y$ as desired.
-
-<div align="right">$\square$</div>
+b^y$ which is equal to $b^{x + y} = b^{0 + y} = b^y$ as desired. $\square$
