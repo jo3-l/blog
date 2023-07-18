@@ -4,6 +4,7 @@ date: '2023-07-18'
 summary: A mathematical explanation of the effect of changes in pressure on equilibrium position.
 description: A mathematical explanation of the effect of changes in pressure on equilibrium position.
 tags: [math, chemistry]
+katex: true
 ---
 
 Recently, while studying chemical equilibrium, I came across the following statement
