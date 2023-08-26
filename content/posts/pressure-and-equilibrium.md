@@ -32,7 +32,7 @@ where $Q$ is smaller), then we'll have proven the desired claim.
 Consider the general reaction
 
 $$
-\ce{aA_{(g)} + bB_{(g)} + \dots <-> rR_{(g)} + sS_{(g)} + \dots}
+\ce{aA_{(g)} + bB_{(g)} + \dots <=> rR_{(g)} + sS_{(g)} + \dots}
 $$
 
 where $A$, $B$, $\dots$ are the reactants and $R$, $S$, $\dots$ are the
