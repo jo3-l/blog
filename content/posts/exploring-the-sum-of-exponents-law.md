@@ -1,39 +1,36 @@
 ---
 title: Exploring the Sum of Exponents Law
 date: '2022-04-24'
-summary: An induction proof of the sum of exponents law for integral exponents, b^x × b^y = b^(x + y).
-description: An induction proof of the sum of exponents law for integral exponents, b^x × b^y = b^(x + y).
+summary: 'Some practice with induction: a proof of the sum of exponents law for integer exponents.'
+description: 'Some practice with induction: a proof of the sum of exponents law for integer exponents.'
 tags: [math]
 katex: true
 ---
 
-The sum of exponents law, $b^x \cdot b^y = b^{x+y}$, is well-known -- indeed,
-it's one of the first properties that's taught when students are introduced to
-the concept of exponentiation. Though it's easy to reason intuitively as to why
-this property holds for integral exponents:
+The sum of exponents law, $b^x \cdot b^y = b^{x+y}$, is well-known---indeed, it was one of the first
+properties that I learnt after being introduced to the concept of exponentiation. Though it's easy
+to reason intuitively as to why this property holds for integral exponents,
 
 $$
-2^{3 + 2} = 2^5 = \underbrace{2 \cdot 2 \cdot 2}\_{2^3} \cdot \underbrace{2 \cdot 2}\_{2^2}
+2^{3 + 2} = 2^5 = \underbrace{2 \cdot 2 \cdot 2}\_{2^3} \cdot \underbrace{2 \cdot 2}\_{2^2},
 $$
 
-it's a little more difficult to provide a rigorous proof. In this post, we do
-just that using induction. (There exist more straightforward approaches using
-comparatively advanced methods, such as the properties of $\exp$, but we stick
-to the basics here because it makes for a more interesting post.)
+I wanted to see how difficult it'd be to formalize this argument with induction. Let's take a look!
 
-# The Sum of Exponents Law
+## The sum of exponents law
 
-Formally, the exponent law can be stated as follows:
+The statement we aim to prove is the following:
 
-> For positive real $b$, the property $$ b^x \cdot b^y = b^{x + y} $$ holds for
-> integer $x$, $y$.
+> **Sum of Exponents Law for Integer Exponents.** For positive real $b$, the equation $$ b^x \cdot
+> b^y = b^{x + y} $$ holds for all integer $x$, $y$.
 
-It's worth noting that the law holds for $x$, $y$ real, but we concern ourselves
-only with the integer case in this blog.
+This law holds for $x$, $y$ real, but we concern ourselves only with the easiest integer case in
+this blog. Perhaps someday there will be a follow-up post...
 
-# Defining Exponentiation
+## Defining exponentiation
 
-We start by defining exponentiation for integral powers recursively:
+We first need a definition of exponentiation for integer powers to work with. A recursive definition
+is convenient for induction:
 
 $$
 b^x =
@@ -44,17 +41,19 @@ b^x =
     \end{cases}
 $$
 
-# Lemma 1.1
+## Adding positive exponents
 
-> $b^{x + y} = b^x \cdot b^y$ for all $x, y \in \mathbb{Z^+}$.
+We can immediately address the trivial case where both exponents are positive integers.
+
+> **Lemma 1.1.** For all $x, y \in \mathbb{Z^+}$, we have $b^{x + y} = b^x \cdot b^y$.
 
 _Proof._ We induct on $x$.
 
-**Base case.** If $x = 1$, then $b^{x + y} = b^{y + 1} = b \cdot b^y$ by
-definition, which is equal to $b^x \cdot b^y = b^1 \cdot b^y = b \cdot b^y$.
+**Base case.** If $x = 1$, then $b^{x + y} = b^{y + 1} = b \cdot b^y$ by definition, which is equal
+to ${b^x \cdot b^y = b^1 \cdot b^y = b \cdot b^y}$.
 
-**Induction step.** Let $x \in \mathbb{Z^+}$ be arbitrary and suppose $b^{x + y}
-= b^x \cdot b^y$ for all $y \in \mathbb{Z^+}$. Then
+**Induction step.** Let $x \in \mathbb{Z^+}$ be arbitrary and suppose $b^{x + y} = b^x \cdot b^y$
+for all $y \in \mathbb{Z^+}$. Then
 
 $$
 \begin{align*}
@@ -67,16 +66,21 @@ $$
 
 as desired. $\square$
 
-# Lemma 1.2
+## Subtracting positive exponents
 
-> $b^{x - y} = b^x \cdot b^{-y}$ for all $x, y \in \mathbb{Z^+}$ such that $x
-> \geq y$.
+Lemma 1.1 covers the case of two positive exponents (and, indirectly, the case of two negative
+exponents); we still have no way to deal with exponents of different signs. The following lemma
+addresses this gap:
+
+> **Lemma 1.2.** For all $x, y \in \mathbb{Z^+}$ where $x \geq y$, we have $b^{x - y} = b^x \cdot b^{-y}$.
+
+Equivalently, this lemma claims that $b^{x + y} = b^x \cdot b^y$ where $y$ is _negative_ and $|x| \geq |y|$;
+however, the original presentation in terms of subtracting positive exponents is more amenable to induction.
 
 _Proof._ We induct on $x$.
 
-**Base case.** If $x = 1$, then $y$ must also be $1$ to satisfy the condition
-$x \geq y$. Substituting, we have $b^{1 - 1} = b^0 = 1$ which is equal to
-$b^1 \cdot b^{-1} = 1$.
+**Base case.** If $x = 1$, then the condition $x \geq y$ forces $y = 1$. Substituting, we have ${b^{1 - 1} = b^0 = 1}$
+which is equal to $b^1 \cdot b^{-1} = 1$.
 
 **Induction step.** Let $x \in \mathbb{Z^+}$ be arbitrary and suppose $b^{x - y}
 = b^x \cdot b^{-y}$ for all $y \in \mathbb{Z^+}$ such that $x \geq y$. Then
@@ -92,17 +96,38 @@ $$
 
 as desired. $\square$
 
-# Theorem 1.3
+## A full proof
 
-> $b^{x + y} = b^x \cdot b^y$ for all $x, y \in \mathbb{Z}.$
+We are now equipped to tackle the full proof where $x$ and $y$ are unrestricted aside from being
+integers. Broadly speaking, Lemma 1.1 covers the case where $x$ and $y$ are both positive or both
+negative, and Lemma 1.2 covers the case where one is negative and the other positive; all that
+remains is to carefully invoke them and handle the straightforward case where one exponent is zero.
 
-_Proof._ If $x, y \in \mathbb{Z^+}$ then the theorem is true by Lemma 1.1.
-Otherwise, we have the following cases.
+To recall, the statement we aimed to prove was:
 
-**Case 1.** _Exactly one of $x, y$ is negative._
+> **Sum of Exponents Law for Integer Exponents.** For positive real $b$, the equation $$ b^x \cdot
+> b^y = b^{x + y} $$ holds for all integer $x$, $y$.
+
+_Proof._ We consider the following cases.
+
+**Case 1.** _Both $x$ and $y$ are positive._ Lemma 1.1 discusses precisely this case.
+
+**Case 2.** _Both $x$ and $y$ are negative._ Then
+
+$$
+\begin{align*}
+b^x \cdot b^y &= \frac{1}{b^{-x}} \cdot \frac{1}{b^{-y}} \\\\
+    &= \frac{1}{b^{-x} \cdot b^{-y}} \\\\
+    &= \frac{1}{b^{-x - y}} && \text{(by Lemma 1.2)} \\\\
+	&= \frac{1}{b^{-(x + y)}} \\\\
+    &= b^{x + y} && \text{(by definition of exponentiation)}.
+\end{align*}
+$$
+
+**Case 3.** _Exactly one of $x, y$ is negative._
 
 Without loss of generality, suppose $x < 0$ and $y > 0$. We consider two
-sub-cases: $|x| < |y|$, $|x| \geq |y|$.
+sub-cases: ${|x| < |y|}$ and ${|x| \geq |y|}$.
 
 First consider the case where $|x| < |y|$. Then
 
@@ -130,19 +155,7 @@ $$
 Thus, $\dfrac{1}{b^x \cdot b^y} = \dfrac{1}{b^{x + y}}$. Taking the reciprocal
 of both sides gives the desired result.
 
-**Case 2.** _Both $x$ and $y$ are negative._
+**Case 4.** _One or more of $x$, $y$ is 0._
 
-$$
-\begin{align*}
-b^x \cdot b^y &= \frac{1}{b^{-x}} \cdot \frac{1}{b^{-y}} \\\\
-    &= \frac{1}{b^{-x} \cdot b^{-y}} \\\\
-    &= \frac{1}{b^{-x - y}} && \text{(by Lemma 1.2)} \\\\
-	&= \frac{1}{b^{-(x + y)}} \\\\
-    &= b^{x + y} && \text{(by definition of exponentiation)}.
-\end{align*}
-$$
-
-**Case 3.** _One or more of $x$, $y$ is 0._
-
-Without loss of generality suppose $x = 0$. Then $b^x \cdot b^y = 1 \cdot b^y =
-b^y$ which is equal to $b^{x + y} = b^{0 + y} = b^y$ as desired. $\square$
+Without loss of generality, suppose $x = 0$. Then $b^x \cdot b^y = 1 \cdot b^y = b^y$ which is equal
+to $b^{x + y} = b^{0 + y} = b^y$ as desired. $\square$

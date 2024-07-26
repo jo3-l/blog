@@ -1,19 +1,49 @@
 ---
-title: About
-description: Student, CS enthusiast, eternal nitpicker. Occasional competitive programmer.
-date: "2022-04-24"
+title: About me
+hidemeta: true
 ---
 
-Hey there! I'm Joe L., a high school student and programming enthusiast from Canada.
-On the web, I usually go by some variation of "Joe" like "jo3-l".
+Hi! I'm Joseph Liu, a computer science student from Canada. Starting Fall 2024, I'll be studying at
+the [University of Waterloo](https://cs.uwaterloo.ca/); before that, I graduated from the [IB
+Diploma program](https://www.ibo.org/programmes/diploma-programme/) in high school with 45/45
+points.
 
-You might know me in real life (in which case, hello there!) or from [YAGPDB](https://yagpdb.xyz), where I'm a bot admin and frequent contributor.
+Besides programming, I also enjoy writing, playing tennis, and the very occasional anime/manga. My
+favorite anime this year was Frieren (I know, boring choice. Sorry not sorry.)
 
-These days, I primarily work with Go on backend projects, but I'am also reasonably proficient with TypeScript, Python, Java, and C++, amongst other languages.
-Some of the more interesting projects I've worked on are [a toy programming language](https://github.com/jo3-l/liftoff), [a robust profanity filter](https://github.com/jo3-l/obscenity),
-and a [general-purpose Discord bot](https://github.com/jo3-l/spectre).
+## Programming experience and projects
 
-Outside of tech, my primary interests are mathematics, tennis, and hiking.
+Nowadays, I primarily work with Rust and Go on backend projects; however, I also have experience in
+Python, TypeScript, Java, and C++ among other technologies.
 
-If you'd like to chat and have me friended on Discord, send me a direct message; I respond quickest there.
-Otherwise, your best bet is likely email: `jo3 [dot] l [dot] dev [at] outlook [dot] com`.
+I am a [frequent contributor](yag-contributions) to the open-source YAGPDB Discord bot in Go,
+focusing on its custom templating engine. Notably, I implemented multiple language features such as
+`break`, `continue`, and error-handling constructs in the production interpreter, and am currently
+working on improving editor integration via a [language server in Rust](https://github.com/jo3-l/yag-template-lsp).
+As part of the latter project, I implemented an [error-tolerant and lossless parser](yag-template-syntax)
+by hand, integrated with [rowan](https://github.com/rust-analyzer/rowan).
+
+[yag-contributions]: https://github.com/botlabs-gg/yagpdb/commits?author=jo3-l
+[yag-template-syntax]: https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax
+
+A selection of other interesting projects I created or am involved in:
+
+- [obscenity](https://github.com/jo3-l/obscenity): A robust profanity detection library for Node.js
+  written in TypeScript. It implements a extensible transformer-based design and is thoroughly
+  unit-tested. Used by hundreds of open-source projects with 20k+ weekly downloads on npm and 500k+
+  downloads total.
+- [vsHacks](https://vshacks.github.io/): In high school, I co-founded vsHacks—a now-annual hackathon
+  organized by my programming club in collaboration with other schools across Greater Vancouver. I
+  contributed extensively to the hackathon website and helped run workshops during the event, which
+  saw 50+ participants from the district and beyond.
+- [markpdf](https://github.com/jo3-l/markpdf): A command-line utility to edit PDF bookmarks using a
+  convenient indentation-based format, built in Go.
+- [liftoff](https://github.com/jo3-l/liftoff): An interpreter for a toy programming language, built
+  with Python.
+
+For more, see [my GitHub](https://github.com/jo3-l/).
+
+## Contact
+
+I'd love to get in touch with you! Please email me at `jo3.l.dev [at] outlook.com` or shoot me a direct
+message on Discord (username `jo3_l`.)

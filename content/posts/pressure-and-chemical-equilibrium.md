@@ -1,33 +1,32 @@
 ---
-title: Pressure and Equilibrium
+title: Pressure and Chemical Equilibrium
 date: '2023-07-18'
-summary: A mathematical explanation of the effect of changes in pressure on equilibrium position.
-description: A mathematical explanation of the effect of changes in pressure on equilibrium position.
+summary: Examining the effect of changes in pressure on equilibrium position mathematically.
+description: Examining the effect of changes in pressure on equilibrium position mathematically.
 tags: [math, chemistry]
 katex: true
 ---
 
-Recently, while studying chemical equilibrium, I came across the following statement
+Recently, while studying the concept of chemical equilibrium, I came across the following statement
 in my textbook:
 
-> An increase in pressure favours the side of an equilibrium reaction that has
-> the smaller number of gas molecules.
+> An increase in pressure favours the side of an equilibrium reaction that has the smaller number of
+> gas molecules.
 
-Although there is a simple explanation for why this statement holds true using
-Le Chatelier's principle, I thought it'd be a fun exercise to derive it
-mathematically by comparison of the equilibrium constant $K_c$ and the reaction
-quotient $Q$. (More importantly, writing this blog post provides me an excuse to
-_not_ learn more chemistry and do math instead, which is always preferable.)
+Although there is a simple explanation for why this statement holds true using Le Chatelier's
+principle, I thought it'd be a fun exercise to convince myself of the statement by a different, more
+convoluted method: deducing the expected direction of the shift via comparing the equilibrium
+constant $K_c$ with the reaction quotient $Q$.
 
-# Outline of Approach
+## Outline of approach
 
-Recall that if $Q < K_c$ then the products are favored and conversely if $Q >
-K_c$ the reactants are favored. Thus, if we can somehow show that, in the
-event of an increase in pressure, $Q$ is greater than $K_c$ if and only if
-there are fewer moles of gas on the reactant side (and similar for the case
-where $Q$ is smaller), then we'll have proven the desired claim.
+Recall that, in general, the reaction quotient $Q$ tends toward the equilibrium constant $K_c$.
+Concretely, if $Q < K_c$ then the products are favored and conversely if $Q > K_c$ the reactants are
+favored. Thus, if we can somehow show that, in the event of an increase in pressure, $Q$ is greater
+than $K_c$ if and only if there are fewer moles of gas on the reactant side (and similar for the
+case where $Q$ is smaller), then we'll have proven the claim. Let's try that!
 
-# Proof
+## Proof
 
 Consider the general reaction
 
@@ -59,7 +58,7 @@ gas has its own partial pressure -- that is, the $P$ for each gas is different.
 To account for this, recall that
 
 $$
-p_X = p_{\Sigma} \frac{n_X}{n_{\Sigma}}
+p_X = p_{\mathrm{tot}} \frac{n_X}{n_{\mathrm{tot}}}
 $$
 
 that is, the partial pressure is the total pressure scaled by the mole fraction.
@@ -67,7 +66,7 @@ Combining this with Equation 2 yields an expression for the concentration of
 any gas (say $X$) in the reaction in terms of the total pressure of the system:
 
 $$
-c_X = [X] = \frac{p_X}{RT} = \frac{P_0n_{\Sigma}}{RTn_X} \tag{3}
+c_X = [X] = \frac{p_X}{RT} = \frac{P_0n_{\mathrm{tot}}}{RTn_X} \tag{3}
 $$
 
 Substituting the final expression for concentration into Equation 1 and
@@ -75,21 +74,22 @@ factoring out the part dependent on pressure, we get
 
 $$
 \begin{align*}
-Q_0 = K_c &= \cfrac{\left(\cfrac{P_0n_{\Sigma}}{RTn_R}\right)^r\left(\cfrac{P_0n_{\Sigma}}{RTn_S}\right)^s\cdots}{\left(\cfrac{P_0n_{\Sigma}}{RTn_A}\right)^a\left(\cfrac{P_0n_{\Sigma}}{RTn_B}\right)^b\cdots} \\\\
-    &= \cfrac{{P_0}^{r + s + \dots}}{{P_0}^{a + b + \dots}} \cfrac{\left(\cfrac{n_{\Sigma}}{RTn_R}\right)^r\left(\cfrac{n_{\Sigma}}{RTn_S}\right)^s\cdots}{\left(\cfrac{n_{\Sigma}}{RTn_A}\right)^a\left(\cfrac{n_{\Sigma}}{RTn_B}\right)^b\cdots}. \tag{4}
+Q_0 = K_c &= \cfrac{\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_R}\right)^r\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_S}\right)^s\cdots}{\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_A}\right)^a\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_B}\right)^b\cdots} \\\\
+    &= \cfrac{{P_0}^{r + s + \dots}}{{P_0}^{a + b + \dots}} \cfrac{\left(\cfrac{n_{\mathrm{tot}}}{RTn_R}\right)^r\left(\cfrac{n_{\mathrm{tot}}}{RTn_S}\right)^s\cdots}{\left(\cfrac{n_{\mathrm{tot}}}{RTn_A}\right)^a\left(\cfrac{n_{\mathrm{tot}}}{RTn_B}\right)^b\cdots}. \tag{4}
 \end{align*}
 $$
 
-(_Aside: Substituting the expression for concentration in terms of partial pressure gives us
-a rather interesting result; see [Appendix 1](#appendix-1)._)
+(_Aside: Substituting the expression for concentration in terms of partial pressure instead gives us
+[a rather interesting link to the equilibrium constant using partial pressures](##eq-constant-using-partial-pressures)._)
 
 For brevity write
+
 $$ \Delta n = \overbrace{(r + s + \cdots)}^{\text{tot. num of product moles}} - \underbrace{(a + b + \cdots)}\_{\text{tot. num of reactant moles}} \tag{5} $$
-such that the
-pressure factor in front is just ${P_0}^{\Delta n}$. Also put
+
+such that the pressure factor in front is just ${P_0}^{\Delta n}$. Also put
 
 $$
-C = \cfrac{\left(\cfrac{n_{\Sigma}}{RTn_R}\right)^r\left(\cfrac{n_{\Sigma}}{RTn_S}\right)^s\cdots}{\left(\cfrac{n_{\Sigma}}{RTn_A}\right)^a\left(\cfrac{n_{\Sigma}}{RTn_B}\right)^b\cdots}
+C = \cfrac{\left(\cfrac{n_{\mathrm{tot}}}{RTn_R}\right)^r\left(\cfrac{n_{\mathrm{tot}}}{RTn_S}\right)^s\cdots}{\left(\cfrac{n_{\mathrm{tot}}}{RTn_A}\right)^a\left(\cfrac{n_{\mathrm{tot}}}{RTn_B}\right)^b\cdots}
 $$
 
 so Equation 4 simplifies to just
@@ -137,18 +137,18 @@ shift rightward (favoring products.) The analysis for the case in which there ar
 fewer moles of gas on the reactant side is similar -- the equilibrium position
 shifts leftward favoring reactants, which is what we wanted to show. $\square$
 
-## Appendix 1: Equilibrium Constant for Partial Pressures {#appendix-1}
+## A connection to the equilibrium constant using partial pressures {#eq-constant-using-partial-pressures}
 
 As part of our proof, we derived the following relationship (Equation 3):
 
 $$
-c_X = [X] = \frac{p_X}{RT} = \frac{P_0n_{\Sigma}}{RTn_X}.
+c_X = [X] = \frac{p_X}{RT} = \frac{P_0n_{\mathrm{tot}}}{RTn_X}.
 $$
 
 Recall that we originally substituted the final expression,
 
 $$
-\frac{P_0n_{\Sigma}}{RTn_X}
+\frac{P_0n_{\mathrm{tot}}}{RTn_X}
 $$
 
 back into the equilibrium constant expression (leading to Equation 4). However,
