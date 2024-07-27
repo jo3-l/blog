@@ -1,5 +1,6 @@
 baseURL: https://jo3-l.github.io
 title: Joe's Blog
+copyright: Content released under terms of CC-BY-SA
 theme: PaperMod
 paginate: 3
 
