@@ -16,11 +16,11 @@ favorite anime this year was Frieren.
 Nowadays, I primarily work with Rust and Go on backend projects; however, I also have experience in
 Python, TypeScript, Java, and C++ among other technologies.
 
-I am a [frequent contributor](yag-contributions) to the open-source YAGPDB Discord bot in Go,
+I am a [frequent contributor][yag-contributions] to the open-source YAGPDB Discord bot in Go,
 focusing on its custom templating engine. Notably, I implemented multiple language features such as
 `break`, `continue`, and error-handling constructs in the production interpreter, and am currently
 working on improving editor integration via a [language server in Rust](https://github.com/jo3-l/yag-template-lsp).
-As part of the latter project, I implemented an [error-tolerant and lossless parser](yag-template-syntax)
+As part of the latter project, I implemented an [error-tolerant and lossless parser][yag-template-syntax]
 by hand, integrated with [rowan](https://github.com/rust-analyzer/rowan).
 
 [yag-contributions]: https://github.com/botlabs-gg/yagpdb/commits?author=jo3-l
