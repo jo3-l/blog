@@ -1,7 +1,0 @@
-.entry-content p {
-	margin-bottom: var(--content-gap);
-}
-
-.highlight pre.chroma code {
-	tab-size: 4;
-}

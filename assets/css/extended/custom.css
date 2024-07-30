@@ -1,0 +1,16 @@
+.entry-content p {
+	margin-bottom: var(--content-gap);
+}
+
+.katex {
+	font-size: 1.1em !important;
+}
+
+.highlight pre.chroma code {
+	tab-size: 4;
+}
+
+:root {
+	--main-width: 800px !important;
+	--nav-width: 1100px !important;
+}
