@@ -9,15 +9,15 @@ params:
     title: Hey there!
     content: |
       I'm Joseph Liu, an incoming computer science undergraduate at the University of Waterloo.
-      Welcome to my own small slice of the web :) Here, I occasionally blog about math, programming,
-      and whatever else piques my interest.
+      Welcome to my small slice of the web :) Here, I occasionally blog about math, programming, and
+      whatever else piques my interest.
 
       If you would like to know more about me, head over to my [about page](/about). To contact me,
       email me at `jo3.l.dev [at] outlook.com`; I am also active on Discord as `jo3_l`.
 
   title: Joe's Blog
   author: Joseph Liu
-  description: My small slice of the web
+  description: My small slice of the web—occasional musings on math, programming, and other topics
   dateFormat: '02 January 2006'
   socialIcons:
     - name: github
