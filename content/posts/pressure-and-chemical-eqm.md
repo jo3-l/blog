@@ -37,25 +37,22 @@ $$
 where $A$, $B$, $\dots$ are the reactants and $R$, $S$, $\dots$ are the
 products.
 
-Suppose the system is currently in equilibrium. Then the initial reaction quotient $Q_0$
-and the equilibrium constant $K_c$ must necessarily be equal, so
+Suppose the system is currently in equilibrium. The equilibrium constant $K_c$ is
 
 $$
-Q_0 = K_c = \frac{[R]^r[S]^s\cdots}{[A]^a[B]^b\cdots}. \tag{1}
+K_c = \frac{[R]^r[S]^s\cdots}{[A]^a[B]^b\cdots}. \tag{1}
 $$
 
-Our goal now is to relate concentration to the total pressure of the system, say $P_0$.
-Recall that concentration $c = n/V$ where $n$ denotes the number of
-moles and the $V$ the volume. Rearranging the ideal gas law $PV = nRT$ to
-isolate $n/V$ yields
+Our goal is to relate concentration to the total pressure of the system, say $P_0$. Recall that
+concentration $c = n/V$ where $n$ denotes the number of moles and the $V$ the volume. Rearranging
+the ideal gas law $PV = nRT$ to isolate $n/V$ yields
 
 $$
 \frac{n}{V} = \frac{P}{RT} = c. \tag{2}
 $$
 
-Note that we cannot directly substitute this back into Equation 1 yet as each
-gas has its own partial pressure -- that is, the $P$ for each gas is different.
-To account for this, recall that
+However, we cannot directly substitute this back into Equation 1 yet as each gas has its own partial
+pressure---that is, the $P$ for each gas is different. To account for this, recall that
 
 $$
 p_X = p_{\mathrm{tot}} \frac{n_X}{n_{\mathrm{tot}}}
@@ -74,7 +71,7 @@ factoring out the part dependent on pressure, we get
 
 $$
 \begin{align*}
-Q_0 = K_c &= \cfrac{\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_R}\right)^r\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_S}\right)^s\cdots}{\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_A}\right)^a\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_B}\right)^b\cdots} \\\\
+K_c &= \cfrac{\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_R}\right)^r\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_S}\right)^s\cdots}{\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_A}\right)^a\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_B}\right)^b\cdots} \\\\
     &= \cfrac{{P_0}^{r + s + \dots}}{{P_0}^{a + b + \dots}} \cfrac{\left(\cfrac{n_{\mathrm{tot}}}{RTn_R}\right)^r\left(\cfrac{n_{\mathrm{tot}}}{RTn_S}\right)^s\cdots}{\left(\cfrac{n_{\mathrm{tot}}}{RTn_A}\right)^a\left(\cfrac{n_{\mathrm{tot}}}{RTn_B}\right)^b\cdots}. \tag{4}
 \end{align*}
 $$
@@ -86,42 +83,42 @@ For brevity write
 
 $$ \Delta n = \overbrace{(r + s + \cdots)}^{\text{tot. num of product moles}} - \underbrace{(a + b + \cdots)}\_{\text{tot. num of reactant moles}} \tag{5} $$
 
-such that the pressure factor in front is just ${P_0}^{\Delta n}$. Also put
+such that the pressure factor in front is just ${P_0}^{\Delta n}$. Also abbreviate $k$ as the constant
 
 $$
-C = \cfrac{\left(\cfrac{n_{\mathrm{tot}}}{RTn_R}\right)^r\left(\cfrac{n_{\mathrm{tot}}}{RTn_S}\right)^s\cdots}{\left(\cfrac{n_{\mathrm{tot}}}{RTn_A}\right)^a\left(\cfrac{n_{\mathrm{tot}}}{RTn_B}\right)^b\cdots}
+k = \cfrac{\left(\cfrac{n_{\mathrm{tot}}}{RTn_R}\right)^r\left(\cfrac{n_{\mathrm{tot}}}{RTn_S}\right)^s\cdots}{\left(\cfrac{n_{\mathrm{tot}}}{RTn_A}\right)^a\left(\cfrac{n_{\mathrm{tot}}}{RTn_B}\right)^b\cdots}
 $$
 
-so Equation 4 simplifies to just
+so that Equation 4 simplifies to just
 
 $$
-Q_0 = K_c = C{P_0}^{\Delta n}. \tag{6}
+K_c = k{P_0}^{\Delta n}. \tag{6}
 $$
 
-Now consider what happens when the pressure is increased to $P_1$. The
-equilibrium constant $K_c$ does not change since it is only affected by
-temperature. What about the reaction quotient, $Q_1$? The factor $C$ from
-Equation 6 remains the same, so the only change is replacing $P_0$ with $P_1$:
+Now consider what happens when the pressure is increased to $P_1$. The equilibrium constant $K_c$
+does not change since it is only affected by temperature. What about the reaction quotient, $Q$? The
+factor $k$ from Equation 6 remains the same, so the only change is replacing $P_0$ with $P_1$:
 
 $$
-Q_1 = C{P_1}^{\Delta n}.
+Q = k{P_1}^{\Delta n}.
 $$
 
-Evidently the reaction quotient $Q_1$ is no longer equal to the equilibrium constant,
-so the equlibrium position will shift to restore equilibrium. To determine whether
-the forward or reverse reaction will be favored, we just need to compare $Q_1$ to $K_c$.
-Without loss of generality, consider the case where $Q_1$ is smaller:
+Evidently the reaction quotient $Q$ is no longer equal to the equilibrium constant, so the
+equlibrium position will shift to restore equilibrium. To determine whether the forward or reverse
+reaction will be favored, we need to compare $Q$ to $K_c$. Without loss of generality, consider the
+case where $Q$ is smaller:
 
 $$
 \begin{align*}
 Q_1 &< K_c \\\\
-CP_1^{\Delta n} &< CP_0^{\Delta n} \\\\
+kP_1^{\Delta n} &< kP_0^{\Delta n} \\\\
 P_1^{\Delta n} &< P_0^{\Delta n}.
 \end{align*}
 $$
 
 Since $P_1 > P_0$, this can only be the case if $\Delta n < 0$. But we defined $\Delta n$ as the
-total moles of gas on the product side subtract the total moles of gas on the reactant side, so
+difference between the total moles of gas on the product side and the total moles of gas on the
+reactant side, so
 
 $$
 \begin{align*}
@@ -131,11 +128,10 @@ $$
 \end{align*}
 $$
 
-In other words, $Q_1 < K_c$ if and only if there are fewer moles of gas on the
-product side. But $Q_1 < K_c$ also implies that the equilibrium position should
-shift rightward (favoring products.) The analysis for the case in which there are
-fewer moles of gas on the reactant side is similar -- the equilibrium position
-shifts leftward favoring reactants, which is what we wanted to show. $\square$
+In other words, $Q < K_c$ if and only if there are fewer moles of gas on the product side. But $Q <
+K_c$ also implies that the equilibrium position should shift rightward (favoring products.) The
+analysis for the case in which there are fewer moles of gas on the reactant side is similar---the
+equilibrium position shifts leftward favoring reactants, which is what we wanted to show.
 
 ## A connection to the equilibrium constant using partial pressures {#eq-constant-using-partial-pressures}
 
