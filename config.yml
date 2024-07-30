@@ -24,6 +24,7 @@ params:
       url: https://github.com/jo3-l/
     - name: email
       url: mailto:jo3.l.dev@outlook.com
+  showCodeCopyButtons: true
 
 menu:
   main:
@@ -42,9 +43,7 @@ menu:
 
 markup:
   highlight:
-    codeFences: true
-    noClasses: true
-    style: xcode-dark
+    noClasses: false
   goldmark:
     renderer:
       unsafe: true
