@@ -100,7 +100,7 @@ does not change since it is only affected by temperature. What about the reactio
 The factor $k$ from Equation 6 remains the same, so the only change is replacing $P_0$ with $P_1$:
 
 $$
-Q_1 = C{P_1}^{\Delta n}.
+Q_1 = k{P_1}^{\Delta n}.
 $$
 
 Evidently the reaction quotient $Q_1$ is no longer equal to the equilibrium constant, so the
@@ -111,7 +111,7 @@ K_c$:
 $$
 \begin{align*}
 Q_1 &< K_c \\\\
-CP_1^{\Delta n} &< CP_0^{\Delta n} \\\\
+kP_1^{\Delta n} &< kP_0^{\Delta n} \\\\
 P_1^{\Delta n} &< P_0^{\Delta n}.
 \end{align*}
 $$
