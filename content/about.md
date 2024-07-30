@@ -8,7 +8,7 @@ the [University of Waterloo](https://cs.uwaterloo.ca/); before that, I graduated
 Diploma program](https://www.ibo.org/programmes/diploma-programme/) in high school with 45/45
 points.
 
-I love to program in my free time, and have built (and contributed to) various projects over the
+I love to program in my free time, and have built and contributed to various projects over the
 years---more on those below. Besides programming, I also enjoy writing, playing tennis, and the very
 occasional anime/manga; my favorite anime this year was Frieren.
 
