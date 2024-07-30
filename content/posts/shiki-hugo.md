@@ -11,19 +11,19 @@ for the [YAGPDB proejct](https://yagpdb.xyz) using Hugo. To provide more accurat
 highlighting for our code snippets, which use a custom scripting language, we needed to switch away
 from Hugo's built-in [Chroma](https://github.com/alecthomas/chroma)-powered highlighting.[^1]
 
-After evaluating a number of alternative syntax highlighting solutions, we ultimately settled on
+After evaluating various alternative syntax highlighting solutions, we ultimately settled on
 [Shiki](https://shiki.style/). Shiki is powered by TextMate grammars, which are also used by VSCode.
 In practice, this means that Shiki can take advantage of the massive existing ecosystem of VSCode
 themes and language extensions to provide accurate, highly customizable highlighting with little
 effort.
 
-Since there are few existing resources on using a different syntax highlighter in Hugo, this blog
-post provides a brief guide on how to do so.
+Since there is a lack of existing resources on using different syntax highlighters with Hugo, I
+wrote up a brief guide in this blog post.
 
 ## Some important caveats
 
 Shiki is highly extensible and looks beautiful, but using it in a Hugo website has significant
-drawbacks. Notably, Shiki is only usable as a JavaScript library; this not only ties you to the
+drawbacks. Notably, Shiki is only available as a JavaScript library; this not only ties you to the
 dreaded npm ecosystem but also means that Shiki cannot be integrated smoothly into Hugo's build
 process. **Instead, Shiki must run in a separate build step that post-processes the HTML files
 output by Hugo.[^2]**
@@ -40,9 +40,9 @@ one must instead run
 $ hugo && node scripts/highlight.mjs
 ```
 
-or similar, where `scripts/highlight.mjs` overwrites the files output in `public/`. This additional
-build step is also rather sluggish relative to Hugo; in our experience, Shiki takes ~1 second to
-highlight 60 files.
+or similar, where `scripts/highlight.mjs` overwrites the output HTML files in `public/`. This
+additional build step is also rather sluggish relative to Hugo; in our experience, Shiki takes ~1
+second to highlight 60 files.
 
 Moreover, Hugo's built-in development server,
 
@@ -51,10 +51,10 @@ $ hugo server
 ```
 
 cannot be made to work with Shiki with this approach: codeblocks will render differently in
-development and production. This can be beneficial if you are willing to accept the discrepancy, as
-avoiding invoking Shiki in development preserves quick iteration cycles. (It is still, of course,
-possible to preview the production appearance by building via `hugo && node scripts/highlight.mjs`
-and then serving the `public/` directory.)
+development and production. In some sense, this is actually beneficial, as avoiding invoking Shiki
+in development preserves quick iteration cycles. (It is still, of course, possible to preview the
+production appearance by building via `hugo && node scripts/highlight.mjs` and then serving the
+`public/` directory.)
 
 ---
 
@@ -79,7 +79,7 @@ highlighting for our custom scripting language was well worth the drawbacks.
 website root, and install the packages required by the build script with
 
 ```shell
-$ npm init # will prompt for project name among other details; any will do
+$ npm init # prompts for project name among other details; any will do
 
 $ npm install glob # for locating built HTML files to highlight
 $ npm install htmlparser2 domutils dom-serializer # for editing HTML files
@@ -88,13 +88,13 @@ $ npm install shiki
 
 ---
 
-**Add the build script.** Now, copy the build script---responsible for highlighting the HTML files
-output by Hugo---to `scripts/highlight.mjs`. An [in-depth explanation](#appendix-build-script-explanation) of
-the build script is available for the curious.
+**Add build script.** Now, copy the build script---responsible for highlighting the HTML files
+output by Hugo---to `scripts/highlight.mjs`. A [longer explanation](#appendix-build-script-explanation)
+of how the build script works is available for the curious.
 
-You must change the glob pattern on line 30 to match your file structure:
-in our case, we had documentation under `content/docs`, so the correct pattern for the built HTML
-files was `public/docs/**/index.html`.
+You must change the glob pattern on line 30 to match your file structure: in our case, we had
+documentation under `content/docs`, so the correct pattern for the output HTML files was
+`public/docs/**/index.html`.
 
 ```js {linenos=true, hl_lines=30}
 import { createHighlighter, bundledLanguages } from 'shiki';
@@ -167,7 +167,7 @@ For convenience, you may wish to add a npm script that runs both Hugo and the bu
 {
     ...
     "scripts": {
-		"build": "hugo --minify --gc && npm run highlight",
+		"build": "hugo && npm run highlight",
 		"highlight": "node scripts/highlight.mjs"
     }
 }
@@ -181,7 +181,7 @@ directory with your webserver of choice.
 With that, we are done! The finishing touch is to modify your deployment process to invoke
 the build script in addition to Hugo; see
 [the GitHub workflow](https://github.com/botlabs-gg/yagpdb-docs-v2/blob/master/.github/workflows/hugo.yml)
-we use in the YAGPDB documentation repository.
+we use in the YAGPDB documentation repository for inspiration.
 
 Enjoy your new Shiki-powered codeblocks :)
 
@@ -197,20 +197,16 @@ When Hugo processes markdown files, it transforms codeblocks to HTML structured 
 </pre>
 ```
 
-so, for each HTML file, we should
+so, for each output HTML file, we should
 
 - target all `pre` nodes,
 - read the language from the `class` attribute of the inner `code` node,
 - and use Shiki to transform the content of the `code` node, then replace the `pre` node with the
   highlighted `pre` node.
 
-The function `highlightHtmlContent`, which is the meat of the build script, accomplishes this.
+The function `highlightHtmlContent`, which is the bulk of the build script, accomplishes this.
 
 ```js
-import { parseDocument } from 'htmlparser2';
-import { findAll, findOne, textContent, replaceElement } from 'domutils';
-import render from 'dom-serializer';
-
 function highlightHtmlContent(highlighter, htmlContent, { lightTheme, darkTheme }) {
 	const doc = parseDocument(htmlContent);
 	for (const preNode of findAll((e) => e.name === 'pre', doc.children)) {
@@ -232,7 +228,7 @@ function highlightHtmlContent(highlighter, htmlContent, { lightTheme, darkTheme 
 }
 ```
 
-The rest of the build script is driver code that invokes `highlightHtmlContent` on each build file
+The rest of the build script is driver code that invokes `highlightHtmlContent` on each output file
 and overwrites the contents.
 
 [^1]:
@@ -241,5 +237,6 @@ and overwrites the contents.
 
 [^2]:
     In the future, Hugo may support [running WASM scripts as part of the
-    build](https://github.com/gohugoio/hugo/pull/12679), potentially ameliorating this issue, but
-    this is the best we can do now.
+    build](https://github.com/gohugoio/hugo/pull/12679), potentially ameliorating this issue as
+    Shiki can then, in theory, be compiled to WASM and invoked. However, the separate build script
+    is the best we can do for now.
