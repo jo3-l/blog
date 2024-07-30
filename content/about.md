@@ -4,9 +4,8 @@ hidemeta: true
 ---
 
 Hi! I'm Joseph Liu, a computer science student from Canada. Starting Fall 2024, I'll be studying at
-the [University of Waterloo](https://cs.uwaterloo.ca/); before that, I graduated from the [IB
-Diploma program](https://www.ibo.org/programmes/diploma-programme/) in high school with 45/45
-points.
+the University of Waterloo; before that, I graduated from the IB Diploma program in high school with
+45/45 points.
 
 I love to program in my free time, and have built and contributed to various projects over the
 years---more on those below. Besides programming, I also enjoy writing, playing tennis, and the very
@@ -27,7 +26,7 @@ implemented an [error-tolerant and lossless parser][yag-template-syntax] generat
 [yag-contributions]: https://github.com/botlabs-gg/yagpdb/commits?author=jo3-l
 [yag-template-syntax]: https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax
 
-A selection of other interesting projects I created:
+A selection of other interesting projects I am involved in:
 
 - [obscenity](https://github.com/jo3-l/obscenity): A robust profanity detection library for Node.js
   written in TypeScript. It implements a extensible transformer-based design and is thoroughly
@@ -42,9 +41,9 @@ A selection of other interesting projects I created:
   snapshot/golden testing strategy and quite liked the result; I hope to use snapshot testing more in
   future projects.
 - [liftoff](https://github.com/jo3-l/liftoff): An interpreter for a toy programming language, built
-  with Python. Though basic, the language is sufficiently complete to build some real programs.
+  with Python. Though basic, the language is sufficiently complete to build some [interesting programs](https://github.com/jo3-l/liftoff/blob/main/examples/ccc21j5.rk).
 
-For more, see [my GitHub](https://github.com/jo3-l/).
+For more, see [my GitHub profile](https://github.com/jo3-l/).
 
 ## Contact
 
