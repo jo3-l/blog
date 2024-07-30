@@ -96,7 +96,7 @@ $$
 
 as desired. $\square$
 
-## A full proof
+## The full proof
 
 We are now equipped to tackle the full proof where $x$ and $y$ are unrestricted aside from being
 integers. Broadly speaking, Lemma 1.1 covers the case where $x$ and $y$ are both positive or both
