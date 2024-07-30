@@ -22,11 +22,11 @@ wrote up a brief guide in this blog post.
 
 ## Some important caveats
 
-Shiki is highly extensible and looks beautiful, but using it in a Hugo website has significant
-drawbacks. Notably, Shiki is only available as a JavaScript library; this not only ties you to the
-dreaded npm ecosystem but also means that Shiki cannot be integrated smoothly into Hugo's build
-process. **Instead, Shiki must run in a separate build step that post-processes the HTML files
-output by Hugo.[^2]**
+Shiki is highly extensible and looks nice, but using it in a Hugo website has significant drawbacks.
+Notably, Shiki is only available as a JavaScript library; this not only ties you to the dreaded npm
+ecosystem but also means that Shiki cannot be integrated smoothly into Hugo's build process.
+**Instead, Shiki must run in a separate build step that post-processes the HTML files output by
+Hugo.[^2]**
 
 Concretely, instead of building with
 
