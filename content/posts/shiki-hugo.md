@@ -7,7 +7,7 @@ tags: [programming, hugo]
 ---
 
 Recently, I have been helping to build a [new documentation website](https://docs-beta.yagpdb.xyz/)
-for the [YAGPDB proejct](https://yagpdb.xyz) using Hugo. To provide more accurate syntax
+for the [YAGPDB project](https://yagpdb.xyz) using Hugo. To provide more accurate syntax
 highlighting for our code snippets, which use a custom scripting language, we needed to switch away
 from Hugo's built-in [Chroma](https://github.com/alecthomas/chroma)-powered highlighting.[^1]
 
