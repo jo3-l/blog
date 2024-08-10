@@ -3,6 +3,10 @@
 	margin-bottom: var(--content-gap);
 }
 
+.post-content li p {
+	margin-bottom: var(--content-gap) !important;
+}
+
 .katex {
 	font-size: 1.1em !important;
 }
