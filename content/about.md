@@ -8,8 +8,8 @@ the University of Waterloo; before that, I graduated from the IB Diploma program
 45/45 points.
 
 I love to program in my free time, and have built and contributed to various projects over the
-years---more on those below. Besides programming, I also enjoy writing, playing tennis, and the very
-occasional anime/manga; my favorite anime this year was Frieren.
+years---more on those below. Besides programming, I also enjoy [reading](/reading-log), writing,
+playing tennis, and the very occasional anime/manga; my favorite anime this year was Frieren.
 
 ## Programming experience and projects
 
@@ -43,9 +43,11 @@ A selection of other interesting projects I am involved in:
 - [liftoff](https://github.com/jo3-l/liftoff): An interpreter for a toy programming language, built
   with Python. Though basic, the language is sufficiently complete to build some [interesting programs](https://github.com/jo3-l/liftoff/blob/main/examples/ccc21j5.rk).
 
-For more, see [my GitHub profile](https://github.com/jo3-l/).
+For more, see [my GitHub profile](https://github.com/jo3-l/).[^1]
 
 ## Contact
 
-I'd love to get in touch with you! Please email me at `jo3.l.dev [at] outlook.com` or shoot me a direct
+I'd love to get in touch with you! Please email me at `jliu1602 [at] gmail.com` or shoot me a direct
 message on Discord (username `jo3_l`.)
+
+[^1]: if you came to this page from my GitHub profile, no need to thank me for explaining recursion

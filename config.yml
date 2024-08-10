@@ -13,7 +13,7 @@ params:
       whatever else piques my interest.
 
       If you would like to know more about me, head over to my [about page](/about). To contact me,
-      email me at `jo3.l.dev [at] outlook.com`; I am also active on Discord as `jo3_l`.
+      email me at `jliu1602 [at] gmail.com`; I am also active on Discord as `jo3_l`.
 
   title: Joe's Blog
   author: Joseph Liu
@@ -23,7 +23,7 @@ params:
     - name: github
       url: https://github.com/jo3-l/
     - name: email
-      url: mailto:jo3.l.dev@outlook.com
+      url: mailto:jliu1602@gmail.com
   showCodeCopyButtons: true
 
 menu:
