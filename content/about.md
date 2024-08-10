@@ -50,4 +50,4 @@ For more, see [my GitHub profile](https://github.com/jo3-l/).[^1]
 I'd love to get in touch with you! Please email me at `jliu1602 [at] gmail.com` or shoot me a direct
 message on Discord (username `jo3_l`.)
 
-[^1]: if you came to this page from my GitHub profile, no need to thank me for explaining recursion
+[^1]: if you came to this page from GitHub, you're welcome for the quick lesson in recursion :)
