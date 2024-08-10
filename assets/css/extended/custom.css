@@ -1,4 +1,5 @@
-.entry-content p {
+.entry-content p,
+.post-description p {
 	margin-bottom: var(--content-gap);
 }
 

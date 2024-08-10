@@ -36,10 +36,14 @@ menu:
       name: About
       url: /about/
       weight: 2
+    - identifier: reading-log
+      name: Reading Log
+      url: /reading-log/
+      weight: 3
     - identifier: tags
       name: Tags
       url: /tags/
-      weight: 3
+      weight: 4
 
 markup:
   highlight:
