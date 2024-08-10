@@ -2,8 +2,8 @@
 title: Favorites
 weight: 1
 date: '2024-08-09'
-summary: 'A collection of my favorite technical content---ones that influenced the way I think about programming.'
-description: 'A collection of my favorite technical content---ones that influenced the way I think about programming.'
+summary: 'A collection of my favorite technical content—pieces that influence the way I think about programming.'
+description: 'A collection of my favorite technical content—pieces that influence the way I think about programming.'
 hidemeta: true
 ---
 
