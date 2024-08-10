@@ -53,7 +53,7 @@ the list is rather incomplete.
 
 - I used to do competitive programming, and picked up the bad habit of writing things like
   `v >> 1` instead of `v / 2` and `memset(dp, 0x3f, sizeof(dp))` instead of
-  `std::fill(std::begin(dp), std::end(dp), 0x3f3f3f3f)` in the belief that the latter was more performant.
+  `std::fill(std::begin(dp), std::end(dp), 0x3f3f3f3f)` in the belief that the former was more performant.
   This talk convinced me that this belief was totally unfounded and shows just how smart modern compilers
   can be---the two optimizations above are, in fact, relatively simple for compilers to do!
 
