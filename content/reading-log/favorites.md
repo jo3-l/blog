@@ -14,24 +14,25 @@ the list is rather incomplete.
 
 [The Wrong Abstraction][wrong-abstraction] and [Goodbye, Clean Code][goodbye-clean-code]
 
-- At some point I was obsessed with GOF-style design patterns and beautiful towers of abstraction in
-  general. These two posts finally pushed me to understand that design patterns are _tools_, not
-  rules to follow, and that sometimes the best abstraction is no abstraction (or a minimal one.)
+- At some point I was obsessed with GOF-style design patterns and elaborate abstractions in general.
+  These two posts finally pushed me to understand that design patterns are _tools_, not rules to
+  follow, and that sometimes the best abstraction is no abstraction (or a minimal one.)
 
 [Notes on Programming in C][pikestyle]
 
-- Among other great tidbits about data-oriented design, there's the observation that simple
-  algorithms and data structures (Pike names arrays, linked lists, hash tables, and binary trees)
-  composed appropriately are sufficient for the vast majority of programs and clearer to boot.
+- Among other interesting notes about data-oriented design, there's the observation that simple
+  algorithms and data structures---Pike lists arrays, linked lists, hash tables, and binary trees---
+  composed appropriately are sufficient (and lead to the clearest code) for the vast majority of
+  programs.
 
 [Names][names]
 
 - Names need not---indeed, should not---be maximally verbose all the time; a short name whose
   meaning can be inferred from context is preferable to a long-winded name since it aids skimming
-  and increases information density. Of course, long, descriptive names are sometimes appropriate:
-  just don't be dogmatic about it.
+  and increases information density. Long, descriptive names are occasionally appropriate, but don't
+  be dogmatic about it.
 
-  A related analogy from [Isaac Schlueter via HN][issacs-hn]:
+  A great analogy from [Isaac Schlueter via HN][issacs-hn]:
 
   > The first time you meet someone, you learn their full name. When discussing them with someone
   > else who knows them, you use just a single name. If they're standing right there, you don't
@@ -68,8 +69,8 @@ the list is rather incomplete.
 
 [Undefined Behavior can result in time travel][ub-time-travel]
 
-- How undefined behavior enables optimization... which sometimes manifest as undesirable and bizarre
-  changes.
+- How undefined behavior enables optimizations, which can sometimes manifest as undesirable and
+  bizarre changes.
 
 [cppcon-godbolt]: https://www.youtube.com/watch?v=bSkpMdDe4g4
 [so-branch-predictor]: https://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-processing-an-unsorted-array
@@ -80,7 +81,7 @@ the list is rather incomplete.
 
 [My Kind of REPL][inline-snapshot-tests]
 
-- On inline snapshot tests---up there on my favorite testing strategies.
+- Inline snapshot tests---one of my favorite testing strategies.
 
 [Go Testing By Example][go-tests] and [How to Test][how-to-test]
 
@@ -94,15 +95,15 @@ the list is rather incomplete.
 
 [Using unwrap() in Rust is Okay][unwrap]
 
-- Most languages that promote "errors as values" also provide a way to
-  raise fatal errors (called _panics_ in Rust and Go.) Sometimes panics
-  are the right way to go.
+- Most languages that promote "errors as values" also provide a way to raise fatal errors (called
+  panics in Rust and Go); this post addresses the question of when, if ever, is it OK to panic over
+  returning an error.
 
 [Accurate mental model for Rust's reference types][rust-references]
 
-- The most accurate description of a `&mut T` is an exclusive reference
-  and likewise `&T` is a shared reference. Crucially, `&T` is _not necessarily_
-  an immutable `T`, as demonstrated by interior mutability and atomic values.
+- A `&mut T` is most accurately described as an exclusive reference and likewise `&T` is a shared
+  reference. Crucially, `&T` is _not necessarily_ an immutable `T`, as demonstrated by interior
+  mutability and atomic values.
 
 [inline-snapshot-tests]: https://ianthehenry.com/posts/my-kind-of-repl/
 [go-tests]: https://research.swtch.com/testing
