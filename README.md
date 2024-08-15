@@ -1,8 +1,8 @@
 # Blog
 
 This is the source for my personal blog. It's built with [Hugo](https://github.com/gohugoio/hugo)
-using the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme, and deployed to [GitHub
-Pages](https://jo3-l.github.io).
+using the [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme, and deployed via
+Cloudflare Pages to [jo3-l.dev](https://jo3-l.dev).
 
 ## License
 
