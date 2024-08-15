@@ -6,10 +6,11 @@ description: 'A guide on using Shiki for syntax highlighting in Hugo websites.'
 tags: [programming, hugo]
 ---
 
-Recently, I have been helping to build a [new documentation website](https://docs-beta.yagpdb.xyz/)
-for the [YAGPDB project](https://yagpdb.xyz) using Hugo. To provide more accurate syntax
-highlighting for our code snippets, which use a custom scripting language, we needed to switch away
-from Hugo's built-in [Chroma](https://github.com/alecthomas/chroma)-powered highlighting.[^1]
+Over the past months, I have been helping to build a [new documentation
+website](https://docs-beta.yagpdb.xyz/) for the [YAGPDB project](https://yagpdb.xyz) using Hugo. To
+provide more accurate syntax highlighting for our code snippets, which use a custom scripting
+language, we needed to switch away from Hugo's built-in
+[Chroma](https://github.com/alecthomas/chroma)-powered highlighting.[^1]
 
 After evaluating various alternative syntax highlighting solutions, we ultimately settled on
 [Shiki](https://shiki.style/). Shiki is powered by TextMate grammars, which are also used by VSCode.
