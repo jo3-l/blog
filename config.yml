@@ -1,6 +1,6 @@
 baseURL: https://jo3-l.dev
 title: Joe's Blog
-copyright: Content released under CC-BY-SA
+copyright: Content licensed under CC-BY-SA
 theme: PaperMod
 paginate: 5
 
@@ -24,6 +24,8 @@ params:
       url: https://github.com/jo3-l/
     - name: email
       url: mailto:jliu1602@gmail.com
+    - name: discord
+      url: https://discord.com/users/621907351267442698
   showCodeCopyButtons: true
   showWordCount: true
 
