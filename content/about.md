@@ -1,15 +1,15 @@
 ---
-title: About me
+title: About Me
 hidemeta: true
 ---
 
 Hi! I'm Joseph Liu, a computer science student from Canada. Starting Fall 2024, I'll be studying at
-the University of Waterloo; before that, I graduated from the IB Diploma program in high school with
-45/45 points.
+the University of Waterloo; before that, I graduated from the IB Diploma program in the May 2024
+session with 45/45 points.
 
 I love to program in my free time, and have built and contributed to various projects over the
 years---more on those below. Besides programming, I also enjoy [reading](/reading-log), writing,
-playing tennis, and the very occasional anime/manga; my favorite anime this year was Frieren.
+playing tennis, and the occasional anime/manga; my favorite anime this year was Frieren.
 
 ## Programming experience and projects
 
@@ -26,28 +26,32 @@ implemented an [error-tolerant and lossless parser][yag-template-syntax] generat
 [yag-contributions]: https://github.com/botlabs-gg/yagpdb/commits?author=jo3-l
 [yag-template-syntax]: https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax
 
-A selection of other interesting projects I am involved in:
+Some of my other projects include:
 
 - [obscenity](https://github.com/jo3-l/obscenity): A robust profanity detection library for Node.js
-  written in TypeScript. It implements a extensible transformer-based design and is thoroughly
-  unit-tested with Jest. Used by hundreds of open-source projects with 20k+ weekly downloads on npm
-  and 500k+ downloads total.
-- [vsHacks](https://vshacks.github.io/): In high school, I co-founded vsHacks—a now-annual hackathon
-  organized by my programming club in collaboration with other schools across Greater Vancouver. I
-  contributed extensively to the hackathon website and helped run workshops during the event, which
-  saw 50+ participants from the district and beyond.
+  written in TypeScript. It implements an extensible transformer-based design and is thoroughly
+  tested with Vitest and fast-check. Obscenity is used by hundreds of open-source projects, and has
+  been downloaded 700k+ times total on npm.
+- [vsHacks](https://vshacks.github.io/): I co-founded vsHacks—a now-annual hackathon organized by my
+  programming club in collaboration with other high schools across Greater Vancouver. I contributed
+  extensively to the hackathon website and helped run workshops during the event, which saw 50+
+  participants from the district and beyond.
 - [markpdf](https://github.com/jo3-l/markpdf): A command-line utility to edit PDF bookmarks using a
-  convenient indentation-based format, built in Go. To test parts of markpdf, I experimented with a
-  snapshot/golden testing strategy and quite liked the result; I hope to use snapshot testing more in
-  future projects.
+  convenient indentation-based format, built in Go.
 - [liftoff](https://github.com/jo3-l/liftoff): An interpreter for a toy programming language, built
   with Python. Though basic, the language is sufficiently complete to build some [interesting programs](https://github.com/jo3-l/liftoff/blob/main/examples/ccc21j5.rk).
+- [yagpdb-cc](https://github.com/yagpdb-cc/yagpdb-cc): A community collection of custom commands for
+  YAGPDB. I created and continue to maintain this project, having reviewed submissions from 30+
+  contributors over the years. I've also built some
+  [supporting](https://github.com/jo3-l/yagfuncdata)
+  [automation](https://github.com/jo3-l/action-check-yag-tmpl-syntax) which has seen use in other
+  YAGPDB-related projects.
 
-For more, see [my GitHub profile](https://github.com/jo3-l/).[^1]
+For a complete list, see [my GitHub repository list](https://github.com/jo3-l/).[^1]
 
 ## Contact
 
-I'd love to get in touch with you! Please email me at `jliu1602 [at] gmail.com` or shoot me a direct
-message on Discord (username `jo3_l`.)
+I'm always happy to chat! Please email me at `jliu1602 [at] gmail.com` or send me a direct message
+on Discord (username `jo3_l`.)
 
 [^1]: if you came to this page from GitHub, you're welcome for the quick lesson in recursion :)
