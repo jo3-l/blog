@@ -19,12 +19,13 @@ Python, TypeScript, Java, and C++ among other technologies.
 I am a [longtime contributor][yag-contributions] to the open-source YAGPDB Discord bot in Go,
 focusing on improving its custom templating engine. Notably, I implemented multiple language
 features such as loop control flow actions (`break`, `continue`) and error-handling constructs, and
-am currently working on improving editor integration via a [language server in
-Rust](https://github.com/jo3-l/yag-template-lsp) with tower-lsp. As part of the latter project, I
-implemented an [error-tolerant and lossless parser][yag-template-syntax] generating a CST with rowan.
+am currently working on a [language server in Rust](https://github.com/jo3-l/yag-template-lsp) using
+tower-lsp. Some highlights from the latter project include an [error-tolerant and lossless
+parser][yag-template-syntax] outputting a CST with rowan and [scope resolution][scope].
 
 [yag-contributions]: https://github.com/botlabs-gg/yagpdb/commits?author=jo3-l
 [yag-template-syntax]: https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax
+[scope]: https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope
 
 Some of my other projects include:
 
@@ -32,10 +33,6 @@ Some of my other projects include:
   written in TypeScript. It implements an extensible transformer-based design and is thoroughly
   tested with Vitest and fast-check. Obscenity is used by hundreds of open-source projects, and has
   been downloaded 700k+ times total on npm.
-- [vsHacks](https://vshacks.github.io/): I co-founded vsHacks—a now-annual hackathon organized by my
-  programming club in collaboration with other high schools across Greater Vancouver. I contributed
-  extensively to the hackathon website and helped run workshops during the event, which saw 50+
-  participants from the district and beyond.
 - [markpdf](https://github.com/jo3-l/markpdf): A command-line utility to edit PDF bookmarks using a
   convenient indentation-based format, built in Go.
 - [liftoff](https://github.com/jo3-l/liftoff): An interpreter for a toy programming language, built
@@ -46,6 +43,10 @@ Some of my other projects include:
   [supporting](https://github.com/jo3-l/yagfuncdata)
   [automation](https://github.com/jo3-l/action-check-yag-tmpl-syntax) which has seen use in other
   YAGPDB-related projects.
+- [vsHacks](https://vshacks.github.io/): In high school, I co-founded vsHacks, a now-annual
+  hackathon organized by my programming club in collaboration with other high schools across Greater
+  Vancouver. I led work on the hackathon website and helped run workshops during the event, which
+  saw 50+ participants from the district and beyond.
 
 For a complete list, see [my GitHub repository list](https://github.com/jo3-l/).[^1]
 
@@ -54,4 +55,4 @@ For a complete list, see [my GitHub repository list](https://github.com/jo3-l/).
 I'm always happy to chat! Please email me at `jliu1602 [at] gmail.com` or send me a direct message
 on Discord (username `jo3_l`.)
 
-[^1]: if you came to this page from GitHub, you're welcome for the quick lesson in recursion :)
+[^1]: If you came to this page from GitHub, you're welcome for the quick lesson in recursion :)
