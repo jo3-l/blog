@@ -1,5 +1,5 @@
 ---
-title: Property-Based Testing is (Almost) Magic
+title: Property-Based Testing is Magical
 date: '2024-08-11'
 summary: 'An exploration of property-based testing—a powerful technique for building robust test suites with minimal tedium.'
 description: 'An exploration of property-based testing—a powerful technique for building robust test suites with minimal tedium.'
@@ -95,7 +95,7 @@ of interesting properties. Most scenarios suffer on both counts: inputs are more
 properties more difficult to coax out.
 
 In the next section, therefore, we will discuss a real property-based test I wrote as part of the
-[Obscenity project](https;//github.com/jo3-l/obscenity), a profanity detection for Node.js.
+[Obscenity project](https;//github.com/jo3-l/obscenity), a profanity detection library for Node.js.
 
 ## Testing a parser for a DSL
 
@@ -260,5 +260,5 @@ test I have much more confidence in the parser's correctness and in future chang
 ## Concluding thoughts
 
 Property-based tests are extremely powerful, yet criminally underused. Yes, they aren't always
-applicable, and yes, it can take some effort to find useful propertyes---but in my experience they
-are well worth the time spent. Give them a try in your next project and let me know what you think! :)
+applicable, and yes, it can take some effort to find useful properties---but in my experience they are
+well worth the time spent. Give them a try in your next project and let me know what you think! :)
