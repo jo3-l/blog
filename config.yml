@@ -26,6 +26,8 @@ params:
       url: mailto:jliu1602@gmail.com
     - name: discord
       url: https://discord.com/users/621907351267442698
+    - name: linkedin
+      url: https://www.linkedin.com/in/joseph-h-liu/
   showCodeCopyButtons: true
   showWordCount: true
 

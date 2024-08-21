@@ -48,7 +48,7 @@ Some of my other projects include:
   Vancouver. I led work on the hackathon website and helped run workshops during the event, which
   saw 50+ participants from the district and beyond.
 
-For a complete list, see [my GitHub repository list](https://github.com/jo3-l/).[^1]
+For a complete list, see [my GitHub repositories](https://github.com/jo3-l/).[^1]
 
 ## Contact
 
