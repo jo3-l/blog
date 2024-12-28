@@ -3,9 +3,8 @@ title: About Me
 hidemeta: true
 ---
 
-Hi! I'm Joseph Liu, a computer science student from Canada. Starting Fall 2024, I'll be studying at
-the University of Waterloo; before that, I graduated from the IB Diploma program in the May 2024
-session with 45/45 points.
+Hi! I'm Joseph Liu, a first-year computer science student at the University of Waterloo. Before
+Waterloo, I graduated from the IB Diploma program in the May 2024 session with 45/45 points.
 
 I love to program in my free time, and have built and contributed to various projects over the
 years---more on those below. Besides programming, I also enjoy [reading](/reading-log), writing,
