@@ -3,35 +3,39 @@ title: About Me
 hidemeta: true
 ---
 
-Hi! I'm Joseph Liu, a first-year computer science student at the University of Waterloo. Before
-Waterloo, I graduated from the IB Diploma program in the May 2024 session with 45/45 points.
+Hi! I'm Joseph Liu, a first-year computer science student at the University of Waterloo.
 
 I love to program in my free time, and have built and contributed to various projects over the
-years---more on those below. Besides programming, I also enjoy [reading](/reading-log), writing,
-playing tennis, and the occasional anime/manga; my favorite anime this year was Frieren.
+years—more on those below. Aside from programming, I also enjoy [reading](/reading-log), writing,
+math puzzles, and the occasional anime.
 
 ## Programming experience and projects
 
-Nowadays, I primarily work with Rust and Go on backend projects; however, I also have experience in
-Python, TypeScript, Java, and C++ among other technologies.
+Nowadays, I primarily work with Rust and Go on backend projects; however, I am comfortable working across the entire stack and have experience in
+Python, TypeScript, Swift, Java, and C++ among other technologies.
 
-I am a [longtime contributor][yag-contributions] to the open-source YAGPDB Discord bot in Go,
-focusing on improving its custom templating engine. Notably, I implemented multiple language
-features such as loop control flow actions (`break`, `continue`) and error-handling constructs, and
-am currently working on a [language server in Rust](https://github.com/jo3-l/yag-template-lsp) using
-tower-lsp. Some highlights from the latter project include an [error-tolerant and lossless
-parser][yag-template-syntax] outputting a CST with rowan and [scope resolution][scope].
+### Contributions to YAGPDB
 
-[yag-contributions]: https://github.com/botlabs-gg/yagpdb/commits?author=jo3-l
-[yag-template-syntax]: https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax
-[scope]: https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope
+Most of my open-source work centers around the [YAGPDB project](https://yagpdb.xyz), a large-scale
+distributed Discord bot for which I am an administrator and code contributor. I have written [120+
+patches](https://github.com/botlabs-gg/yagpdb/commits?author=jo3-l) for YAGPDB over the years. Highlights include
 
-Some of my other projects include:
+- implementing multiple language features and security
+hardening for YAGPDB's custom scripting engine;
+- collaborating with other contributors to move the documentation off GitBook to Hugo, greatly reducing load time;
+- and migrating multiple legacy plugins away from GORM
+to SQLBoiler, impacting a couple hundred million database rows.
 
-- [obscenity](https://github.com/jo3-l/obscenity): A robust profanity detection library for Node.js
-  written in TypeScript. It implements an extensible transformer-based design and is thoroughly
-  tested with Vitest and fast-check. Obscenity is used by hundreds of open-source projects, and has
-  been downloaded 700k+ times total on npm.
+The latter change, to the great dismay of myself and the YAGPDB engineering team, unintentionally took down production for several hours. Ask me about it!
+
+Other than the main YAGPDB project, I have also built a [language server and VS Code extension](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's custom scripting language. As part of this work, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan and [scope resolution](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope).
+
+### Other open-source projects
+
+- [obscenity](https://github.com/jo3-l/obscenity): A popular profanity detection library for Node.js
+  written in TypeScript. I designed and implemented its extensible transformer-based architecture, and wrote extensive tests with Vitest and fast-check.
+  
+  Obscenity is used by hundreds of open-source projects and in various corporate applications, and is downloaded 30k+ times weekly on npm.
 - [markpdf](https://github.com/jo3-l/markpdf): A command-line utility to edit PDF bookmarks using a
   convenient indentation-based format, built in Go.
 - [liftoff](https://github.com/jo3-l/liftoff): An interpreter for a toy programming language, built
@@ -42,16 +46,14 @@ Some of my other projects include:
   [supporting](https://github.com/jo3-l/yagfuncdata)
   [automation](https://github.com/jo3-l/action-check-yag-tmpl-syntax) which has seen use in other
   YAGPDB-related projects.
-- [vsHacks](https://vshacks.github.io/): In high school, I co-founded vsHacks, a now-annual
-  hackathon organized by my programming club in collaboration with other high schools across Greater
+- [vsHacks](https://vshacks.github.io/): A now-annual hackathon I founded in high school, organized by my programming club in collaboration with other high schools across Greater
   Vancouver. I led work on the hackathon website and helped run workshops during the event, which
   saw 50+ participants from the district and beyond.
 
-For a complete list, see [my GitHub repositories](https://github.com/jo3-l/?tab=repositories).[^1]
+### Professional experience
+
+In Summer 2025, I interned at TD Bank Group as a software developer on the Enterprise Innovation team. I'm casually looking for work for Summer 2026; my resume is available on request.
 
 ## Contact
 
-I'm always happy to chat! Please email me at `jliu1602 [at] gmail.com` or send me a direct message
-on Discord (username `jo3_l`.)
-
-[^1]: If you came to this page from GitHub, you're welcome for the quick lesson in recursion :)
+I'm happy to chat! You can reach me through `jliu1602 [at] gmail.com` or via Discord (username `jo3_l`.)
