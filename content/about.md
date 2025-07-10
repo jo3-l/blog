@@ -20,13 +20,15 @@ Most of my open-source work centers around the [YAGPDB project](https://yagpdb.x
 distributed Discord bot for which I am an administrator and code contributor. I have written [120+
 patches](https://github.com/botlabs-gg/yagpdb/commits?author=jo3-l) for YAGPDB over the years. Highlights include
 
-- implementing multiple language features and security
-hardening for YAGPDB's custom scripting engine;
-- collaborating with other contributors to move the documentation off GitBook to Hugo, greatly reducing load time;
-- and migrating multiple legacy plugins away from GORM
-to SQLBoiler, impacting a couple hundred million database rows.
+- implementing multiple language features and security hardening for YAGPDB's custom scripting
+  engine;
+- collaborating with other contributors to move the documentation off GitBook to Hugo, cutting load
+  time for tens of thousands of viewers;
+- and migrating multiple legacy plugins away from GORM to SQLBoiler, impacting a couple hundred
+million database rows.
 
-The latter change, to the great dismay of myself and the YAGPDB engineering team, unintentionally took down production for several hours. Ask me about it!
+The latter change, to the great dismay of myself and the YAGPDB engineering team, unintentionally
+took down production for several hours. Ask me about it!
 
 Other than the main YAGPDB project, I have also built a [language server and VS Code extension](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's custom scripting language. As part of this work, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan and [scope resolution](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope).
 

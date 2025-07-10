@@ -6,7 +6,7 @@ paginate: 5
 
 params:
   homeInfoParams:
-    title: Hey there!
+    title: Hi there!
     content: |
       I'm Joseph Liu, a first-year CS student at the University of Waterloo.
       Welcome to my small slice of the web :) Here, I occasionally blog about math, programming, and
@@ -18,7 +18,7 @@ params:
   title: Joe's Blog
   author: Joseph Liu
   description: My small slice of the web—occasional musings on math, programming, and other topics
-  dateFormat: '02 January 2006'
+  dateFormat: "02 January 2006"
   socialIcons:
     - name: github
       url: https://github.com/jo3-l/
