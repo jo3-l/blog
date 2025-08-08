@@ -18,3 +18,50 @@
 figure.center img {
 	margin: 0 auto;
 }
+
+.discord-container {
+	position: relative;
+	display: inline-flex;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.discord-container svg {
+	color: var(--primary);
+	width: 26px;
+	height: 26px;
+}
+
+.tooltip {
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	background: var(--entry);
+	color: var(--primary);
+	padding: 8px 12px;
+	border-radius: 6px;
+	border: 1px solid var(--border);
+	white-space: nowrap;
+	opacity: 0;
+	visibility: hidden;
+	transition:
+		opacity 0.2s,
+		visibility 0.2s;
+	margin-bottom: 2px;
+}
+
+.tooltip::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 5px solid transparent;
+	border-top-color: var(--entry);
+}
+
+.discord-container:hover .tooltip {
+	opacity: 1;
+	visibility: visible;
+}

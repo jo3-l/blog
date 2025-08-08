@@ -1,0 +1,24 @@
+{{- /*
+	Extracted from https://github.com/adityatelange/hugo-PaperMod/blob/5a4651783fa9159123d947bd3511b355146d4797/layouts/partials/social_icons.html,
+	with a custom Discord icon that shows a tooltip displaying my username on hover.
+*/ -}}
+
+<div class="social-icons" {{ with .align}}align="{{.}}" {{- end }}>
+    {{- range site.Params.socialIcons }}
+
+	{{- if eq .name "discord" }}
+	<div class="discord-container" title="Discord">
+        {{ partial "svg.html" . }}
+        <div class="tooltip">
+            Username: <code>jo3_l</code>
+        </div>
+    </div>
+	{{- else }}
+	<a href="{{ trim .url " " | safeURL }}" target="_blank" rel="noopener noreferrer me"
+		title="{{ (.title | default .name) | title }}">
+		{{ partial "svg.html" . }}
+	</a>
+	{{- end }}
+
+    {{- end }}
+</div>
