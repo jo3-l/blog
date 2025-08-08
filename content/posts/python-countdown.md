@@ -104,9 +104,7 @@ I learned this quirk from reading [issue #137473 in the CPython repository](http
 
 <details>
 
-<summary>
-How do LLMs do on this puzzle?
-</summary>
+<summary>How do LLMs do on this puzzle?</summary>
 
 I provided the first two models I thought of with the Python program here, and asked it to predict and explain the runtime behavior. (By no means do I believe this is a fair question; I just thought it'd be fun.)
 
