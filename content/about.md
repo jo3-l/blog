@@ -54,7 +54,7 @@ Other than the main YAGPDB project, I have also built a [language server and VS 
 
 ### Professional experience
 
-In Summer 2025, I interned at TD Bank Group as a software developer on the Enterprise Innovation team. I'm casually looking for work for Summer 2026; my resume is available on request.
+In Summer 2025, I'm interning at TD Bank Group as a software developer on the Enterprise Innovation team. I'm looking for work for Summer 2026; my resume is available on request.
 
 ## Contact
 
