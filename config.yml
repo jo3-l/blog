@@ -7,11 +7,11 @@ pagination:
 
 params:
   homeInfoParams:
-    title: Hi there!
+    title: Hi, I'm Joseph.
     content: |
-      I'm Joseph Liu, a first-year CS student at the University of Waterloo.
+      I'm a first-year CS student at the University of Waterloo.
       Welcome to my small slice of the web :) Here, I occasionally blog about math, programming, and
-      whatever else piques my interest.
+      other things that happen to pique my interest.
 
       If you would like to know more about me or my projects, head over to my [about page](/about).
       To contact me, email me at `jliu1602 [at] gmail.com`; I am also active on Discord as `jo3_l`.
@@ -26,6 +26,8 @@ params:
       url: https://github.com/jo3-l/
     - name: email
       url: mailto:jliu1602@gmail.com
+    - name: lobsters
+      url: https://lobste.rs/~jo3_l
     - name: discord
       url: https://discord.com/users/621907351267442698
     - name: linkedin
