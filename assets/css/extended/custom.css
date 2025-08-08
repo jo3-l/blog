@@ -14,3 +14,7 @@
 .highlight pre.chroma code {
 	tab-size: 4;
 }
+
+figure.center img {
+	margin: 0 auto;
+}
