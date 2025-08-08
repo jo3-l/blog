@@ -1,35 +1,34 @@
 ---
-title: Property-Based Testing is Magical
+title: Property-based testing is magical
 date: '2024-08-11'
-summary: 'An exploration of property-based testing—a powerful technique for building robust test suites with minimal tedium.'
-description: 'An exploration of property-based testing—a powerful technique for building robust test suites with minimal tedium.'
+summary: 'Tests that expose gaps in your thinking instead of confirming what you already know'
+description: 'Tests that expose gaps in your thinking instead of confirming what you already know'
 tags: [programming, testing]
 ---
 
-When I began programming, writing tests felt like a chore, a checklist item to cross off on the
-elusive path to High Quality Code. However, in the years since---having spent some time contributing
-to (read: occasionally breaking) a legacy codebase and building more complex projects---I've come to
+When I first started programming, writing tests felt like a chore; a checklist item of sorts to
+cross off on the elusive path to High Quality Code. However, in the years since, I've come to slowly
 appreciate testing for what it can be when done well: a tool that enables refactoring with
 confidence.
 
-That said, writing good tests requires some skill and experience. There are various techniques that I find to
-generally elevate test quality: I'm a big fan of both [table-driven
+That said, writing good tests is a skill. There are various techniques I find to generally elevate
+test quality: I'm a big fan of both [table-driven
 testing](https://dave.cheney.net/2019/05/07/prefer-table-driven-tests), which reduces the friction
 of adding new cases; and snapshot testing, which makes updating expected outputs easy.
 
-But neither table-driven testing nor snapshot testing is the focus of this blog post. Rather, I want
-to explore another technique, _property-based testing_, that felt almost like magic the first time I
-encountered it. Here's the pitch for property-based testing:
+Table-driven testing and snapshot testing will have to wait for another blog post, however. Here, I
+want to explore another technique, _property-based testing_, which felt almost like magic the first
+time I encountered it.
 
-> **The pitch.** With some setup, property-based testing can automatically hunt for edge cases for
+> **The pitch for PBT.** With some setup, property-based testing can automatically hunt for edge cases for
 > you; a good property-based testing framework will even reduce (or _shrink_) failing test cases so
 > that they are easy to debug.
 
-That sounds too good to be true, and in some sense it is. Property-based tests are not always
-applicable, can be difficult to write, and are not a replacement for normal example-based tests. But
-when they are appropriate, they're _awesome_.
+That sounds too good to be true, and... it kinda is. Property-based tests are not always applicable,
+can be difficult to write, and are not a replacement for normal example-based tests. But when they
+are appropriate, they're _awesome_!
 
-In this post, then, I'll attempt to explain what property-based testing is both in abstract and in
+In this post, I'll attempt to explain what property-based testing is both in abstract and in
 concrete, using a real example I wrote recently.
 
 ## What is property-based testing?
@@ -94,7 +93,7 @@ algorithms are near-optimal candidates for property-based tests, given their sim
 of interesting properties. Most scenarios suffer on both counts: inputs are more complex and useful
 properties more difficult to coax out.
 
-In the next section, therefore, we will discuss a real property-based test I wrote as part of the
+In the next section, therefore, I'll discuss a real property-based test I wrote as part of the
 [Obscenity project](https;//github.com/jo3-l/obscenity), a profanity detection library for Node.js.
 
 ## Testing a parser for a DSL

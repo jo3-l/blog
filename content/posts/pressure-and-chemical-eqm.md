@@ -1,8 +1,8 @@
 ---
-title: Pressure and Chemical Equilibrium
+title: Pressure and chemical equilibrium
 date: '2023-07-18'
-summary: Examining the effect of changes in pressure on equilibrium position mathematically.
-description: Examining the effect of changes in pressure on equilibrium position mathematically.
+summary: Examining the effect of changes in pressure on equilibrium position mathematically
+description: Examining the effect of changes in pressure on equilibrium position mathematically
 tags: [math, chemistry]
 katex: true
 ---
@@ -13,12 +13,12 @@ in my textbook:
 > An increase in pressure favours the side of an equilibrium reaction that has the smaller number of
 > gas molecules.
 
-Although there is a simple explanation for why this statement holds true using Le Chatelier's
-principle, I thought it'd be a fun exercise to convince myself of the statement by a different, more
-convoluted method: deducing the expected direction of the shift via comparing the equilibrium
-constant $K_c$ with the reaction quotient $Q$.
+While there's a simple explanation for why this statement holds true using Le Chatelier's principle,
+I thought it'd be a fun exercise to convince myself of the statement via a different, more convoluted
+route: deducing the expected direction of the shift via comparing the equilibrium constant $K_c$
+with the reaction quotient $Q$.
 
-## Outline of approach
+## Idea
 
 In general, the reaction quotient $Q$ tends toward the equilibrium constant $K_c$. Concretely, if $Q
 < K_c$ then the products are favored and conversely if $Q > K_c$ the reactants are favored. Thus, if
@@ -26,7 +26,7 @@ we can somehow show that, in the event of an increase in pressure, $Q$ is greate
 only if there are fewer moles of gas on the reactant side (and similar for the case where $Q$ is
 smaller), then we'll have proven the claim. Let's try that!
 
-## Proof
+## Analysis
 
 Consider the general reaction
 
@@ -76,8 +76,8 @@ Q_0 = K_c &= \cfrac{\left(\cfrac{P_0n_{\mathrm{tot}}}{RTn_R}\right)^r\left(\cfra
 \end{align*}
 $$
 
-(_Aside: Substituting the expression for concentration in terms of partial pressure instead gives us
-[a rather interesting link to the equilibrium constant using partial pressures](##eq-constant-using-partial-pressures)._)
+(As an aside: Substituting the expression for concentration in terms of partial pressure instead gives us
+[a rather interesting link to the equilibrium constant using partial pressures](##eq-constant-using-partial-pressures).)
 
 For brevity write
 

@@ -1,8 +1,8 @@
 ---
-title: Highlighting Code with Shiki in Hugo
+title: Highlighting codeblocks with Shiki in Hugo
 date: '2024-07-27'
-summary: 'A guide on using Shiki for syntax highlighting in Hugo websites.'
-description: 'A guide on using Shiki for syntax highlighting in Hugo websites.'
+summary: 'A guide on using Shiki for syntax highlighting in Hugo websites'
+description: 'A guide on using Shiki for syntax highlighting in Hugo websites'
 tags: [programming, hugo]
 ---
 

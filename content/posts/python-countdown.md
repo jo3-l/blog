@@ -1,12 +1,11 @@
 ---
 title: A puzzling Python program
-summary: Counting, seemingly without loops or recursion, in the language of the snakes
-description: Counting, seemingly without loops or recursion, in the language of the snakes
+summary: Counting down, seemingly without loops or recursion, in the language of the snakes
 date: '2025-08-08'
 tags: [programming, python, puzzle]
 ---
 
-Here's a quirky little Python program:
+Here's a quirky little piece of Python code:
 
 ```python
 class countdown:

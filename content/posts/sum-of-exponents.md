@@ -1,25 +1,25 @@
 ---
-title: Exploring the Sum of Exponents Law
+title: Exploring the sum of exponents law
 date: '2022-04-24'
-summary: 'Some practice with induction: a proof of the sum of exponents law for integer exponents.'
-description: 'Some practice with induction: a proof of the sum of exponents law for integer exponents.'
+summary: 'Some practice with induction: a proof of the sum of exponents law for integer exponents'
+description: 'Some practice with induction: a proof of the sum of exponents law for integer exponents'
 tags: [math]
 katex: true
 ---
 
-The sum of exponents law, $b^x \cdot b^y = b^{x+y}$, is well-known---indeed, it was one of the first
-properties that I learnt after being introduced to the concept of exponentiation. Though it's easy
-to reason intuitively as to why this property holds for integral exponents,
+The sum of exponents law, $b^x \cdot b^y = b^{x+y}$, is well-known; indeed it was one of the first
+properties that I learnt after being introduced to the concept of exponentiation. It's easy to
+reason intuitively as to why this property holds for integral exponents:
 
 $$
 2^{3 + 2} = 2^5 = \underbrace{2 \cdot 2 \cdot 2}\_{2^3} \cdot \underbrace{2 \cdot 2}\_{2^2},
 $$
 
-I wanted to see how difficult it'd be to formalize this argument with induction. Let's take a look!
+However, I wanted to see how difficult it'd be to formalize this argument with induction. Let's see!
 
 ## The sum of exponents law
 
-The statement we aim to prove is the following:
+The statement we'll prove is the following:
 
 > **Sum of Exponents Law for Integer Exponents.** For positive real $b$, the equation $$ b^x \cdot
 > b^y = b^{x + y} $$ holds for all integer $x$, $y$.
@@ -29,8 +29,8 @@ this blog. Perhaps someday there will be a follow-up post...
 
 ## Defining exponentiation
 
-We first need a definition of exponentiation for integer powers to work with. A recursive definition
-is convenient for induction:
+We first need a definition of exponentiation for integer powers. A recursive definition is
+convenient for induction:
 
 $$
 b^x =
@@ -103,7 +103,7 @@ integers. Broadly speaking, Lemma 1.1 covers the case where $x$ and $y$ are both
 negative, and Lemma 1.2 covers the case where one is negative and the other positive; all that
 remains is to carefully invoke them and handle the straightforward case where one exponent is zero.
 
-To recall, the statement we aim to prove was:
+To recall, the statement we aim to prove is:
 
 > **Sum of Exponents Law for Integer Exponents.** For positive real $b$, the equation $$ b^x \cdot
 > b^y = b^{x + y} $$ holds for all integer $x$, $y$.
