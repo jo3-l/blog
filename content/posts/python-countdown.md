@@ -3,6 +3,7 @@ title: A puzzling Python program
 summary: Counting down, seemingly without loops or recursion, in the language of the snakes
 date: '2025-08-08'
 tags: [programming, python, puzzle]
+katex: true
 ---
 
 Here's a quirky little piece of Python code:
@@ -64,22 +65,30 @@ Suppose `X` is a list. What does `None in X` do internally? By analogy, what mig
 
 <summary>Explanation</summary>
 
-Note first that `print("rocket launching 🚀")` evaluates to `None`, so we need to evaluate `None in countdown(10)`.
+Note first that `print("rocket launching 🚀")` returns `None`, after which it remains to evaluate
+`None in countdown(10)`.
 
-Since the `countdown` class doesn't define `__contains__()`, Python iterates over `countdown(10)` viewed as a sequence and tests if `elem == None` for each element. However, `countdown` doesn't define `__iter__()` either, so Python falls back to the so-called "old-style iteration protocol" in which
+Since `countdown` objects don't define `__contains__()`, Python tries to iterate over `countdown(10)`, viewed as a sequence, until it finds a match for `None`. However, `countdown` doesn't define `__iter__()` either, so what exactly determines how iteration proceeds?
+
+It turns out that, in the absence of `__iter__()`, Python falls back to using the so-called "old-style iteration protocol" in which
 
 ```
 given C = countdown(10),
-  iter(C)
-corresponds to the sequence
-  C.__getitem__(0),
-  C.__getitem__(1),
-  C.__getitem__(2),
-  C.__getitem__(3),
-  ...
+
+    iter(C)
+
+implicitly corresponds to the sequence
+
+    C.__getitem__(0),
+    C.__getitem__(1),
+    C.__getitem__(2),
+    C.__getitem__(3),
+    ...
 ```
 
-To determine whether `None` is contained in this sequence, Python calls `__getitem__(k)` with indices `k = 0, 1, 2, ...` in order until it encounters `None` or an `IndexError`. Recall now that `countdown.__getitem__` is defined by
+That is, since `countdown` objects define `__getitem__` but not `__iter__`, Python assumes that `countdown` can be treated as a sequentially indexed sequence! Thus, to determine whether `None in countdown(10)`, Python invokes `__getitem__(k)` on `countdown(10)` with indexes $k = 0, 1, 2, \dots$ in order until it encounters `None` or an `IndexError`.
+
+Recall now that `countdown.__getitem__` is defined by
 
 ```python
 def __getitem__(self, k):
@@ -88,9 +97,9 @@ def __getitem__(self, k):
 	# implicit `return None`
 ```
 
-For `k = 0, 1, ..., 9`, the number `v := self.n - k = 10 - k` takes on the values `10, 9, ..., 1`. Each of these values is nonzero, so the `if` succeeds and `v` is printed. Then, since `print` returns None, `__getitem__` returns the 1-tuple `(None,)` (note the trailing comma on line 3!) Since `(None,) != None`, Python continues iterating.
+For $k = 0, 1, 2, \dots, 9$, the number `v := self.n - k = 10 - k` takes on the values $v = 10, 9, \dots, 1$. Each of these values is nonzero, so the `if` succeeds and $v$ is printed. Then, since `print` returns `None`, `__getitem__` returns the 1-tuple `(None,)` (note the trailing comma on line 3!) Since `(None,) != None`, Python continues iterating.
 
-On the other hand, when `k = 10`, the number `v = self.n - k = 10 - 10 = 0` is zero and hence falsy, so `None` is implicitly returned. Now that `None` has been found in the sequence, Python stops iterating and the expression `None in countdown(10)` evaluates to `True`. (This value is then thrown away.)
+On the other hand, when $k = 10$, the number `v := self.n - k = 10 - 10` is zero and hence falsy, so `None` is implicitly returned. Now that `None` has been found in the sequence, Python stops iterating and the expression `None in countdown(10)` evaluates to `True`. (This value is then thrown away.)
 
 Isn't that fun? :)
 
@@ -118,6 +127,6 @@ When I hint that its answer is incorrect without further elaboration, it halluci
 
 I expect Opus 4.1 does better and would be a more fair comparison with GPT-5, but did not test it.
 
-I also expect that nearly all new models would explain the behavior correctly if provided the output (or, equivalently, was able to run the code), but did not test this hypothesis either.
+I also expect that nearly all new models would explain the behavior correctly if provided the output (or, equivalently, were able to run the code), but did not test this hypothesis either.
 
 </details>
