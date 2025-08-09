@@ -105,7 +105,7 @@ Isn't that fun? :)
 
 ---
 
-I learned this quirk from reading [issue #137473 in the CPython repository](https://github.com/python/cpython/issues/137473) on a particularly slow afternoon. The precise behavior here is specified by the second-last paragraph of [Section 6.10.2: Membership test operations](https://docs.python.org/3/reference/expressions.html#membership-test-operations) of the Python reference:
+For some backstory, I learned about Python's old-style iteration protocol via reading [issue #137473 in the CPython repository](https://github.com/python/cpython/issues/137473) on a particularly slow afternoon, and subsequently contorted it into this puzzle. The precise behavior of the `in` operator abused here is specified by the second-last paragraph of [Section 6.10.2: Membership test operations](https://docs.python.org/3/reference/expressions.html#membership-test-operations) of the Python reference:
 
 > Lastly, the old-style iteration protocol is tried: if a class defines `__getitem__()`, `x in y` is `True` if and only if there is a non-negative integer index _i_ such that `x is y[i]` or `x == y[i]`, and no lower integer index raises the `IndexError` exception. (If any other exception is raised, it is as if `in` raised that exception).
 
