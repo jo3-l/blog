@@ -1,0 +1,181 @@
+/* light theme Chroma overrides, inspired by GitHub Light */
+
+body:not(.dark) {
+	--chroma-fg: #24292f;
+	--chroma-bg: #f6f8fa;
+}
+
+body:not(.dark) .chroma {
+	color: var(--chroma-fg);
+	background-color: var(--chroma-bg);
+}
+body:not(.dark) .bg {
+	color: var(--chroma-fg);
+	background-color: var(--chroma-bg);
+}
+
+body:not(.dark) .post-content pre code {
+	color: var(--chroma-fg);
+}
+
+body:not(.dark) .chroma .k {
+	color: #cf222e;
+}
+body:not(.dark) .chroma .kc {
+	color: #0550ae;
+}
+body:not(.dark) .chroma .kd {
+	color: #cf222e;
+}
+body:not(.dark) .chroma .kn {
+	color: #cf222e;
+}
+body:not(.dark) .chroma .kp {
+	color: #cf222e;
+}
+body:not(.dark) .chroma .kr {
+	color: #cf222e;
+}
+body:not(.dark) .chroma .kt {
+	color: #cf222e;
+}
+
+body:not(.dark) .chroma .n {
+	color: #24292f;
+}
+body:not(.dark) .chroma .na {
+	color: #24292f;
+}
+body:not(.dark) .chroma .nb {
+	color: #953800;
+}
+body:not(.dark) .chroma .bp {
+	color: #953800;
+}
+body:not(.dark) .chroma .nc {
+	color: #953800;
+}
+body:not(.dark) .chroma .no {
+	color: #953800;
+}
+body:not(.dark) .chroma .nd {
+	color: #953800;
+	font-weight: 600;
+}
+body:not(.dark) .chroma .ni {
+	color: #24292f;
+}
+body:not(.dark) .chroma .ne {
+	color: #0550ae;
+}
+body:not(.dark) .chroma .nf {
+	color: #0550ae;
+}
+body:not(.dark) .chroma .fm {
+	color: #0550ae;
+}
+body:not(.dark) .chroma .nl {
+	color: #0550ae;
+}
+body:not(.dark) .chroma .nn {
+	color: #0550ae;
+}
+body:not(.dark) .chroma .nx {
+	color: #24292f;
+}
+body:not(.dark) .chroma .py {
+	color: #24292f;
+}
+body:not(.dark) .chroma .nt {
+	color: #116329;
+}
+body:not(.dark) .chroma .nv {
+	color: #24292f;
+}
+body:not(.dark) .chroma .vc {
+	color: #24292f;
+}
+body:not(.dark) .chroma .vg {
+	color: #24292f;
+}
+body:not(.dark) .chroma .vi {
+	color: #24292f;
+}
+body:not(.dark) .chroma .vm {
+	color: #24292f;
+}
+
+body:not(.dark) .chroma .s,
+body:not(.dark) .chroma .s1,
+body:not(.dark) .chroma .s2,
+body:not(.dark) .chroma .sb,
+body:not(.dark) .chroma .sc,
+body:not(.dark) .chroma .sd,
+body:not(.dark) .chroma .se,
+body:not(.dark) .chroma .sh,
+body:not(.dark) .chroma .si,
+body:not(.dark) .chroma .sr,
+body:not(.dark) .chroma .ss,
+body:not(.dark) .chroma .sx {
+	color: #0a3069;
+}
+
+body:not(.dark) .chroma .m,
+body:not(.dark) .chroma .mb,
+body:not(.dark) .chroma .mf,
+body:not(.dark) .chroma .mh,
+body:not(.dark) .chroma .mi,
+body:not(.dark) .chroma .il,
+body:not(.dark) .chroma .mo {
+	color: #116329;
+}
+
+body:not(.dark) .chroma .o,
+body:not(.dark) .chroma .ow {
+	color: #cf222e;
+	font-weight: 600;
+}
+
+body:not(.dark) .chroma .p {
+	color: #24292f;
+}
+
+body:not(.dark) .chroma .c,
+body:not(.dark) .chroma .ch,
+body:not(.dark) .chroma .cm,
+body:not(.dark) .chroma .c1,
+body:not(.dark) .chroma .cs,
+body:not(.dark) .chroma .cp,
+body:not(.dark) .chroma .cpf {
+	color: #6e7781;
+	font-style: italic;
+}
+
+body:not(.dark) .chroma .hl {
+	background-color: #fff8c5;
+}
+body:not(.dark) .chroma .lnt,
+body:not(.dark) .chroma .ln {
+	color: #6e7781;
+}
+
+body:not(.dark) .chroma .gd {
+	color: #cf222e;
+	background-color: #ffebe9;
+}
+body:not(.dark) .chroma .gi {
+	color: #116329;
+	background-color: #dafbe1;
+}
+body:not(.dark) .chroma .gh,
+body:not(.dark) .chroma .gu {
+	color: #0550ae;
+	font-weight: 600;
+}
+body:not(.dark) .chroma .gs {
+	font-weight: 600;
+}
+body:not(.dark) .chroma .gr,
+body:not(.dark) .chroma .gt {
+	color: #cf222e;
+}
