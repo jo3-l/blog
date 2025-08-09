@@ -2,7 +2,8 @@
 	--code-block-bg: var(--theme);
 }
 
-/* necessary since PaperMod's built-in styles would otherwise override the background using a dark mode selector */
 .dark {
+	/* necessary since PaperMod's built-in styles would otherwise override the background using a dark mode selector */
 	--code-block-bg: var(--theme);
+	--code-bg: #242a30;
 }
