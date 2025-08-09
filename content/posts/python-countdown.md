@@ -72,7 +72,7 @@ Since `countdown` objects don't define `__contains__()`, Python tries to iterate
 
 It turns out that, in the absence of `__iter__()`, Python falls back to using the so-called "old-style iteration protocol" in which
 
-```
+```text {linenos=false}
 given C = countdown(10),
 
     iter(C)
