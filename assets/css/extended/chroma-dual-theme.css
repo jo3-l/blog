@@ -2,7 +2,7 @@
 
 body:not(.dark) {
 	--chroma-fg: #24292f;
-	--chroma-bg: #f6f8fa;
+	--chroma-bg: var(--theme);
 }
 
 body:not(.dark) .chroma {
@@ -152,7 +152,7 @@ body:not(.dark) .chroma .cpf {
 }
 
 body:not(.dark) .chroma .hl {
-	background-color: #fff8c5;
+	background-color: rgba(255, 248, 197, 0.55); /* was #fff8c5 */
 }
 body:not(.dark) .chroma .lnt,
 body:not(.dark) .chroma .ln {
@@ -178,4 +178,9 @@ body:not(.dark) .chroma .gs {
 body:not(.dark) .chroma .gr,
 body:not(.dark) .chroma .gt {
 	color: #cf222e;
+}
+
+body.dark .chroma .hl,
+body.dark .post-content .highlight .hl {
+	background-color: rgba(56, 139, 253, 0.18);
 }

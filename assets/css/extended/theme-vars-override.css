@@ -1,6 +1,9 @@
 :root {
 	--main-width: 800px;
 	--nav-width: 1100px;
-	/* use light background for code blocks by default; overriden in dark mode */
-	--code-block-bg: #f6f8fa;
+	--code-block-bg: var(--theme);
+}
+
+.dark {
+	--code-block-bg: var(--theme);
 }
