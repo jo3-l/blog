@@ -26,10 +26,10 @@ params:
       url: https://github.com/jo3-l/
     - name: email
       url: mailto:jliu1602@gmail.com
-    - name: lobsters
-      url: https://lobste.rs/~jo3_l
     - name: discord
       url: https://discord.com/users/621907351267442698
+    - name: lobsters
+      url: https://lobste.rs/~jo3_l
     - name: linkedin
       url: https://www.linkedin.com/in/joseph-h-liu/
   showCodeCopyButtons: true
