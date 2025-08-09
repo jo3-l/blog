@@ -11,6 +11,16 @@
 	font-size: 1.1em !important;
 }
 
+code,
+pre {
+	font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+		Consolas, "Liberation Mono", monospace;
+	font-variant-ligatures: contextual;
+	font-feature-settings:
+		"calt" 1,
+		"liga" 1;
+}
+
 .highlight pre.chroma code {
 	tab-size: 4;
 }
