@@ -1,9 +1,8 @@
 :root {
-	/* --main-width: 800px;
-	--nav-width: 1100px; */
 	--code-block-bg: var(--theme);
 }
 
+/* necessary since PaperMod's built-in styles would otherwise override the background using a dark mode selector */
 .dark {
 	--code-block-bg: var(--theme);
 }
