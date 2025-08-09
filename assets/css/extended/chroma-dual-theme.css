@@ -2,7 +2,7 @@
 
 body:not(.dark) {
 	--chroma-fg: #24292f;
-	--chroma-bg: var(--theme);
+	--chroma-bg: var(--code-block-bg);
 }
 
 body:not(.dark) .chroma {
