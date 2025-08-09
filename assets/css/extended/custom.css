@@ -110,3 +110,12 @@ body:not(.dark) .highlight:hover .copy-code {
 	outline: 1px solid var(--tertiary);
 	outline-offset: 0; /* keep border inside the radius */
 }
+
+/* reduce font weight of post titles on home page */
+.entry-hint-parent {
+	font-weight: 600;
+}
+
+.post-single .entry-hint-parent {
+	font-weight: 700;
+}

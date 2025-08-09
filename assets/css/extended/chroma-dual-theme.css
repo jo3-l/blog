@@ -152,7 +152,7 @@ body:not(.dark) .chroma .cpf {
 }
 
 body:not(.dark) .chroma .hl {
-	background-color: rgba(255, 248, 197, 0.55); /* was #fff8c5 */
+	background-color: rgba(255, 248, 197, 0.55);
 }
 body:not(.dark) .chroma .lnt,
 body:not(.dark) .chroma .ln {
