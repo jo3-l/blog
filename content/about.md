@@ -3,7 +3,7 @@ title: About Me
 hidemeta: true
 ---
 
-Hi! I'm Joseph Liu, a first-year computer science student at the University of Waterloo.
+Hi! I'm Joseph Liu, a second-year computer science student at the University of Waterloo.
 
 I love to program in my free time, and have built and contributed to various projects over the
 years—more on those below. Aside from programming, I also enjoy [reading](/reading-log), writing,
@@ -26,7 +26,7 @@ Besides addressing a whole bunch of user suggestions and reported bugs, some of 
 - collaborating with a small team of contributors to move the documentation off GitBook to Hugo, cutting load
   time for tens of thousands of viewers;
 - and migrating multiple legacy plugins away from GORM to SQLBoiler, impacting several hundred
-million database rows.
+  million database rows.
 
 The latter change, to the great dismay of myself and the YAGPDB engineering team, unintentionally
 took down production for several hours. Ask me about it!
@@ -37,8 +37,9 @@ Other than the main YAGPDB project, I have also worked on a [language server and
 
 - [obscenity](https://github.com/jo3-l/obscenity): A popular profanity detection library for Node.js
   written in TypeScript. I designed and implemented its extensible transformer-based architecture, and wrote extensive tests with Vitest and fast-check.
-  
+
   Obscenity is used by hundreds of open-source projects and in various corporate applications, and is downloaded 30k+ times weekly on npm.
+
 - [markpdf](https://github.com/jo3-l/markpdf): A command-line utility to edit PDF bookmarks using a
   convenient indentation-based format, built in Go.
 - [liftoff](https://github.com/jo3-l/liftoff): An interpreter for a toy programming language, built
@@ -55,7 +56,7 @@ Other than the main YAGPDB project, I have also worked on a [language server and
 
 ### Professional experience
 
-In Summer 2025, I'm interning at TD Bank Group as a software developer on the Enterprise Innovation team. I'm looking for work for Summer 2026; my resume is available on request.
+In Summer 2025, I interned at TD Bank as a software developer on the Enterprise Innovation team, where I prototyped an open banking integration using Plaid. I'm currently looking for Summer 2026 internships; if you know of interesting opportunities, get in touch!
 
 ## Contact
 
