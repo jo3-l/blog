@@ -1,6 +1,6 @@
 ---
 title: A puzzling Python program
-summary: Counting down, seemingly without loops or recursion, in the language of the snakes
+summary: Counting down, seemingly without loops or recursion
 date: '2025-08-08'
 tags: [programming, python, puzzle]
 katex: true
