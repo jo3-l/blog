@@ -3,7 +3,8 @@ title: About Me
 hidemeta: true
 ---
 
-Hi! I'm Joseph Liu, a second-year computer science student at the University of Waterloo.
+Hi! I'm Joseph Liu, a second-year undergraduate student at the University of Waterloo double majoring
+in computer science and pure mathematics.
 
 I love to program in my free time, and have built and contributed to various projects over the
 years—more on those below. Aside from programming, I also enjoy [reading](/reading-log), writing,
@@ -56,7 +57,7 @@ Other than the main YAGPDB project, I have also worked on a [language server and
 
 ### Professional experience
 
-In Summer 2025, I interned at TD Bank as a software developer on the Enterprise Innovation team, where I prototyped an open banking integration using Plaid. I'm currently looking for Summer 2026 internships; if you know of interesting opportunities, get in touch!
+In Summer 2025, I interned at TD Bank as a software developer on the Enterprise Innovation team, where I prototyped an open banking integration using Plaid.
 
 ## Contact
 
