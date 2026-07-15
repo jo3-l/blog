@@ -7,12 +7,12 @@ tags: [llms]
 
 Work in progress.
 
-This list collects various articles and posts about LLM-assisted development that I think contain interesting ideas
-and are not completely slop, along with some of my own commentary. It is a bit disorganized: I have wanted to blog about my thoughts on the direction of the software development industry for some time, but have hemmed and hawed over how to phrase things. In the end, I decided that I should simply dump all the thoughts in my mind, for otherwise no blog would ever be written, and the result is this post.
+This post collects various content about LLM-assisted development that I think contain interesting ideas
+and are written by humans, along with some of my own commentary. It is a bit disorganized: I have wanted to blog about my thoughts on the direction of the software development industry for some time, but have hemmed and hawed over how to phrase things. In the end, I decided that I should simply dump all the thoughts in my mind, for otherwise no blog would ever be written, and the result is this post.
 
 ## Prelude
 
-I have conflicted opinions on LLM-assisted development.[^1]
+I have conflicted thoughts on LLM-assisted development.[^1]
 
 [^1]: I characterize myself as a skeptic that has warmed more to the concept (and actively use coding agents these days.) I'm sure that some folks will call me stuck in the past, and some will call me a once-promising programmer turned vibecoder. That's OK, although the polarization of discourse makes me sad.
 
