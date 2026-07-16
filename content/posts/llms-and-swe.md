@@ -8,7 +8,7 @@ tags: [llms]
 Work in progress.
 
 This post collects various content about LLM-assisted development that I think contain interesting ideas
-and are written by humans, along with some of my own commentary. It is a bit disorganized: I have wanted to blog about my thoughts on the direction of the software development industry for some time, but have hemmed and hawed over how to phrase things. In the end, I decided that I should simply dump all the thoughts in my mind, for otherwise no blog would ever be written, and the result is this post.
+and are written by humans, along with some of my own commentary. It is a bit disorganized: I have wanted to blog about my thoughts on the direction of the software development industry for some time, but have hemmed and hawed over how to phrase things. In the end, I decided that I should simply dump all my thoughts, for otherwise no blog would ever be written, and the result is this post.
 
 ## Prelude
 
@@ -16,11 +16,11 @@ I have conflicted thoughts on LLM-assisted development.[^1]
 
 [^1]: I characterize myself as a skeptic that has warmed more to the concept (and actively use coding agents these days.) I'm sure that some folks will call me stuck in the past, and some will call me a once-promising programmer turned vibecoder. That's OK, although the polarization of discourse makes me sad.
 
-Without doubt, there is some part of me that is saddened by the reduced need for writing code by hand. For many years, I enjoyed playing with and debating the shape of the code that I craft. Code is not merely a means to an end to me.
+Without doubt, there is a part of me that is saddened by the reduced need for writing code by hand. For many years, I enjoyed playing with and discussing the shape of the code that I write at a microscopic level. I took pleasure in learning trivia about the languages I use and closely following their development. There was a period in my life where, nearly every day, I would browse the open list of [TC39](https://github.com/tc39) proposals and read through the discussion comments. What I am trying to articulate is that code is not merely a means to an end to me: I love the feeling of writing and polishing code.
 
-Yet I also enjoy building things, and solving user problems. Many of my open-source contributions to the [YAGPDB project](https://yagpdb.xyz/) were motivated by (occasionally frustrating) support threads users in the community Discord and looking for patterns in the types of questions they raised.
+Yet I also enjoy building things, and solving user problems. My first real open-source contributions (to a Discord bot called [YAGPDB](https://yagpdb.xyz)) were purely motivated by missing features that I wanted to use. The bot's codebase was in Go, a language totally foreign to me at the time, and I implemented my change purely by mimicking code that seemed related: copy, paste, tweak a few things until it did what I wanted. A LLM would probably have done a more thorough job :-) Later on, I did learn Go proper, but in large part my contributions remained rooted in user problems. After slogging through some support threads from users in the YAGPDB community Discord, I'd attempt to find patterns in the types of questions they raised, and repeat.
 
-Historically--until early this year, perhaps--my position was thus split. With my craftsman hat on, I felt that I ought to reject LLM-assisted development, and feel only sadness about the direction of the industry. On the other hand, with my builder hat on, I felt that I should certainly try out LLM-assisted development. Yet whenever I did so I felt only frustration. The tool was slower than I imagined; it interrupted my train of thought; and it generated objective slop. I found it difficult to reconcile my experience with reports from respectable developers I follow.
+In this way, I think it's fair to claim that I am both a software craftsman and a builder. Historically--until early this year, perhaps--my position on LLMs and coding was split in two. With my craftsman hat on, I felt that I ought to reject LLM-assisted development, and feel only sadness about the direction of the industry. On the other hand, with my builder hat on, I felt that I should certainly try out LLM-assisted development. Yet whenever I did so I felt only frustration. The tool was slower than I imagined; it interrupted my train of thought; and it generated objective slop. I found it difficult to reconcile my experience with reports from respectable developers I follow.
 
 It eventually became clear to me that I was missing some nuance about how to work with LLMs effectively, but what this was I could not tell. But whenever I attempted to learn how to work with LLMs in a more principled way by looking for posts and guides on the web, I was swamped by a deluge of clearly AI-generated content. When even the official OpenAI and Anthropic documentation is AI-generated with minimal signs of human intervention, what am I to do?
 
@@ -34,9 +34,11 @@ With these points in mind, the rest of this post attempts to do two things:
 
 ## Jagged edges
 
-The first thing I think one should understand about LLMs is that their output quality can have surprisingly high variance. In other words: there are "hard" problems that (to my surprise) the LLM does exceptionally well on, and conversely there are "easy" problems that (to my surprise, or disappointment) the LLM fails on. (The difficulty levels in quotation marks are relative to my judgement.)
+The first thing I think one should appreciate about LLMs is that their output quality can have surprisingly high variance. There are "hard" problems that (to my surprise) the LLM does exceptionally well on, and conversely there are "easy" problems that (to my surprise, again) the LLM fails on.[^2]
 
-If you don't believe this assertion, the spoiler below includes some examples in the first category: in other words, "hard" problems that LLMs did exceptional on. If you already agree that LLMs can surpass humans in various interesting settings, then you should skip this section, because it will sound like advertising for the AI labs--which, in some sense, it is, though I'm not affiliated.
+[^2]: The difficulty levels in quotation marks are relative to my judgement. Maybe my hard problems are trivial to you.
+
+If you don't believe this assertion, the spoiler below includes some examples in the first category: in other words, "hard" problems that LLMs did exceptional on. On the other hand, if you already agree that LLMs can surpass humans in various interesting settings, you'd better skip this section, because it will sound like advertising for the AI labs.
 
 <details>
 
@@ -60,10 +62,10 @@ To reiterate, the point of this section is as follows. I am _not_ arguing that L
 In this section, I collect some experience reports from sane human developers (so, most of the lunatics from my Twitter feed do not count) on LLM-assisted workflows.
 
 - ["My AI Adoption Journey", Mitchell Hashimoto](https://mitchellh.com/writing/my-ai-adoption-journey)
-  - I was aware of Mitchell's excellent technical reputation long before LLMs. When I was learning the Go programming language, often I would see comments suggesting to read Hashicorp's Go code to understand idiomatic Go style. If nothing else, I think Mitchell is a _very good_ developer with good taste.
+  - Probably the first post that got me to question whether there is something legitimately interesting in the LLM-assisted development space. Mitchell's stellar technical reputation helped here.
   - I agree with the point that it is worth trying to replicate your work with LLMs for some time at the start, _even if_ it is excruciatingly slower than doing it by hand, to be able to build a good understanding of the tool. When I was going through this initial learning process myself, there were several times where--after finishing a Claude session with multiple rounds--I felt the irritating sense that I could have written this code a whole lot faster myself. Eventually you get a slightly better sense of what the tool is useful for, and the feeling goes away. Sometimes the feeling is just plain hubris too and an overestimate of how fast I can actually code.
+  - The section on "outsourcing the slam dunks"--letting agents work away on tickets that you are almost certain they will complete successfully while you do other work--is very important to me. For some reason, at the start of my LLM-assisted development journey, I had this idea that the only way to work with LLMs was as a pair programmer, sitting there twiddling my thumbs and iterating with Claude. But if you still enjoy coding by hand, you don't have to give that up: you can still benefit by having background agents[^2] work away on some menial tasks, and review their output at your leisure. In this way you purely improve your throughput without losing much sanity.
 - ["Agentic Coding Recommendations", Armin Ronacher](https://lucumr.pocoo.org/2025/6/12/agentic-coding/)--note that this post is about a year old, and Armin states that he doesn't expect it to age well, but I think that there are some durable ideas
-  - Similar to Mitchell, I think similarly about Armin's reputation. I have never touched Flask in my life, but [insta](https://lucumr.pocoo.org/2025/6/12/agentic-coding/) is pretty neat.
   - The advice on writing scripts for LLMs to use (and the specific recommendations Armin lists) still feels relevant to me. Though agents have gotten a whole lot more intelligent in the year since, reducing the number of intermediate commands that an LLM needs to run to test a change helps with context bloat and speeds up the process overall.
 - ["Know thine enemy: A critical engagement with AI-assisted software development", Amy J. Ko](https://medium.com/bits-and-behavior/know-thine-enemy-a-critical-engagement-with-ai-assisted-software-development-e41d9b058ab1)
   - On the weaknesses of generative AI.
