@@ -7,7 +7,7 @@ tags: [llms]
 
 Work in progress.[^1]
 
-[^1]: I'm hoping to add my commentary on all the posts I link here eventually, but that may be a ways away.
+[^1]: I'm hoping to add my commentary on all the posts I link here eventually, but that may take some time.
 
 This post collects various content about LLM-assisted development that I think contain interesting ideas and are written by humans, along with some of my own commentary. It is a bit disoganized: I have wanted to blog about my thoughts on the direction of the software development industry for some time, but have hemmed and hawed over how to phrase things. In the end, I decided that I should simply dump all my thoughts, for otherwise no blog would ever be written, and the result is this post.
 
@@ -21,7 +21,7 @@ Without doubt, there is a part of me that is saddened by the reduced need for wr
 
 Yet I also enjoy building things, and solving user problems. My first real open-source contributions (to a Discord bot called [YAGPDB](https://yagpdb.xyz)) were purely motivated by missing features that I wanted to use. The bot's codebase was in Go, a language totally foreign to me at the time, and I implemented my change purely by mimicking code that seemed related: copy, paste, tweak a few things until it did what I wanted. A LLM would probably have done a more thorough job :-) Later on, I did learn Go proper, but in large part my contributions remained rooted in user problems. After slogging through some support threads from users in the YAGPDB community Discord, I'd attempt to find patterns in the types of questions they raised, and repeat.
 
-In this way, I think it's fair to claim that I am both a software craftsman and a builder. Historically--until early this year, perhaps--my position on LLMs and coding was split in two. With my craftsman hat on, I felt that I ought to reject LLM-assisted development, and feel only sadness about the direction of the industry. On the other hand, with my builder hat on, I felt that I should certainly try out LLM-assisted development. Yet whenever I did so I felt only frustration. The tool was slower than I imagined; it interrupted my train of thought; and it generated objective slop. I found it difficult to reconcile my experience with reports from respectable developers I follow.
+In this way, I think it's fair to claim that I am both a software craftsman and a builder. Historically--until early this year, perhaps--my position on LLMs and coding was thus split in two. With my craftsman hat on, I felt that I ought to reject LLM-assisted development, and feel only sadness about the direction of the industry. On the other hand, with my builder hat on, I felt that I should certainly try out LLM-assisted development. Yet whenever I did so I felt only frustration. The tool was slower than I imagined; it interrupted my train of thought; and it generated objective slop. I found it difficult to reconcile my experience with reports from respectable developers I follow.
 
 It eventually became clear to me that I was missing some nuance about how to work with LLMs effectively, but what this was I could not tell. But whenever I attempted to learn how to work with LLMs in a more principled way by looking for posts and guides on the web, I was swamped by a deluge of clearly AI-generated content. When even the official OpenAI and Anthropic documentation is AI-generated with minimal signs of human intervention, what am I to do?
 
