@@ -5,18 +5,19 @@ summary: Articles and posts about LLM-assisted development that I found interest
 tags: [llms]
 ---
 
-Work in progress.
+Work in progress.[^1]
 
-This post collects various content about LLM-assisted development that I think contain interesting ideas
-and are written by humans, along with some of my own commentary. It is a bit disorganized: I have wanted to blog about my thoughts on the direction of the software development industry for some time, but have hemmed and hawed over how to phrase things. In the end, I decided that I should simply dump all my thoughts, for otherwise no blog would ever be written, and the result is this post.
+[^1]: I'm hoping to add my commentary on all the posts I link here eventually, but that may be a ways away.
+
+This post collects various content about LLM-assisted development that I think contain interesting ideas and are written by humans, along with some of my own commentary. It is a bit disoganized: I have wanted to blog about my thoughts on the direction of the software development industry for some time, but have hemmed and hawed over how to phrase things. In the end, I decided that I should simply dump all my thoughts, for otherwise no blog would ever be written, and the result is this post.
 
 ## Prelude
 
-I have conflicted thoughts on LLM-assisted development.[^1]
+I have conflicted thoughts on LLM-assisted development.[^2]
 
-[^1]: I characterize myself as a skeptic that has warmed more to the concept (and actively use coding agents these days.) I'm sure that some folks will call me stuck in the past, and some will call me a once-promising programmer turned vibecoder. That's OK, although the polarization of discourse makes me sad.
+[^2]: I characterize myself as a skeptic that has warmed more to the concept (and actively use coding agents these days.) I'm sure that some folks will call me stuck in the past, and some will call me a once-promising programmer turned vibecoder. That's OK, although the polarization of discourse makes me sad.
 
-Without doubt, there is a part of me that is saddened by the reduced need for writing code by hand. For many years, I enjoyed playing with and discussing the shape of the code that I write at a microscopic level. I took pleasure in learning trivia about the languages I use and closely following their development. There was a period in my life where, nearly every day, I would browse the open list of [TC39](https://github.com/tc39) proposals and read through the discussion comments. What I am trying to articulate is that code is not merely a means to an end to me: I love the feeling of writing and polishing code.
+Without doubt, there is a part of me that is saddened by the reduced need for writing code by hand. For many years, I enjoyed playing with and discussing the shape of the code that I write at a microscopic level. I took pleasure in learning trivia about the languages I use and closely following their development. There was a period in my life where, nearly every day, I would browse the open list of [TC39 proposals](https://github.com/tc39) and read through the discussion comments. What I am trying to articulate is that code is not merely a means to an end to me: I love the feeling of writing and polishing code.
 
 Yet I also enjoy building things, and solving user problems. My first real open-source contributions (to a Discord bot called [YAGPDB](https://yagpdb.xyz)) were purely motivated by missing features that I wanted to use. The bot's codebase was in Go, a language totally foreign to me at the time, and I implemented my change purely by mimicking code that seemed related: copy, paste, tweak a few things until it did what I wanted. A LLM would probably have done a more thorough job :-) Later on, I did learn Go proper, but in large part my contributions remained rooted in user problems. After slogging through some support threads from users in the YAGPDB community Discord, I'd attempt to find patterns in the types of questions they raised, and repeat.
 
@@ -34,9 +35,9 @@ With these points in mind, the rest of this post attempts to do two things:
 
 ## Jagged edges
 
-The first thing I think one should appreciate about LLMs is that their output quality can have surprisingly high variance. There are "hard" problems that (to my surprise) the LLM does exceptionally well on, and conversely there are "easy" problems that (to my surprise, again) the LLM fails on.[^2]
+The first thing I think one should appreciate about LLMs is that their output quality can have surprisingly high variance. There are "hard" problems that (to my surprise) the LLM does exceptionally well on, and conversely there are "easy" problems that (to my surprise, again) the LLM fails on.[^3]
 
-[^2]: The difficulty levels in quotation marks are relative to my judgement. Maybe my hard problems are trivial to you.
+[^3]: The difficulty levels in quotation marks are relative to my judgement. Maybe my hard problems are trivial to you.
 
 If you don't believe this assertion, the spoiler below includes some examples in the first category: in other words, "hard" problems that LLMs did exceptional on. On the other hand, if you already agree that LLMs can surpass humans in various interesting settings, you'd better skip this section, because it will sound like advertising for the AI labs.
 
