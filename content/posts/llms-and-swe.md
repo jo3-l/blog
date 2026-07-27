@@ -68,6 +68,7 @@ In this section, I collect some experience reports from sane human developers (s
   - The section on "outsourcing the slam dunks"--letting agents work away on tickets that you are almost certain they will complete successfully while you do other work--is very important to me. For some reason, at the start of my LLM-assisted development journey, I had this idea that the only way to work with LLMs was as a pair programmer, sitting there twiddling my thumbs and iterating with Claude. But if you still enjoy coding by hand, you don't have to give that up: you can still benefit by having background agents[^2] work away on some menial tasks, and review their output at your leisure. In this way you purely improve your throughput without losing much sanity.
 - ["Agentic Coding Recommendations", Armin Ronacher](https://lucumr.pocoo.org/2025/6/12/agentic-coding/)--note that this post is about a year old, and Armin states that he doesn't expect it to age well, but I think that there are some durable ideas
   - The advice on writing scripts for LLMs to use (and the specific recommendations Armin lists) still feels relevant to me. Though agents have gotten a whole lot more intelligent in the year since, reducing the number of intermediate commands that an LLM needs to run to test a change helps with context bloat and speeds up the process overall.
+- ["Eight years of wanting, three months of building with AI", Lalit Maganti](https://lalitm.com/post/building-syntaqlite-ai/)
 - ["Know thine enemy: A critical engagement with AI-assisted software development", Amy J. Ko](https://medium.com/bits-and-behavior/know-thine-enemy-a-critical-engagement-with-ai-assisted-software-development-e41d9b058ab1)
   - On the weaknesses of generative AI.
 - ["Talk more to your coding agents", Will Jones](https://www.datawill.io/posts/2026-06-my-agent-workflow/)
@@ -80,6 +81,8 @@ In this section, I collect some experience reports from sane human developers (s
 
 - ["Using AI to write better code more slowly", Nolan Lawson](https://nolanlawson.com/2026/05/25/using-ai-to-write-better-code-more-slowly/)
 - ["The Short Leash AI Coding Method For Beating Fable", Greg Slepak](https://blog.okturtles.org/2026/07/short-leash-ai-method/)
+- ["Software and AI - Plotting vs Pantsing"](https://pyjarrett.github.io/2026/07/18/software-and-ai-plotting-versus-pantsing.html)
+  - More of a dissenting piece that presents a theory for when LLMs can be useful.
 
 ## The future
 
