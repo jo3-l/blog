@@ -89,6 +89,7 @@ In this section, I collect some experience reports from sane human developers (s
 - ["Rewriting Bun in Rust", Jarred Sumner](https://bun.com/blog/bun-in-rust)
   - No, I'm not saying that Bun is the future, and this post probably has Anthropic marketing's fingers on it. But there are some interesting, if brief, technical details about how dynamic workflows were used to port Bun in a more systematic way than "rewrite in Rust, make no mistakes!" that are worth reading.
 - ["The Coming Loop", Armin Ronacher](https://lucumr.pocoo.org/2026/6/23/the-coming-loop/)
+- ["The Tower Keeps Rising", Armin Ronacher](https://lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising/)
 - ["In defense of not understanding your codebase", Sean Goedecke](https://www.seangoedecke.com/in-defense-of-not-understanding-your-codebase/)
 - ["A new era for software testing", Salvatore Sanfilippo aka antirez](https://antirez.com/news/168)
 - ["Control the ideas, not the code", Salvatore Sanfilippo](https://antirez.com/news/169)
@@ -107,3 +108,4 @@ This section is about actually figuring out, mechanically, how to get started wi
 - ["Best practices for Claude Code", Anthropic](https://code.claude.com/docs/en/best-practices)
   - Has that slop texture to it, but just hold your nose and tolerate it.
 - If you want to skip the middleman, you can also just ask Claude or Codex or whatever you're using about specific commands and features of the harness. It's not bad.
+- ["The new rules of context engineering for Claude 5 generation models", Anthropic](https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models)
