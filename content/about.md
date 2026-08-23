@@ -3,7 +3,7 @@ title: About Me
 hidemeta: true
 ---
 
-Hi! I'm Joseph Liu, a second-year undergraduate student at the University of Waterloo double majoring
+Hi! I'm Joseph Liu, a third year undergraduate student at the University of Waterloo double majoring
 in computer science and pure mathematics.
 
 I love to program in my free time, and have built and contributed to various projects over the

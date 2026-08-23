@@ -9,7 +9,7 @@ params:
   homeInfoParams:
     title: Hi, I'm Joseph.
     content: |
-      I'm a second-year undergraduate student at the University of Waterloo, double majoring
+      I'm a third year undergraduate student at the University of Waterloo, double majoring
       in computer science and pure mathematics. Welcome to my small slice of the web :) Here, I
       blog about math, programming, and other things that happen to pique my interest.
 
@@ -18,7 +18,8 @@ params:
 
   title: Joe's Blog
   author: Joseph Liu
-  description: My small slice of the web—occasional musings on math, programming,
+  description:
+    My small slice of the web—occasional musings on math, programming,
     and other topics
   dateFormat: "02 January 2006"
   social: true
