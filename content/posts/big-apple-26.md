@@ -16,12 +16,9 @@ tags: [life]
 
 Another year has come and gone. It's a strange feeling knowing that I'll soon be in my third year at Waterloo; it really does feel like just yesterday that I was a timid first-year stepping into MC for the very first time...
 
-Before time gets the better of me, I want to stop and reflect a bit on this summer, which was a memorable one indeed: my first time in NYC, and my first extended stay in the United States. I hope to be back someday! In particular, in this blog, I want to
+Before time gets the better of me, I want to stop and reflect a bit on this summer, which was a memorable one indeed: my first time in NYC, and my first extended stay in the United States. I hope to be back someday! In the process, I'll record some notes about interning in the US and at Bloomberg (potentially of use to other Waterloo folks.)
 
-- record some notes about interning in the US and at Bloomberg (potentially of use to other Waterloo folks);
-- and, in general, reminisce about my time in NYC a little :)
-
-I am not sponsored by any of the services/apps I mention in this article.
+I am not sponsored by any of the services/apps I mention in this blog.
 
 ## Pre-arrival
 
