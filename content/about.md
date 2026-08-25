@@ -29,17 +29,14 @@ Besides addressing a whole bunch of user suggestions and reported bugs, some of 
 - and migrating multiple legacy plugins away from GORM to SQLBoiler, impacting several hundred
   million database rows.
 
-The latter change, to the great dismay of myself and the YAGPDB engineering team, unintentionally
-took down production for several hours. Ask me about it!
-
-Other than the main YAGPDB project, I have also worked on a [language server and VS Code extension](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's custom scripting language. As part of this project, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan and [scope resolution](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope).
+Other than the main YAGPDB project, I have also worked on a [language server and VS Code extension](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's custom scripting language. As part of this project, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan, a [symbol resolution algorithm](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope), and a [Wadler-style pretty printer](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-format). The last subsystem was developed in collaboration with GPT-5.6 Sol as an experiment with agentic development.
 
 ### Other open-source projects
 
 - [obscenity](https://github.com/jo3-l/obscenity): A popular profanity detection library for Node.js
   written in TypeScript. I designed and implemented its extensible transformer-based architecture, and wrote extensive tests with Vitest and fast-check.
 
-  Obscenity is used by hundreds of open-source projects and in various corporate applications, and is downloaded 30k+ times weekly on npm.
+  Obscenity is used by hundreds of open-source projects and in various corporate applications, and is downloaded 250k+ times weekly on npm.
 
 - [markpdf](https://github.com/jo3-l/markpdf): A command-line utility to edit PDF bookmarks using a
   convenient indentation-based format, built in Go.
@@ -57,7 +54,8 @@ Other than the main YAGPDB project, I have also worked on a [language server and
 
 ### Professional experience
 
-In Summer 2025, I interned at TD Bank as a software developer on the Enterprise Innovation team, where I prototyped an open banking integration using Plaid.
+- In Summer 2025, I interned at TD Bank as a software developer on the Enterprise Innovation team, where I prototyped an open banking integration using Plaid.
+- In Summer 2026, I interned at Bloomberg L.P. as a software engineer on Bloomberg Vault, where I designed and shipped a distributed concurrency limiter for a high-volume Airflow pipeline.
 
 ## Contact
 
