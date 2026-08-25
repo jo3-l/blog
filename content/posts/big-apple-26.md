@@ -1,7 +1,7 @@
 ---
-title: A summer in the Big Apple
+title: Summer '26 in the Big Apple
 date: '2026-08-24'
-summary: Reminiscing on summer '26 in NYC, interning at Bloomberg
+summary: Reminiscing about my summer in NYC interning at Bloomberg
 tags: [life]
 ---
 
