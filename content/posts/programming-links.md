@@ -1,10 +1,8 @@
 ---
-title: Favorites
-weight: 1
+title: A collection of my favorite blog posts
 date: '2024-08-09'
-summary: 'A collection of my favorite technical content—pieces that influence the way I think about programming.'
-description: 'A collection of my favorite technical content—pieces that influence the way I think about programming.'
-hidemeta: true
+summary: 'Some pieces of technical content that influence the way I think about programming.'
+tags: [programming]
 ---
 
 In no particular order. Unfortunately, since I started collecting these several years after I started programming,
@@ -105,6 +103,19 @@ the list is rather incomplete.
   reference. Crucially, `&T` is _not necessarily_ an immutable `T`, as demonstrated by interior
   mutability and atomic values.
 
+["The Best Programming Advice I Ever Got" with Rob Pike][pike-prog-advice]
+
+- On how to debug.
+
+  > Ken [Thompson] taught me that thinking before debugging is extremely important. If you dive into
+  > the bug, you tend to fix the local issue in the code, but if you think about the bug first, how
+  > the bug came to be, you often find and correct a higher-level problem in the code that will
+  > improve the design and prevent further bugs.
+  >
+  > I recognize this is largely a matter of style. Some people insist on line-by-line tool-driven
+  > debugging for everything. But I now believe that thinking—without looking at the code—is the
+  > best debugging tool of all, because it leads to better software.
+
 [inline-snapshot-tests]: https://ianthehenry.com/posts/my-kind-of-repl/
 [go-tests]: https://research.swtch.com/testing
 [how-to-test]: https://matklad.github.io/2021/05/31/how-to-test.html
@@ -112,3 +123,4 @@ the list is rather incomplete.
 [parse-dont-validate]: https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/
 [unwrap]: https://blog.burntsushi.net/unwrap/
 [rust-references]: https://docs.rs/dtolnay/0.0.9/dtolnay/macro._02__reference_types.html
+[pike-prog-advice]: https://www.informit.com/articles/article.aspx?p=1941206

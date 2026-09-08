@@ -105,7 +105,7 @@ func matchOnepassInt(T, P string) int {
 }
 ```
 
-How can we improve this algorithm further? One observation we can make is that the in-progress states in `active` are now always integers between `0` and `len(P)`, the length of the pattern. If $P$ is not too long (implying $m$ is small), there may be a more efficient way to represent the `active` set instead of a list of integers. This idea is what leads us to our next modification, using _bitsets_ and bit manipulation, from which the bitap algorithm arises.
+How can we improve this algorithm further? One observation we can make is that the in-progress states in `active` are now always integers between `0` and `len(P)`, the length of the pattern. If $P$ is not too long, there may be a more efficient way to represent the `active` set instead of a list of integers. This idea is what leads us to our next modification, using _bitsets_ and bit manipulation, from which the bitap algorithm arises.
 
 ### Bit manipulation
 
