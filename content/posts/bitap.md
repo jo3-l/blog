@@ -105,7 +105,7 @@ func matchOnepassInt(T, P string) int {
 }
 ```
 
-The insight now is that bitap arises from the algorithm above if one considers a more optimized representation for the set of active states as a bitmask.
+How can we improve this algorithm further? One observation we can make is that the in-progress states in `active` are always integers between `0` and `m = len(P)`, the length of the pattern. If $m$ is not too large, there may be a more efficient way to represent the `active` set instead of a list of integers. This idea is what leads us to our next modification, using _bitsets_ and bit manipulation, from which the bitap algorithm arises.
 
 ### Bit manipulation
 
@@ -115,7 +115,7 @@ Indeed, if $P$ is relatively short, say `len(P) < 64`, then we can encode the se
 active_bitset = 0b1000_0110
 ```
 
-Let's try this.
+Let's try this!
 
 ```go
 func matchOnepassBitset(T, P string) int {
