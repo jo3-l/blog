@@ -42,7 +42,7 @@ outer:
 
 ### The naive algorithm, but make it streaming
 
-Let's now impose an additional constraint on ourselves to make life more difficult: instead of being given all the characters of the text $T$ at once, suppose that they are now provided in the form of a _stream_, one character at a time. (Perhaps $T$ is very long and we do not wish to load all its contents into memory at once.)
+Let's now impose an additional constraint on ourselves to motivate us to change the algorithm a little: instead of being given all the characters of the text $T$ at once, suppose that they are now provided in the form of a _stream_, one character at a time. (Perhaps $T$ is very long and we do not wish to load all its contents into memory at once.)
 
 The simple algorithm presented above is not streaming: it needs to read up to $m = \texttt{len}(P)$ characters ahead starting from the current position in $T$ to detect a match of the pattern. How can we adapt it so that it only performs one pass through the data?
 
@@ -105,11 +105,11 @@ func matchOnepassInt(T, P string) int {
 }
 ```
 
-How can we improve this algorithm further? One observation we can make is that the in-progress states in `active` are always integers between `0` and `m = len(P)`, the length of the pattern. If $m$ is not too large, there may be a more efficient way to represent the `active` set instead of a list of integers. This idea is what leads us to our next modification, using _bitsets_ and bit manipulation, from which the bitap algorithm arises.
+How can we improve this algorithm further? One observation we can make is that the in-progress states in `active` are now always integers between `0` and `len(P)`, the length of the pattern. If $P$ is not too long (implying $m$ is small), there may be a more efficient way to represent the `active` set instead of a list of integers. This idea is what leads us to our next modification, using _bitsets_ and bit manipulation, from which the bitap algorithm arises.
 
 ### Bit manipulation
 
-Indeed, if $P$ is relatively short, say `len(P) < 64`, then we can encode the set of active states in a single integer (understood as a 64-bit bitset.) So, for instance, if `active = {1, 2, 7}`, then
+Indeed, if $P$ is relatively short, say `len(P) < 64`, then we can pack the set of active states into a single integer (understood as a 64-bit bitset.) So, for instance, if `active = {1, 2, 7}`, then
 
 ```
 active_bitset = 0b1000_0110
@@ -147,9 +147,9 @@ func matchOnepassBitset(T, P string) int {
 }
 ```
 
-Hm. That doesn't seem like a major change. Although it is nice that `active` has a more compact encoding, we still have an inner loop. Can we get rid of that with some clever bit manipulation?
+Hm. That doesn't seem like a major improvement. Although it is nice that `active` has a more compact encoding, there are still two nested loops, begging the question to whether we can eliminate the inner loop somehow...
 
-It turns out that we indeed can, with some precomputation and a small change in perspective. Observe that, in the above algorithm, we look at each match state, checking if it can continue (by comparing `c` with `P[j]`), and then advance by one position if so. On the other hand, an alternative approach is to unconditionally advance _all_ match states by one position, and then kill any states that arose from an invalid transition. The key is that, unlike the previous approach, both of these steps can be implemented in a single bit operation operating on the entire bitset at once.
+It turns out that we indeed can, using some clever bit manipulation and a small change in perspective. Observe that, in the above algorithm, we look at each match state, checking if it can continue (by comparing `c` with `P[j]`), and then advance by one position if so. On the other hand, an alternative approach is to unconditionally advance _all_ match states by one position, and then kill any states that arose from an invalid transition. The key is that, unlike the previous approach, both of these steps can be implemented in a single bit operation operating on the entire bitset at once.
 
 Indeed, to advance all match states by one position, it suffices to shift left by one: `active << 1`. The only challenge that remains is to kill off states arising from an invalid transition: in other words, given `next = active << 1`, we want to only keep the states that should really have advanced after observing the character `c`. The second and final insight is that we can accomplish this by precomputing a bitset of valid states that can arise after observing the character `c` for each character that appears in the pattern, and then intersecting with the appropriate bitset.
 
