@@ -10,7 +10,7 @@ A classic problem is to find the first occurrence of a pattern $P$ in a string $
 
 [^1]: I should note that I'm referring to the _exact_ string-matching algorithm here. "bitap algorithm" can also mean a variant that supports fuzzy matching in terms of Levenshtein distance, which is cool but not the subject of this post.
 
-To show that the algorithm is as simple conceptually as claimed, let me derive it incrementally from the naive algorithm.
+To show that the algorithm is as simple conceptually as claimed, let me try to derive it incrementally starting from the most naive string matching algorithm.
 
 ## Deriving bitap
 
@@ -19,7 +19,10 @@ To show that the algorithm is as simple conceptually as claimed, let me derive i
 The simplest brute-force algorithm to solve the string matching problem just tries to match the pattern $P$ starting from each possible position in the string $T$.
 
 ```go
-// Returns the first index i such that T[i:] starts with the pattern P, or -1 if no such index occurs.
+// Returns the first index i such that T[i:] starts with the pattern P,
+// or -1 if no such index occurs.
+//
+// The pattern P is required to be nonempty.
 func match(T, P string) int {
 outer:
 	// starting from each position i = 0, ... in the string T...
@@ -54,7 +57,8 @@ func matchOnepass(T, P string) int {
 	for i := range len(T) {
 		c := T[i]
 
-		active = append(active, state{remaining: P}) // always attempt to start a new match
+		// Always attempt to start a new match.
+		active = append(active, state{remaining: P})
 		var next []state
 		for _, m := range active {
 			if c == m.remaining[0] {
@@ -147,7 +151,7 @@ Hm. That doesn't seem like a major change. Although it is nice that `active` has
 
 It turns out that we indeed can, with some precomputation and a small change in perspective. Observe that, in the above algorithm, we look at each match state, checking if it can continue (by comparing `c` with `P[j]`), and then advance by one position if so. On the other hand, an alternative approach is to unconditionally advance _all_ match states by one position, and then kill any states that arose from an invalid transition. The key is that, unlike the previous approach, both of these steps can be implemented in a single bit operation operating on the entire bitset at once.
 
-First, to advance all match states by one position, it suffices to shift left by one: `active << 1`. The only challenge that remains is to kill off states arising from an invalid transition: in other words, given `next = active << 1`, we want to only keep the states that should really have advanced after observing the character `c`. The second and final insight is that we can accomplish this by precomputing a bitset of valid states that can arise after observing the character `c` for each character that appears in the pattern, and then intersecting with the appropriate bitset.
+Indeed, to advance all match states by one position, it suffices to shift left by one: `active << 1`. The only challenge that remains is to kill off states arising from an invalid transition: in other words, given `next = active << 1`, we want to only keep the states that should really have advanced after observing the character `c`. The second and final insight is that we can accomplish this by precomputing a bitset of valid states that can arise after observing the character `c` for each character that appears in the pattern, and then intersecting with the appropriate bitset.
 
 ```go
 func matchBitap(T, P string) int {
