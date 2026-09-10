@@ -70,8 +70,11 @@
 - id: additive-z-infty
   category: math
   text: |
-    The only additive function $f : \mathbb{Z}^\infty \to \mathbb{Z}$ (where $\mathbb{Z}^\infty$ is the set of integer sequences)
-    is the zero function. ([Math Stack Exchange](https://math.stackexchange.com/q/1082165/1674765))
+    If $f : \mathbb{Z}^\infty \to \mathbb{Z}$ is an additive function that vanishes on all sequences of the form
+    $(1, 0, 0, \dots)$, $(0, 1, 0, \dots)$, $(0, 0, 1, \dots)$, and so on, then $f$ is the zero function.
+    ([Math Stack Exchange](https://math.stackexchange.com/q/1082165/1674765))
+
+    If this seems obvious, note that the statement is _false_ for $f : \mathbb{Z}^\infty \to \mathbb{Q}$.
 
 - id: heapsort
   category: programming
