@@ -1,0 +1,101 @@
+/* Tidbits page */
+
+.tidbits-filter {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 24px 0;
+}
+
+.tidbits-filter input {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.tidbits-filter label {
+	cursor: pointer;
+	padding: 4px 12px;
+	border-radius: 999px;
+	border: 1px solid var(--border);
+	background: var(--code-bg);
+	color: var(--secondary);
+	font-size: 14px;
+	line-height: 1.6;
+	user-select: none;
+}
+
+.tidbits-filter input:checked + label {
+	color: var(--content);
+	border-color: var(--secondary);
+	font-weight: 600;
+}
+
+.tidbits-filter input:focus-visible + label {
+	outline: 2px solid var(--secondary);
+	outline-offset: 2px;
+}
+
+.tidbits-count {
+	color: var(--secondary);
+	font-weight: 400;
+	font-size: 12px;
+}
+
+.tidbits:has(#tb-math:checked) .tidbit:not([data-cat='math']),
+.tidbits:has(#tb-programming:checked) .tidbit:not([data-cat='programming']) {
+	display: none;
+}
+
+.tidbits-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.tidbits-list .tidbit {
+	margin: 0 0 16px;
+	padding: 14px 18px;
+	background: var(--entry);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+}
+
+body:not(.dark) .tidbits-list .tidbit {
+	border-color: var(--tertiary);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.tidbit:target {
+	border-color: var(--secondary);
+}
+
+.tidbit-meta {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	margin-bottom: 4px;
+	min-height: 1.4em;
+	font-size: 13px;
+	color: var(--secondary);
+}
+
+.tidbit-cat {
+	color: var(--secondary);
+}
+
+.tidbit-anchor {
+	margin-left: auto;
+	opacity: 0;
+	transition: opacity 0.15s;
+	box-shadow: none;
+}
+
+.tidbit:hover .tidbit-anchor,
+.tidbit-anchor:focus-visible {
+	opacity: 1;
+}
+
+.tidbit-body > p:last-child {
+	margin-bottom: 0;
+}

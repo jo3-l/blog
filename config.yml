@@ -47,10 +47,14 @@ menu:
       name: About
       url: /about/
       weight: 2
+    - identifier: tidbits
+      name: Tidbits
+      url: /tidbits/
+      weight: 3
     - identifier: tags
       name: Tags
       url: /tags/
-      weight: 3
+      weight: 4
 
 markup:
   highlight:
@@ -59,3 +63,13 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - - $$
+              - $$
+          inline:
+            - - $
+              - $

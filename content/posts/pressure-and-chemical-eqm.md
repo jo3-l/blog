@@ -81,7 +81,7 @@ $$
 
 For brevity write
 
-$$ \Delta n = \overbrace{(r + s + \cdots)}^{\text{tot. num of product moles}} - \underbrace{(a + b + \cdots)}\_{\text{tot. num of reactant moles}} \tag{5} $$
+$$ \Delta n = \overbrace{(r + s + \cdots)}^{\text{tot. num of product moles}} - \underbrace{(a + b + \cdots)}_{\text{tot. num of reactant moles}} \tag{5} $$
 
 such that the pressure factor in front is just ${P_0}^{\Delta n}$. Also abbreviate the constant factor as $k$,
 

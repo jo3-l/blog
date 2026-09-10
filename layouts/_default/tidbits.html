@@ -1,0 +1,69 @@
+{{- define "main" }}
+{{- $dated := slice }}
+{{- $undated := slice }}
+{{- range site.Data.tidbits }}
+  {{- if isset . "date" }}{{ $dated = $dated | append . }}{{ else }}{{ $undated = $undated | append . }}{{ end }}
+{{- end }}
+{{- $entries := append $undated (sort $dated "date" "desc") }}
+{{- $cats := slice "math" "programming" }}
+
+<article class="post-single">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{- if .Description }}<div class="post-description">{{ .Description }}</div>{{ end }}
+  </header>
+
+  {{- if .Content }}
+  <div class="post-content">{{ .Content }}</div>
+  {{- end }}
+
+  <div class="tidbits">
+    <div class="tidbits-filter" role="radiogroup" aria-label="Filter tidbits">
+      <input type="radio" name="tidbits-filter" id="tb-all" value="all" checked>
+      <label for="tb-all">All <span class="tidbits-count">{{ len $entries }}</span></label>
+      {{- range $cats }}
+      {{- $n := len (where $entries "category" .) }}
+      <input type="radio" name="tidbits-filter" id="tb-{{ . }}" value="{{ . }}">
+      <label for="tb-{{ . }}">{{ title . }} <span class="tidbits-count">{{ $n }}</span></label>
+      {{- end }}
+    </div>
+
+    <ul class="tidbits-list post-content">
+      {{- range $i, $e := $entries }}
+      {{- if not $e.id }}{{ errorf "tidbits.yaml: entry %d (%.40q) has no id" $i $e.text }}{{ end }}
+      {{- $id := $e.id }}
+      <li class="tidbit" id="{{ $id }}" data-cat="{{ $e.category }}">
+        <div class="tidbit-meta">
+          {{- with $e.date }}
+          <time datetime="{{ (time .).Format "2006-01-02" }}">{{ (time .).Format (site.Params.dateFormat | default "02 Jan 2006") }}</time>
+          <span class="tidbit-sep">&middot;</span>
+          {{- end }}
+          <span class="tidbit-cat">{{ $e.category }}</span>
+          <a class="tidbit-anchor" href="#{{ $id }}" aria-label="Link to this tidbit">#</a>
+        </div>
+        <div class="tidbit-body">{{ $e.text | markdownify }}</div>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+</article>
+
+<script>
+  (() => {
+    const radios = document.querySelectorAll('input[name="tidbits-filter"]');
+    const apply = () => {
+      const cat = location.hash.replace('#', '');
+      const r = document.getElementById('tb-' + cat);
+      if (r) r.checked = true;
+    };
+    radios.forEach((r) =>
+      r.addEventListener('change', () => {
+        history.replaceState(null, '', r.value === 'all' ? location.pathname : '#' + r.value);
+      })
+    );
+    window.addEventListener('hashchange', apply);
+    apply();
+  })();
+</script>
+{{- end }}

@@ -12,7 +12,7 @@ properties that I learnt after being introduced to the concept of exponentiation
 reason intuitively as to why this property holds for integral exponents:
 
 $$
-2^{3 + 2} = 2^5 = \underbrace{2 \cdot 2 \cdot 2}\_{2^3} \cdot \underbrace{2 \cdot 2}\_{2^2},
+2^{3 + 2} = 2^5 = \underbrace{2 \cdot 2 \cdot 2}_{2^3} \cdot \underbrace{2 \cdot 2}_{2^2},
 $$
 
 However, I wanted to see how difficult it'd be to formalize this argument with induction. Let's see!
