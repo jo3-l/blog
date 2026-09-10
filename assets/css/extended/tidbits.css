@@ -61,7 +61,7 @@
 	border-radius: var(--radius);
 }
 
-body:not(.dark) .tidbits-list .tidbit {
+:root:not([data-theme="dark"]) .tidbits-list .tidbit {
 	border-color: var(--tertiary);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
@@ -84,11 +84,11 @@ body:not(.dark) .tidbits-list .tidbit {
 	color: var(--secondary);
 }
 
-.tidbit-anchor {
+.md-content a.tidbit-anchor {
 	margin-left: auto;
 	opacity: 0;
 	transition: opacity 0.15s;
-	box-shadow: none;
+	text-decoration: none;
 }
 
 .tidbit:hover .tidbit-anchor,

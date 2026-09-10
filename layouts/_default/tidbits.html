@@ -15,7 +15,7 @@
   </header>
 
   {{- if .Content }}
-  <div class="post-content">{{ .Content }}</div>
+  <div class="post-content md-content">{{ .Content }}</div>
   {{- end }}
 
   <div class="tidbits">
@@ -29,7 +29,7 @@
       {{- end }}
     </div>
 
-    <ul class="tidbits-list post-content">
+    <ul class="tidbits-list post-content md-content">
       {{- range $i, $e := $entries }}
       {{- if not $e.id }}{{ errorf "tidbits.yaml: entry %d (%.40q) has no id" $i $e.text }}{{ end }}
       {{- $id := $e.id }}

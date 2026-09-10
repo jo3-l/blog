@@ -78,26 +78,26 @@ figure.center img {
 
 /* adjust copy button colors */
 
-body.dark .copy-code {
+:root[data-theme="dark"] .copy-code {
 	color: rgba(255, 255, 255, 0.92);
 	background: rgba(27, 31, 35, 0.9);
 	border: 1px solid var(--border);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
-body.dark pre:hover .copy-code,
-body.dark .highlight:hover .copy-code {
+:root[data-theme="dark"] pre:hover .copy-code,
+:root[data-theme="dark"] .highlight:hover .copy-code {
 	background: #2b3036;
 	border-color: var(--tertiary);
 }
 
-body:not(.dark) .copy-code {
+:root:not([data-theme="dark"]) .copy-code {
 	color: var(--primary);
 	background: rgba(246, 248, 250, 0.95);
 	border: 1px solid var(--border);
 	box-shadow: 0 1px 2px rgba(27, 31, 35, 0.06);
 }
-body:not(.dark) pre:hover .copy-code,
-body:not(.dark) .highlight:hover .copy-code {
+:root:not([data-theme="dark"]) pre:hover .copy-code,
+:root:not([data-theme="dark"]) .highlight:hover .copy-code {
 	background: #eef2f6;
 	border-color: var(--tertiary);
 }
@@ -118,4 +118,30 @@ body:not(.dark) .highlight:hover .copy-code {
 
 .post-single .entry-hint-parent {
 	font-weight: 700;
+}
+
+/* subtler link underlines: thin, muted, solid on hover */
+
+.md-content a:not(.anchor),
+.footer a {
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-decoration-color: var(--tertiary);
+	text-underline-offset: 0.2rem;
+	transition: text-decoration-color 0.15s;
+}
+
+.md-content a:not(.anchor):hover,
+.footer a:hover {
+	text-decoration-color: currentColor;
+}
+
+:root[data-theme="dark"] .md-content a:not(.anchor),
+:root[data-theme="dark"] .footer a {
+	text-decoration-color: var(--secondary);
+}
+
+:root[data-theme="dark"] .md-content a:not(.anchor):hover,
+:root[data-theme="dark"] .footer a:hover {
+	text-decoration-color: currentColor;
 }

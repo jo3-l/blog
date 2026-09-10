@@ -2,7 +2,7 @@
 	--code-block-bg: var(--theme);
 }
 
-.dark {
+:root[data-theme="dark"] {
 	--code-block-bg: #28292b;
 	--code-bg: #28292b;
 }
