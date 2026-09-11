@@ -11,7 +11,8 @@ params:
     content: |
       I'm a third-year undergraduate student at the University of Waterloo, double majoring
       in computer science and pure mathematics. Welcome to my small slice of the web :) Here, I
-      blog about math, programming, and other things that happen to pique my interest.
+      write about math, programming, and other things that happen to pique my interest. In addition
+      to longer-form blogs, I also post shorter notes and links to pieces I liked on the [tidbits page](/tidbits).
 
       If you would like to know more about me or my projects, head over to my [about page](/about).
       To contact me, email me at `jliu1602 [at] gmail.com`; I am also active on Discord as `jo3_l`.
