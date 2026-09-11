@@ -3,7 +3,6 @@ title: A puzzling Python program
 summary: Counting down, seemingly without loops or recursion
 date: '2025-08-08'
 tags: [programming, python, puzzle]
-katex: true
 ---
 
 Here's a quirky little piece of Python code:

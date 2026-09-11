@@ -3,7 +3,6 @@ title: 'Bitap: my favorite string matching algorithm'
 date: '2026-09-07'
 tags: [programming, algorithms]
 summary: An exposition of the bitap or shift-and exact string matching algorithm
-katex: true
 ---
 
 A classic problem is to find the first occurrence of a pattern $P$ in a string $T$. There are various classic algorithms to solve this problem efficiently, such as [Boyer-Moore](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm), [Knuth-Morris-Pratt](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm), and [Two-Way](https://en.wikipedia.org/wiki/Two-way_string-matching_algorithm). In this post I want to provide an exposition of a less well-known algorithm, the _bitap_ or _shift-and_ algorithm[^1], that runs efficiently when the pattern $P$ is relatively short (of length less than the width of a machine word.) Despite its constraints, I like it a lot because it is simple both to understand and to implement, relatively efficient for short strings, and uses bit operations in a particularly elegant fashion.

@@ -4,7 +4,6 @@ date: '2022-04-24'
 summary: 'Some practice with induction: a proof of the sum of exponents law for integer exponents'
 description: 'Some practice with induction: a proof of the sum of exponents law for integer exponents'
 tags: [math]
-katex: true
 ---
 
 The sum of exponents law, $b^x \cdot b^y = b^{x+y}$, is well-known; indeed it was one of the first

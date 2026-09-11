@@ -4,7 +4,6 @@ date: "2025-08-01"
 summary: In the strings package of Go's standard library lies an innocuous-looking function, strings.Repeat(s, count). The standard library implementation winds up being more complicated than one might anticipate!
 description: In the strings package of Go's standard library lies an innocuous-looking function, strings.Repeat(s, count). The standard library implementation winds up being more complicated than one might anticipate!
 tags: [go, performance]
-katex: true
 draft: true
 ---
 

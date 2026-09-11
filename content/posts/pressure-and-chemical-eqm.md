@@ -4,7 +4,6 @@ date: '2023-07-18'
 summary: Examining the effect of changes in pressure on equilibrium position mathematically
 description: Examining the effect of changes in pressure on equilibrium position mathematically
 tags: [math, chemistry]
-katex: true
 ---
 
 Recently, while studying the concept of chemical equilibrium, I came across the following statement

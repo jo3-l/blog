@@ -1,4 +1,14 @@
-{{ if .Params.katex }}
+{{/* Force content rendering so the passthrough render hook can flag pages containing math. */}}
+{{ $noop := .WordCount }}
+{{/* Pages that render math outside .Content (e.g. via markdownify in a layout) can opt in with `math: true`. */}}
+{{ $hasMath := or .Params.math (.Store.Get "hasMath") }}
+{{ if not $hasMath }}
+	{{ range .RegularPages }}
+		{{ $noop = .WordCount }}
+		{{ if .Store.Get "hasMath" }}{{ $hasMath = true }}{{ end }}
+	{{ end }}
+{{ end }}
+{{ if $hasMath }}
 	{{ partial "katex.html" . }}
 {{ end }}
 
