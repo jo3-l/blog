@@ -40,8 +40,8 @@
   text: |
     If $a(b+1)(ab+1)$ is a perfect square, then $(b+1)$ divides $a(ab+1)$.
 
-    (I conjectured this based on computational evidence, and Mastrem on [Math Stack Exchange](https://math.stackexchange.com/q/5089072/1674765)
-    proved it!)
+    (I originally posed this as [a conjecture on Math Stack Exchange](https://math.stackexchange.com/q/5089072/1674765) based on computational evidence,
+    and user [Mastrem](https://math.stackexchange.com/users/253433/mastrem) provided a proof using a clever descent argument.)
 
 - id: string-lvalue
   category: programming
@@ -54,7 +54,7 @@
   text: |
     A quartic polynomial $f$ can be expressed as the composition of two quadratic
     polynomials $g$ and $h$ (such that $f(x) = g(h(x))$) if and only if two of the
-    roots of $f(x)$ have the same sum as the other two. ([Math Stack Exchange](https://math.stackexchange.com/a/5147880/1674765))
+    roots of $f$ have the same sum as the other two. ([Math Stack Exchange](https://math.stackexchange.com/a/5147880/1674765))
 
 - id: go-embedded-fields
   category: programming
@@ -74,13 +74,13 @@
     $(1, 0, 0, \dots)$, $(0, 1, 0, \dots)$, $(0, 0, 1, \dots)$, and so on, then $f$ is the zero function.
     ([Math Stack Exchange](https://math.stackexchange.com/q/1082165/1674765))
 
-    If this seems obvious, note that the statement is _false_ for $f : \mathbb{Z}^\infty \to \mathbb{Q}$.
+    If this seems obvious, note that the statement is _false_ for $f : \mathbb{Z}^\infty \to \mathbb{Q}$ under AC.
 
 - id: heapsort
   category: programming
   text: |
-    It's well known that heapsort has worst-case runtime $O(n \log n)$. But the _best-case_ runtime for heapsort
-    is also $O(n \log n)$ (assuming distinct keys), and this was only proved several decades after heapsort's invention.
+    It's well known that heapsort has worst-case runtime $\Theta(n \log n)$. But the _best-case_ runtime for heapsort
+    is also $\Theta(n \log n)$ (assuming distinct keys), and this was only proved several decades after heapsort's invention.
     (["On the Best Case of Heapsort"](https://www.math.cmu.edu/~af1p/Texfiles/Best.pdf))
 
 - id: induction-weird
