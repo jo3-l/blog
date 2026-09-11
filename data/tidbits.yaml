@@ -4,6 +4,12 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: astra-weird
+  category: programming
+  date: 2026-09-11
+  text: |
+    [Astra writes very strange Python code in tool calls.](https://lucumr.pocoo.org/2026/9/7/astra-why/)
+
 - id: mobius-random-walk
   category: math
   date: 2026-09-10
