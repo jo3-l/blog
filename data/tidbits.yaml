@@ -4,6 +4,12 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: mediocre-mathematicians
+  category: math
+  date: 2026-09-11
+  text: |
+    A lovely post on what constitutes mathematics: ["No Country for Mediocre Mathematicians"](https://garvvee.substack.com/p/no-country-for-mediocre-mathematicians)
+
 - id: astra-weird
   category: programming
   date: 2026-09-11
