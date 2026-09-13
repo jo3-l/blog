@@ -15,7 +15,7 @@ Consider the following contrived problem, which you might see in a particularly 
 
 I don't know about you, but I would not be happy to see this problem on an exam.[^1]
 
-[^1]: See [the appendix](#appendix-solving-the-problem-by-hand) for a solution by hand.
+[^1]: See the appendix directly above this footnote for a solution by hand.
 
 But what if I told you that you could describe this problem declaratively in a programming language, and run it through a compiler that computes the right answer _exactly_ (notably, not an estimation using a Monte Carlo simulation)?
 
@@ -85,13 +85,13 @@ Thus, given the pgf $G_X (x)$ of a random variable $X$, the expectation of $X$ i
 
 We are now ready to begin assembling our compiler. Let me reiterate the key idea: a probabilistic program is just a sequence of statements that build up a statistical model (roughly) line-by-line, and the statistical model is represented by the joint probability generating function of the current set of variables. A natural implementation strategy is to model each language construct as a rule that accepts the gf `e` representing the current statistical model, and transforms it to a new gf `e'`.[^2] In this section, we'll therefore build up little helpers to handle various constructs in our language incrementally, starting from variable declarations. (For simplicity we'll represent generating functions as sympy objects; a better implementation would roll their own optimized representation.) Then, after implementing all these rules, we'll write a small parser that accepts programs in the syntax of the original example and converts them to gfs by calling our helpers.
 
-[^2]: In the terminology of the original paper, these functions are _gf transformers_.
+[^2]: The original paper refers to these functions are _gf transformers_.
 
 ### Declaring variables following Bernoulli, Poisson, and Dirac distributions
 
 Let's start by implementing the rule for a statement of the form `y <- bernoulli(theta)`, introducing a new random variable `y` sampling from a Bernoulli distribution of constant parameter $\theta$. We need to write a function that, given the old gf, returns a new gf including the newly declared variable `y`.
 
-To do so, we require two facts about probability generating functions:
+To do so, we require two facts about pgfs:
 
 - the pgf of a $Y \sim\mathrm{Bernoulli}(\theta)$ distribution is $P[Y=0] + P[Y=1]y = (1-\theta) + \theta y$;
 - if $X$ and $Y$ are independent with pgfs $G_X$ and $G_Y$ respectively, then the pgf of $(X, Y)$ is $G_X(x) G_Y (y)$.
@@ -175,7 +175,9 @@ $$
 G_\mathrm{cond} (x) = \frac{1}{1 - G(0)} (G(x) - G(0)). 
 $$
 
-In other words, we kill off the terms corresponding to the event $X = 0$, and then rescale to ensure that the probabilities still sum to 1. The general case is analogous: compute $G - G|_{X=0}$ and then rescale accordingly.
+In other words, we kill off the terms corresponding to the event $X = 0$, and then rescale to ensure that the probabilities still sum to 1[^3]. The general case is analogous: compute $G - G|_{X=0}$ and then rescale accordingly.
+
+[^3]: It's also possible to not rescale intermediate gfs during compilation (allowing unnormalized measures.) The original paper takes this approach, and in a production implementation one would certainly want this optimization, but for simplicity I'll work only with normalized measures in this post.
 
 ```py
 def total_mass(e):

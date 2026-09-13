@@ -190,7 +190,7 @@ def compile(prog: Block) -> tuple[GF, sp.Symbol | None]:
             case FnCall(name, args) if name in fns:
                 fn = fns[name]
                 params = {p: lookup(a, env) for p, a in zip(fn.param_names, args)}
-                return block(fn.body, params, ys, e)  # body sees only its parameters
+                return block(fn.body, params, ys, e) # body only has access to params
             case FnCall(name, args):
                 return BUILTINS[name](ys[0], *(lookup(a, env) for a in args))(e)
 
