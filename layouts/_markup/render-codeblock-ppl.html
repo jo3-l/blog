@@ -1,0 +1,32 @@
+{{- /* Highlighter for the toy probabilistic programming language in the
+       gf-powered PPL post. Emits the same markup and Chroma classes as Hugo's
+       built-in highlighter (without line numbers) so the existing theme CSS
+       and PaperMod's copy button work unchanged. */ -}}
+{{- $keywords := slice "fn" "observe" "if" "then" "else" "sum" "return" -}}
+{{- $lines := split (strings.TrimSuffix "\n" .Inner) "\n" -}}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ppl" data-lang="ppl">
+{{- range $lines -}}
+<span class="line"><span class="cl">
+{{- range findRE `#.*|<-|!=|=|[A-Za-z_]\w*\(|[A-Za-z_]\w*|\d+(?:\.\d+)?|\s+|.` . -}}
+  {{- $tok := . -}}
+  {{- if hasPrefix $tok "#" -}}
+    <span class="c1">{{ $tok }}</span>
+  {{- else if in (slice "<-" "!=" "=") $tok -}}
+    <span class="o">{{ $tok }}</span>
+  {{- else if in $keywords $tok -}}
+    <span class="k">{{ $tok }}</span>
+  {{- else if in (slice "(" ")" "{" "}" ",") $tok -}}
+    <span class="p">{{ $tok }}</span>
+  {{- else if hasSuffix $tok "(" -}}
+    <span class="nf">{{ strings.TrimSuffix "(" $tok }}</span><span class="p">(</span>
+  {{- else if findRE `^\d` $tok -}}
+    <span class="m">{{ $tok }}</span>
+  {{- else if findRE `^[A-Za-z_]` $tok -}}
+    <span class="n">{{ $tok }}</span>
+  {{- else -}}
+    {{- $tok -}}
+  {{- end -}}
+{{- end }}
+</span></span>
+{{- end -}}
+</code></pre></div>
