@@ -40,24 +40,24 @@ return s
 
 and compiles it into a [_probability generating function (pgf)_](https://en.wikipedia.org/wiki/Probability_generating_function) that specifies the probability distribution of `s` exactly. The expectation of `s`, and thus the answer to the original problem, can be recovered straightforwardly given the pgf by taking derivatives. The whole compiler will fit in 200 lines of Python.
 
-**References.** The implementation and all the ideas in this blog post follow the (very nice) paper ["Compiling with Generating Functions" (Li and Zhang)](https://dl.acm.org/doi/10.1145/3747534). Indeed, the compiler we shall implement is a small toy subset of the one described in that paper. All mistakes and oddities are mine alone, and I intentionally deviate from the paper in places for narrative simplicity. In addition, though I will give intuition for most mathematical results I need along the way via examples, I defer to the paper for all formal proofs.
+**References.** The implementation and all the ideas in this blog post follow the (very nice) paper ["Compiling with Generating Functions" (Li and Zhang)](https://dl.acm.org/doi/10.1145/3747534). Indeed, the compiler we shall implement is a small toy subset of the one described in that paper. All mistakes and oddities are mine, and I intentionally deviate from the paper in places for narrative simplicity. In addition, though I will give intuition for most mathematical results I need along the way via examples, I defer to the paper for all formal proofs.
 
 ### A high-level view of probablistic programming and compilers
 
 In my opinion, the best way to interpret the program above is not as a series of procedural instructions that are executed repeatedly under different seeds. Rather, **the program is just syntax sugar for defining a particular exact statistical model** in a declarative way; such programs are called [probabilistic programs](https://en.wikipedia.org/wiki/Probabilistic_programming). The role of a compiler for such a program is to lower the program into a representation of the statistical model that allows one to easily query properties of the distribution, for example to answer questions such as "what is the probability of [given event] in this model" or "what is the expectation of this variable within the model?"
 
-In the specific compiler we build in this post, we choose to represent the statistical model by the joint probability generating function of the variables involved. Each line of the probabilistic program manipulates the statistical model in some way, for instance by extending it with a new random variable (potentially derived from some existing random variables) or conditioning on some event. The beauty of using pgfs is that every language construct can be implemented naturally as an operation on the probability generating function.
+In the specific compiler we build in this post, we choose to represent the statistical model by the joint probability generating function of the variables involved. Each line of the probabilistic program manipulates the pgf in some way, for instance by extending it with a new random variable (potentially derived from some existing random variables) or conditioning on some event. The beauty of this approach is that every language construct can be implemented naturally as an operation on the probability generating function.
 
 ## Probability generating functions
 
-First, let's review the definition of probability generating functions (pgfs). If one is familiar with the notion of the moment generating function or characteristic function of a distribution, the pgf can be viewed as an analogue that is particularly suited for discrete random variables.
+First, let's review the definition of probability generating functions (pgfs). If one is familiar with the notion of the moment generating function or characteristic function of a distribution, the pgf can be viewed as an analogue that is particularly well-suited for discrete random variables.
 
 Let $X$ be a discrete random variable with support in the non-negative integers $\{0, 1, ...\}$. The **probability generating function (pgf)** of $X$, denoted by $G_X(x)$, is defined by the series in which the coefficient of $x^k$ is the probability $P[X = k]$. That is,
 $$ G_X (x) = P[X=0] + P[X=1]x^1 + P[X=2]x^2 + \cdots = \sum_{k=0}^\infty P[X = k]x^k. $$
 
 _Example._ The pgf of a biased coin $X \sim \mathrm{Bernoulli}(0.7)$ is $0.3x^0 + 0.7x^1$.
 
-We can generalize the definition to apply to multivariate random variables similarly. Indeed, given a multivariate random variable $\mathbf{X} = (X_1, ..., X_n)$, the **multivariate probability generating function** of $\mathbf{X}$ is the series in $n$ variables $x_1, ..., x_n$ in which the coefficient of $x_1^{k_1} \cdots x_n^{k_n}$ is the joint probability $P[X_1 = k_1, \dots, X_n = k_n]$. That is,
+The definition generalizes readily to multivariate random variables. Indeed, given a multivariate random variable $\mathbf{X} = (X_1, ..., X_n)$, the **multivariate probability generating function** of $\mathbf{X}$ is the series in $n$ variables $x_1, ..., x_n$ in which the coefficient of $x_1^{k_1} \cdots x_n^{k_n}$ is the joint probability $P[X_1 = k_1, \dots, X_n = k_n]$. That is,
 
 $$
 G_\mathbf{X} (x_1, ..., x_n) = \sum_{k_1, \dots, k_n \ge 0} P[X_1 = k_1, \dots, X_n = k_n]x_1^{k_1} \cdots x_n^{k_n}
@@ -85,7 +85,7 @@ Thus, given the pgf $G_X (x)$ of a random variable $X$, the expectation of $X$ i
 
 We are now ready to begin assembling our compiler. Let me reiterate the key idea: a probabilistic program is just a sequence of statements that build up a statistical model (roughly) line-by-line, and the statistical model is represented by the joint probability generating function of the current set of variables. A natural implementation strategy is to model each language construct as a rule that accepts the gf `e` representing the current statistical model, and transforms it to a new gf `e'`.[^2] In this section, we'll therefore build up little helpers to handle various constructs in our language incrementally, starting from variable declarations. (For simplicity we'll represent generating functions as sympy objects; a better implementation would roll their own optimized representation.) Then, after implementing all these rules, we'll write a small parser that accepts programs in the syntax of the original example and converts them to gfs by calling our helpers.
 
-[^2]: The original paper refers to these functions are _gf transformers_.
+[^2]: The original paper refers to these functions as _gf transformers_.
 
 ### Declaring variables following Bernoulli, Poisson, and Dirac distributions
 
@@ -134,12 +134,12 @@ def const(y, c):
 
 ---
 
-Using these rules, we can already express some (completely trivial) statistical models using only `bernoulli`. Let's write a short helper that runs a sequence of transformers and returns the resulting generating function:
+Using these rules, we can already express some (completely trivial) statistical models. Let's write a short helper that runs a sequence of transformers and returns the resulting generating function:
 ```py
 def to_gf(*ts):
-    e = sp.Integer(1)
-    # trivial gf representing empty statistical model with no variables,
+    # start with the trivial gf representing empty statistical model with no variables,
     # and one outcome with probability 1
+    e = sp.Integer(1)
     for transformer in ts:
         e = transformer(e)
     return e 
@@ -156,13 +156,12 @@ The following snippet effectively declares two independent variables $X \sim \ma
 
 ### Conditional distributions
 
-With variable declarations out the way, we're ready to move on to something more interesting: describing conditional distributions. First, let's implement conditioning on variables:
-
+With variable declarations out the way, we're ready to move on to something more interesting: describing conditional distributions. First, let's implement conditioning on events of the form $\{X \ne 0\}$ and $\{X = 0\}$. For instance, the program
 ```ppl
 X <- poisson(10)
 observe X != 0
 ```
-describing the conditional probability distribution $X \mid X \ne 0$. How should the generating function change upon encountering such a statement? For intuition, let's work out exactly the case above by hand. Let $G(x)$ denote the (unconditional) pgf of $X$. We are interested in deriving the conditional pgf of $X \mid X \ne 0$ from $G$. Call this conditional pgf $G_\mathrm{cond}$; by definition,
+describes the conditional probability distribution $X \mid X \ne 0$. How should the generating function change upon encountering such a statement? For intuition, let's work out exactly the case above by hand. Let $G(x)$ denote the (unconditional) pgf of $X$. We are interested in deriving the conditional pgf of $X \mid X \ne 0$ from $G$. Call this conditional pgf $G_\mathrm{cond}$; by definition,
 $$
 \begin{align*}
 G_\mathrm{cond} (x) &= \sum_{k \ge 0} P(X = k \mid X \ne 0) x^k \\
@@ -211,7 +210,7 @@ Continuing with this idea, we next implement if-else conditional statements of t
 x <- if y then e1 else e2
 ```
 
-which declares that `x <- e1` if `y` is nonzero, and `x <- e2` otherwise. The idea is surprisingly simple. Conceptually, consider two separate programs conditioning on the cases $Y \ne 0$ and $Y = 0$ respectively:
+which declares that `x <- e1` if `y` is nonzero, and `x <- e2` otherwise. The idea is surprisingly simple. Imagine compiling two separate programs conditioning on the cases $Y \ne 0$ and $Y = 0$ respectively:
 ```ppl
 ...
 observe y != 0
@@ -223,7 +222,7 @@ and
 observe y = 0
 x2 <- e2
 ```
-Using what we've implemented already, we may compute the conditional pgf $G_\mathrm{then}$ of $X \mid Y \ne 0$ and the conditional pgf $G_\mathrm{else}$ of $X \mid Y = 0$. Then the pgf of $X$ is just the sum of $G_\mathrm{else}$ and $G_\mathrm{then}$ scaled appropriately using the law of total probability:
+Using what we've implemented already, we can compute the conditional pgf $G_\mathrm{then}$ of $X \mid Y \ne 0$ and the conditional pgf $G_\mathrm{else}$ of $X \mid Y = 0$. Then the pgf of $X$ is just the sum of $G_\mathrm{else}$ and $G_\mathrm{then}$ scaled appropriately using the law of total probability:
 $$
 G = P[Y \ne 0]\, G_\mathrm{then} + P[Y = 0]\, G_\mathrm{else}.
 $$
@@ -250,11 +249,11 @@ Y <- sum X { bernoulli(0.5) }
 ```
 declares $Y = B_1 + \cdots + B_N$, where $B_i \sim \mathrm{Bernoulli}(0.5)$ iid and $X \sim \mathrm{Poisson}(10)$. In particular $Y \mid X \sim \mathrm{Binomial}(X, 0.5)$.
 
-As usual, for intuition, let's work out the joint pgf of $(X, Y)$ in this case. We first remark the following easy results:
+As usual, for intuition, let's work out the joint pgf of $(X, Y)$ in this case. We first recall the following easy results:
 - if $X$ and $Y$ are independent, then the pgf of $X + Y$ is $G(x) = G_X (x) G_Y (x)$;
 - by induction, if $X_1, \dots, X_n$ are iid with pgf $G_1 (x)$, then the pgf of $X_1 + \cdots + X_n$ is $G(x) = G_1(x)^n$.
 
-Using these results, we can compute the joint pgf of $(X, Y)$ in the example above by conditioning on $n$, the number of iid copies:
+Using these results, we can compute the joint pgf of $(X, Y)$ in the example above by conditioning on $X$, the number of iid copies:
 $$
 \begin{align*}
 G(x, y) &= \sum_{n \ge 0} \sum_{k \ge 0} P[X = n, Y = k] x^n y^k \\
@@ -460,7 +459,7 @@ $$
 E[S \mid R \ge 1] = \frac{E[S \cdot \mathbf{1}\{R \ge 1\}]}{P[R \ge 1]}
 = \frac{\sum_c P[C = c]\; E[S \cdot \mathbf{1}\{R \ge 1\} \mid C = c]}{\sum_c P[C = c]\; P[R \ge 1 \mid C = c]}.
 $$
-Given $C = c$, the variables $S$ and $R$ are independent, so the expectation in the numerator factors as $E[S \mid C = c]\, P[R \ge 1 \mid C = c]$. Conditional on $C$, both $R$ and $S$ are (by the argument of the first paragraph) Poisson distributions with constant parameter. Direct computation yields
+Given $C = c$, the variables $S$ and $R$ are independent, so the expectation in the numerator factors as $E[S \mid C = c]\, P[R \ge 1 \mid C = c]$. Conditional on $C$, both $R$ and $S$ are (by the argument of the first paragraph) Poisson distributions with known parameter. Direct computation yields
 $$
 E[S \mid R \ge 1] = \frac{0.9 \cdot 0.1\,(1 - e^{-1.28}) + 0.1 \cdot 1.2\,(1 - e^{-10.96})}{0.9\,(1 - e^{-1.28}) + 0.1\,(1 - e^{-10.96})} \approx 0.2467,
 $$
