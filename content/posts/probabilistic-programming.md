@@ -65,8 +65,6 @@ $$
 
 where the sum runs over the joint support.
 
----
-
 Many properties of the original distribution can be recovered easily from the pgf; see [Wikipedia](https://en.wikipedia.org/wiki/Probability_generating_function#Properties). Since our original problem deals with expectations, let me show how to recover that property: on differentiating the pgf we find
 
 $$
@@ -131,8 +129,6 @@ def const(y, c):
     """y <- c."""
     return lambda e: e * y**c
 ```
-
----
 
 Using these rules, we can already express some (completely trivial) statistical models. Let's write a short helper that runs a sequence of transformers and returns the resulting generating function:
 ```py
@@ -200,8 +196,6 @@ def observe_zero(x):
         return survivors / total_mass(survivors)
     return transform
 ```
-
----
 
 Continuing with this idea, we next implement if-else conditional statements of the form
 
@@ -448,9 +442,7 @@ The problem is a nightmare to do by hand without the following fact about Poisso
 
 **Proof.** Induct on the result of [this Math Stack Exchange post](https://math.stackexchange.com/q/1777427/1674765).
 
----
-
-With this lemma in hand, the idea is relatively simple. Condition on the calibration state $C$, so that the defect probability $d$ is fixed: $d = 0.6$ when $C$ is off and $d = 0.05$ otherwise. Each of the $N \sim \mathrm{Poisson}(20)$ parts then falls independently into one of three bins: rejected with probability $p_R = 0.9d + 0.02(1-d)$, shipped and defective with probability $p_S = 0.1d$, or shipped and fine with the remaining probability. Letting $R$ and $S$ be the counts in the first two bins, the splitting property gives
+In view of this lemma, the idea is relatively simple. Condition on the calibration state $C$, so that the defect probability $d$ is fixed: $d = 0.6$ when $C$ is off and $d = 0.05$ otherwise. Each of the $N \sim \mathrm{Poisson}(20)$ parts then falls independently into one of three bins: rejected with probability $p_R = 0.9d + 0.02(1-d)$, shipped and defective with probability $p_S = 0.1d$, or shipped and fine with the remaining probability. Letting $R$ and $S$ be the counts in the first two bins, the splitting property gives
 $$ R \sim \mathrm{Poisson}(20 p_R), \quad S \sim \mathrm{Poisson}(20 p_S) $$
 with $R, S$ independent. We seek the expectation $E[S \mid R \ge 1]$.
 
@@ -463,6 +455,6 @@ Given $C = c$, the variables $S$ and $R$ are independent, so the expectation in 
 $$
 E[S \mid R \ge 1] = \frac{0.9 \cdot 0.1\,(1 - e^{-1.28}) + 0.1 \cdot 1.2\,(1 - e^{-10.96})}{0.9\,(1 - e^{-1.28}) + 0.1\,(1 - e^{-10.96})} \approx 0.2467,
 $$
-agreeing with the compiler.
+agreeing with the result of our program.
 
 <!-- prettier-ignore-end -->
