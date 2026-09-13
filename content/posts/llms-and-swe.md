@@ -15,7 +15,7 @@ This post collects various content about LLM-assisted development that I think c
 
 I have conflicted thoughts on LLM-assisted development.[^2]
 
-[^2]: I characterize myself as a skeptic that has warmed more to the concept (and actively use coding agents these days.) I'm sure that some folks will call me stuck in the past, and some will call me a once-promising programmer turned vibecoder. That's OK, although the polarization of discourse makes me sad.
+[^2]: I characterize myself as a skeptic that has warmed more to the concept (and actively use coding agents these days). I'm sure that some folks will call me stuck in the past, and some will call me a once-promising programmer turned vibecoder. That's OK, although the polarization of discourse makes me sad.
 
 Without doubt, there is a part of me that is saddened by the reduced need for writing code by hand. For many years, I enjoyed playing with and discussing the shape of the code that I write at a microscopic level. I took pleasure in learning trivia about the languages I use and closely following their development. There was a period in my life where, nearly every day, I would browse the open list of [TC39 proposals](https://github.com/tc39) and read through the discussion comments. What I am trying to articulate is that code is not merely a means to an end to me: I love the feeling of writing and polishing code.
 
@@ -29,7 +29,7 @@ It eventually became clear to me that I was missing some nuance about how to wor
 
 With these points in mind, the rest of this post attempts to do two things:
 
-1. Collect _human-written_ posts that contain interesting ideas about LLM-assisted development (and offer some commentary.) I don't necessarily agree with all the positions in the linked posts, but I do think that they are worth reading, to inform your own thinking and improve your mental model of where LLMs can help you and where they cannot.
+1. Collect _human-written_ posts that contain interesting ideas about LLM-assisted development (and offer some commentary). I don't necessarily agree with all the positions in the linked posts, but I do think that they are worth reading, to inform your own thinking and improve your mental model of where LLMs can help you and where they cannot.
 
 2. Argue that LLMs can benefit the software craftsman too--one who cares about the shape of the code need not necessarily despair and flee the industry.
 
@@ -96,11 +96,11 @@ In this section, I collect some experience reports from sane human developers (s
 
 ## Tutorials for Claude, Codex, etc.
 
-This section is about actually figuring out, mechanically, how to get started with your coding harness of choice (how it works, what the commands do, what the key terminology is.) Unfortunately I have not found a good introductory tutorial that is human-written... so there is some slop in this section, albeit somewhat useful slop.
+This section is about actually figuring out, mechanically, how to get started with your coding harness of choice (how it works, what the commands do, what the key terminology is). Unfortunately I have not found a good introductory tutorial that is human-written... so there is some slop in this section, albeit somewhat useful slop.
 
 - ["How to Build an Agent", Thorsten Ball](https://ampcode.com/notes/how-to-build-an-agent)
-  - Not slop. Really great blog that shows the inner workings of an agentic coding harness (i.e., how you go from something like the original ChatGPT to something that can edit files and so on.)
-  - It helped me build a better mental model for what `Claude|Codex|...` do under the hood, and why it's important to keep threads short when possible (to avoid quadratic scaling.) Also just plain interesting. You should have an idea of what your tools know under the hood.
+  - Not slop. Really great blog that shows the inner workings of an agentic coding harness (i.e., how you go from something like the original ChatGPT to something that can edit files and so on).
+  - It helped me build a better mental model for what `Claude|Codex|...` do under the hood, and why it's important to keep threads short when possible (to avoid quadratic scaling). Also just plain interesting. You should have an idea of what your tools know under the hood.
 - ["Agentic Engineering Patterns", Simon Willison](https://simonwillison.net/guides/agentic-engineering-patterns/)
   - Not slop. That said, it's not a tutorial per se and hence doesn't fit perfectly in this section. But it has some useful content.
 - ["How I Use Every Claude Code Feature", Shrivu Shankar](https://blog.sshh.io/p/how-i-use-every-claude-code-feature)

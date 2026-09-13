@@ -80,7 +80,7 @@ $$
 
 For brevity write
 
-$$ \Delta n = \overbrace{(r + s + \cdots)}^{\text{tot. num of product moles}} - \underbrace{(a + b + \cdots)}_{\text{tot. num of reactant moles}} \tag{5} $$
+$$ \Delta n = \overbrace{(r + s + \cdots)}^{\text{tot. num of product moles}} - \underbrace{(a + b + \cdots)}\_{\text{tot. num of reactant moles}} \tag{5} $$
 
 such that the pressure factor in front is just ${P_0}^{\Delta n}$. Also abbreviate the constant factor as $k$,
 
@@ -128,7 +128,7 @@ $$
 $$
 
 In other words, $Q_1 < K_c$ if and only if there are fewer moles of gas on the product side. But
-$Q_1 < K_c$ also implies that the equilibrium position should shift rightward (favoring products.)
+$Q_1 < K_c$ also implies that the equilibrium position should shift rightward (favoring products).
 The analysis for the case in which there are fewer moles of gas on the reactant side is similar---
 the equilibrium position shifts leftward favoring reactants, which is what we wanted to show.
 

@@ -126,7 +126,7 @@ reconstructs the corresponding pattern and composing this with the `parse` funct
 property `stringify(parse(pattern)) == pattern`: that is, the parser should roundtrip. This
 property, while more complicated to check, is far more interesting---in some sense, it checks
 whether the parser's _interpretation_ of a pattern (as reported by `stringify(parse(pattern))`) is
-correct (matches the original `pattern`.) For instance, if we somehow forget to implement parsing
+correct (matches the original `pattern`). For instance, if we somehow forget to implement parsing
 for wildcards and treat `?` characters literally, `stringify(parse('?'))` would yield `\?`, which does not
 agree with the original input `?`.
 

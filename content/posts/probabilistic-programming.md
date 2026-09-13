@@ -177,7 +177,7 @@ $$
 
 In other words, we kill off the terms corresponding to the event $X = 0$, and then rescale to ensure that the probabilities still sum to 1[^3]. The general case is analogous: compute $G - G|_{X=0}$ and then rescale accordingly.
 
-[^3]: It's also possible to not rescale intermediate gfs during compilation (allowing unnormalized measures.) The original paper takes this approach, and in a production implementation one would certainly want this optimization, but for simplicity I'll work only with normalized measures in this post.
+[^3]: It's also possible to not rescale intermediate gfs during compilation (allowing unnormalized measures). The original paper takes this approach, and in a production implementation one would certainly want this optimization, but for simplicity I'll work only with normalized measures in this post.
 
 ```py
 def total_mass(e):
@@ -334,7 +334,7 @@ class Block: # { stmts... result } (result is the block's value, if any)
     result: Expr | None = None
 ```
 
-Then it suffices to recursively walk through the list of statements and call the rules defined earlier, maintaining a set of live variables and the current generating function as we go. Here's a heavily abridged version that illustrates the general idea and structure (again, gory details on the GitHub.)
+Then it suffices to recursively walk through the list of statements and call the rules defined earlier, maintaining a set of live variables and the current generating function as we go. Here's a heavily abridged version that illustrates the general idea and structure (again, gory details on the GitHub).
 
 ```py
 type GF = sp.Expr
@@ -445,7 +445,7 @@ In the end, I hope you enjoyed implementing this odd compiler and working throug
 
 The problem is a nightmare to do by hand without the following fact about Poisson distributions:
 
-**Lemma.** (Splitting property of Poisson distributions) Let $X \sim \mathrm{Poisson}(\lambda)$ be a Poisson distribution, and suppose that each event falls independently into one of $k$ bins with probability $p_1, \dots, p_k$ respectively ($p_1 + \dots + p_k = 1$.) Let $X_1, \dots, X_k$ be the number of events in each bin respectively. Then the $X_i$'s are independent and each follows a Poisson distribution $X_i \sim \mathrm{Poisson}(\lambda p_i)$ (i.e., $X$ _splits_ into multiple Poisson distribution.)
+**Lemma.** (Splitting property of Poisson distributions) Let $X \sim \mathrm{Poisson}(\lambda)$ be a Poisson distribution, and suppose that each event falls independently into one of $k$ bins with probability $p_1, \dots, p_k$ respectively ($p_1 + \dots + p_k = 1$). Let $X_1, \dots, X_k$ be the number of events in each bin respectively. Then the $X_i$'s are independent and each follows a Poisson distribution $X_i \sim \mathrm{Poisson}(\lambda p_i)$ (i.e., $X$ _splits_ into multiple Poisson distribution).
 
 **Proof.** Induct on the result of [this Math Stack Exchange post](https://math.stackexchange.com/q/1777427/1674765).
 

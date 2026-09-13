@@ -129,18 +129,32 @@ async function main() {
 
 	const files = await glob(join(__dirname, '../public/docs/**/index.html'));
 	await Promise.all(
-		files.map((filepath) => highlightFile(highlighter, filepath, { lightTheme: LIGHT_THEME, darkTheme: DARK_THEME }))
+		files.map((filepath) =>
+			highlightFile(highlighter, filepath, {
+				lightTheme: LIGHT_THEME,
+				darkTheme: DARK_THEME,
+			}),
+		),
 	);
 
-	console.log(`Highlighted ${files.length} files in ${Math.round(Date.now() - start)} ms`);
+	console.log(
+		`Highlighted ${files.length} files in ${Math.round(Date.now() - start)} ms`,
+	);
 }
 
 async function highlightFile(highlighter, filepath, { lightTheme, darkTheme }) {
 	const contents = await readFile(filepath, { encoding: 'utf-8' });
-	await writeFile(filepath, highlightHtmlContent(highlighter, contents, { lightTheme, darkTheme }));
+	await writeFile(
+		filepath,
+		highlightHtmlContent(highlighter, contents, { lightTheme, darkTheme }),
+	);
 }
 
-function highlightHtmlContent(highlighter, htmlContent, { lightTheme, darkTheme }) {
+function highlightHtmlContent(
+	highlighter,
+	htmlContent,
+	{ lightTheme, darkTheme },
+) {
 	const doc = parseDocument(htmlContent);
 	for (const preNode of findAll((e) => e.name === 'pre', doc.children)) {
 		const codeNode = findOne((e) => e.name === 'code', preNode.children);
@@ -208,7 +222,11 @@ so, for each output HTML file, we should
 The function `highlightHtmlContent`, which is the bulk of the build script, accomplishes this.
 
 ```js
-function highlightHtmlContent(highlighter, htmlContent, { lightTheme, darkTheme }) {
+function highlightHtmlContent(
+	highlighter,
+	htmlContent,
+	{ lightTheme, darkTheme },
+) {
 	const doc = parseDocument(htmlContent);
 	for (const preNode of findAll((e) => e.name === 'pre', doc.children)) {
 		const codeNode = findOne((e) => e.name === 'code', preNode.children);

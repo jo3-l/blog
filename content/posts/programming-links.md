@@ -14,7 +14,7 @@ the list is rather incomplete.
 
 - At some point I was obsessed with GOF-style design patterns and elaborate abstractions in general.
   These two posts finally pushed me to understand that design patterns are _tools_, not rules to
-  follow, and that sometimes the best abstraction is no abstraction (or a minimal one.)
+  follow, and that sometimes the best abstraction is no abstraction (or a minimal one).
 
 [Notes on Programming in C][pikestyle]
 

@@ -5,7 +5,7 @@ tags: [programming, algorithms]
 summary: An exposition of the bitap or shift-and exact string matching algorithm
 ---
 
-A classic problem is to find the first occurrence of a pattern $P$ in a string $T$. There are various classic algorithms to solve this problem efficiently, such as [Boyer-Moore](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm), [Knuth-Morris-Pratt](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm), and [Two-Way](https://en.wikipedia.org/wiki/Two-way_string-matching_algorithm). In this post I want to provide an exposition of a less well-known algorithm, the _bitap_ or _shift-and_ algorithm[^1], that runs efficiently when the pattern $P$ is relatively short (of length less than the width of a machine word.) Despite its constraints, I like it a lot because it is simple both to understand and to implement, relatively efficient for short strings, and uses bit operations in a particularly elegant fashion.
+A classic problem is to find the first occurrence of a pattern $P$ in a string $T$. There are various classic algorithms to solve this problem efficiently, such as [Boyer-Moore](https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string-search_algorithm), [Knuth-Morris-Pratt](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm), and [Two-Way](https://en.wikipedia.org/wiki/Two-way_string-matching_algorithm). In this post I want to provide an exposition of a less well-known algorithm, the _bitap_ or _shift-and_ algorithm[^1], that runs efficiently when the pattern $P$ is relatively short (of length less than the width of a machine word). Despite its constraints, I like it a lot because it is simple both to understand and to implement, relatively efficient for short strings, and uses bit operations in a particularly elegant fashion.
 
 [^1]: I should note that I'm referring to the _exact_ string-matching algorithm here. "bitap algorithm" can also mean a variant that supports fuzzy matching in terms of Levenshtein distance, which is cool but not the subject of this post.
 
@@ -108,7 +108,7 @@ How can we improve this algorithm further? One observation we can make is that t
 
 ### Bit manipulation
 
-Indeed, if $P$ is relatively short, say `len(P) < 64`, then we can pack the set of active states into a single integer (understood as a 64-bit bitset.) So, for instance, if `active = {1, 2, 7}`, then
+Indeed, if $P$ is relatively short, say `len(P) < 64`, then we can pack the set of active states into a single integer (understood as a 64-bit bitset). So, for instance, if `active = {1, 2, 7}`, then
 
 ```
 active_bitset = 0b1000_0110
@@ -157,7 +157,7 @@ func matchBitap(T, P string) int {
 	var validMask [256]uint64 // table of bitmasks, indexed by byte
 	for j := range len(P) {
 		// If we see c, then we are permitted to advance to state j+1
-		// (assuming we were at state j before.)
+		// (assuming we were at state j before).
 		c := P[j]
 		validMask[c] |= 1 << (j + 1)
 	}
@@ -184,7 +184,7 @@ I remark that the typical presentation has a slightly different index convention
 
 ## So what?
 
-As mentioned at the start, the bitap algorithm only really shines when the pattern is relatively short: though it can theoretically be generalized to longer patterns (by using multi-word bitsets), the performance gains start diminishing. Moreover, asymptotically, when the length of the pattern is bounded by a constant, the runtime of bitap is identical to that of the naive brute-force algorithm (both are linear in the length of the text $T$.) And practically, it may even perform worse than the naive algorithm in a one-off test due to the precomputation required.
+As mentioned at the start, the bitap algorithm only really shines when the pattern is relatively short: though it can theoretically be generalized to longer patterns (by using multi-word bitsets), the performance gains start diminishing. Moreover, asymptotically, when the length of the pattern is bounded by a constant, the runtime of bitap is identical to that of the naive brute-force algorithm (both are linear in the length of the text $T$). And practically, it may even perform worse than the naive algorithm in a one-off test due to the precomputation required.
 
 In view of these limitations, why do I like bitap at all? I think that it is conceptually very elegant and simple to derive from the naive algorithm--as described above, it simply maintains a set of active states as it steps through the input string, using bit operations to go fast. Though I've also studied Boyer-Moore and KMP in detail, it takes me quite some time to derive them from scratch[^2], whereas bitap is very easily derived, since to me it is just the naive algorithm dressed up differently. It is my hope that you feel the same way after this blog post.
 

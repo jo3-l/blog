@@ -59,4 +59,4 @@ Other than the main YAGPDB project, I have also worked on a [language server and
 
 ## Contact
 
-I'm happy to chat! You can reach me through `jliu1602 [at] gmail.com` or via Discord (username `jo3_l`.)
+I'm happy to chat! You can reach me through `jliu1602 [at] gmail.com` or via Discord (username `jo3_l`).
