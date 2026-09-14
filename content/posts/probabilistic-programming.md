@@ -1,7 +1,7 @@
 ---
 title: Nuking stats problems with a probabilistic programming language
 date: '2026-09-12'
-summary: A compiler for a probabilistic programming language using probability generating functions in 200 lines of code, following "Compiling with Generating Functions" (Li and Zhang)
+summary: Writing a compiler for a probabilistic programming language using probability generating functions in 200 lines of Python, following "Compiling with Generating Functions" (Li and Zhang)
 tags: [math, programming]
 ---
 
