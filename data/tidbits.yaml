@@ -4,6 +4,12 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: reading-code-ai
+  category: programming
+  date: 2026-09-14
+  text: |
+    A reflection on the role of code review in the age of LLMs: ["Do You Still Read the Code?"](https://zanlib.dev/blog/do-you-still-read-the-code/)
+
 - id: mediocre-mathematicians
   category: math
   date: 2026-09-11
