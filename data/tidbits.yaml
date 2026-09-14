@@ -4,6 +4,14 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: fibonacci-origins
+  category: math
+  date: 2026-09-14
+  text: |
+    The Fibonacci sequence was originally used to model the growth of (idealized) rabbit populations:
+    > A newly born breeding pair of rabbits are put in a field; each breeding pair mates at the age of one month, and at the end of their second month they always produce another pair of rabbits. How many pairs of rabbits are there after a year?
+    ([Wikipedia](https://en.wikipedia.org/wiki/Fibonacci_sequence#Europe))
+
 - id: crit-review
   category: programming
   date: 2026-09-14
