@@ -4,6 +4,12 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: crit-review
+  category: programming
+  date: 2026-09-14
+  text: |
+    [Crit](https://crit.md/) is a local UI for reviewing LLM-generated output. At a glance it looks more polished (less slop) than other tools of its kind, so I'm giving it a try.
+
 - id: reading-code-ai
   category: programming
   date: 2026-09-14
