@@ -4,6 +4,12 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: hard-problems
+  category: programming
+  date: 2026-09-15
+  text: |
+    ["You don't need to work on hard problems"](https://www.benkuhn.net/hard/)
+
 - id: fibonacci-origins
   category: math
   date: 2026-09-14
