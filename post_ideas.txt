@@ -1,0 +1,24 @@
+- proof that (1) a hom f : Z^\infty -> Z vanishing on (1, 0, ...), (0, 1, ...) etc is necessarily identically zero,
+  but that (2) such a hom f : Z^\infty -> Q is not necessarily so
+	- low-machinery + high-machinery proof of both
+		(1) direct proof using bezout and infinitely divisible => 0 / baer's result on Hom(Z^\infty, Z)
+		(2) direct construction with Zorn's and fancy linalg result (or something)
+
+- software architecture and code review in the age of LLMs
+	recently, I've been spending a lot of time trying to determine which principles of software architecture I care
+	about most
+
+	- low coupling
+	- different subsystems should be as independent as possible
+	- think about dependency graph of your subsystems. nodes that are at the center of the graph (lots of dependencies)
+		ought to have extra human attention, review, and care put into them. a poor design or interface infects other code
+	- enable one to reason about one subsystem at a time without worrying about its implications for others
+	- high cohesion
+	- keep related functionality and components together. locality of behavior
+	- vertical slice architecture/feature-based design
+	- when a change needs to be made, ensure that it's easy to reason about the locations in the code that need to be changed
+	- vibecoded projects: find myself hesistant to make changes myself because files are spread all over the place;
+		to execute a single conceptual change requires finding and touching many files
+
+	to attempt to summarize these two as one, together they minimize the amount of context that one needs to make changes confidently.
+	minimize the blast radius of a mistake
