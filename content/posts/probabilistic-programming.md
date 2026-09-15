@@ -55,7 +55,7 @@ First, let's review the definition of probability generating functions (pgfs). I
 Let $X$ be a discrete random variable with support in the non-negative integers $\{0, 1, ...\}$. The **probability generating function (pgf)** of $X$, denoted by $G_X(x)$, is defined by the series in which the coefficient of $x^k$ is the probability $P[X = k]$. That is,
 $$ G_X (x) = P[X=0] + P[X=1]x^1 + P[X=2]x^2 + \cdots = \sum_{k=0}^\infty P[X = k]x^k. $$
 
-_Example._ The pgf of a biased coin $X \sim \mathrm{Bernoulli}(0.7)$ is $0.3x^0 + 0.7x^1$.
+**Example.** The pgf of a biased coin $X \sim \mathrm{Bernoulli}(0.7)$ is $0.3x^0 + 0.7x^1$.
 
 The definition generalizes readily to multivariate random variables. Indeed, given a multivariate random variable $\mathbf{X} = (X_1, ..., X_n)$, the **multivariate probability generating function** of $\mathbf{X}$ is the series in $n$ variables $x_1, ..., x_n$ in which the coefficient of $x_1^{k_1} \cdots x_n^{k_n}$ is the joint probability $P[X_1 = k_1, \dots, X_n = k_n]$. That is,
 
@@ -125,7 +125,7 @@ def const(y, c):
     return lambda e: e * y**c
 ```
 
-Using these rules, we can already express some (completely trivial) statistical models. Let's write a short helper that runs a sequence of transformers and returns the resulting generating function:
+**Example.** Using these rules, we can already express some (completely trivial) statistical models. Let's write a short helper that runs a sequence of transformers and returns the resulting generating function:
 ```py
 def to_gf(*ts):
     # start with the trivial gf representing empty statistical model with no variables,
@@ -141,7 +141,6 @@ The following snippet effectively declares two independent variables $X \sim \ma
 ```py
 >>> x, y = sp.symbols('x y')
 >>> to_gf(bernoulli(x, 0.5), bernoulli(y, 0.3))
->>> # x <- bernoulli(0.5), y <- bernoulli(0.3)
 (0.5*x + 0.5)*(0.3*y + 0.7)
 ```
 
