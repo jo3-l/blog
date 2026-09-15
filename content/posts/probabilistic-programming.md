@@ -94,6 +94,11 @@ To do so, we require two facts about pgfs:
 - the pgf of a $Y \sim\mathrm{Bernoulli}(\theta)$ distribution is $P[Y=0] + P[Y=1]y = (1-\theta) + \theta y$;
 - if $X$ and $Y$ are independent with pgfs $G_X$ and $G_Y$ respectively, then the pgf of $(X, Y)$ is $G_X(x) G_Y (y)$.
 
+    **Proof.** I'll give a proof of this second claim that illustrates a useful general formulation of pgfs. One can check that, by definition,
+    the pgf of $X$ is $G_X (x) = E_X [x^X]$, the pgf of $Y$ is $G_Y (y) = E_Y [y^Y]$, and the joint pgf of $(X, Y)$ is
+    $G_{XY} (x, y) = E[x^X y^Y]$. Since $X$ and $Y$ are independent, the last expectation splits as $G_{XY} (x, y) = E[x^X] E[y^Y]$.
+    The result follows. $\square$
+
 Applying these facts in our setting, since `y` is a new random variable independent from all the existing variables in the base statistical model `e`, the new gf `e'` is just given by multiplying `e` with the pgf of `y`. This gives rise to the following implementation of `bernoulli(y, theta)`, which returns a function that transforms the gf in the correct fashion:
 
 ```py
@@ -104,17 +109,7 @@ def bernoulli(y, theta): # y is a sympy variable
     return lambda e: e * (1 - theta + theta * y)
 ```
 
-We can implement an analogus rule for declaring a variable following a Poisson distribution. If $Y \sim \mathrm{Poisson}(\lambda)$, a direct computation shows that the pgf $G_Y (y) = \exp(\lambda (y - 1))$:
-
-<details>
-<summary>Proof</summary>
-
-Let $Y \sim \mathrm{Poisson}(\lambda)$. Recalling that $P[Y = k] = \lambda^k e^{-\lambda}/k!$, we see that
-$$ G_Y (y) = \sum_{k \ge 0} P[Y = k]y^k = \sum_{k \ge 0} \frac{\lambda^k e^{-\lambda}}{k!} y^k = e^{-\lambda} \sum_{k \ge 0} \frac{(\lambda y)^k}{k!} $$
-whence the assertion, by the power series definition of $\exp$. $\square$
-
-</details>
-
+We can implement an analogus rule for declaring a variable following a Poisson distribution. If $Y \sim \mathrm{Poisson}(\lambda)$, a direct computation shows that the pgf $G_Y (y) = \exp(\lambda (y - 1))$, and thus
 
 ```py
 def poisson(y, lambda_):
@@ -241,7 +236,7 @@ We are, in fact, nearly finished the implementation of the language rules necess
 X <- poisson(10)
 Y <- sum X { bernoulli(0.5) }
 ```
-declares $Y = B_1 + \cdots + B_N$, where $B_i \sim \mathrm{Bernoulli}(0.5)$ iid and $X \sim \mathrm{Poisson}(10)$. In particular $Y \mid X \sim \mathrm{Binomial}(X, 0.5)$.
+declares $Y = B_1 + \cdots + B_X$, where $B_i \sim \mathrm{Bernoulli}(0.5)$ iid and $X \sim \mathrm{Poisson}(10)$. In particular $Y \mid X \sim \mathrm{Binomial}(X, 0.5)$.
 
 As usual, for intuition, let's work out the joint pgf of $(X, Y)$ in this case. We first recall the following easy results:
 - if $X$ and $Y$ are independent, then the pgf of $X + Y$ is $G(x) = G_X (x) G_Y (x)$;
