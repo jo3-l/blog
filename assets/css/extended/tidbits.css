@@ -96,6 +96,6 @@
 	opacity: 1;
 }
 
-.tidbit-body > p:last-child {
-	margin-bottom: 0;
+.post-content .tidbit-body > :last-child {
+	margin-bottom: 0 !important;
 }
