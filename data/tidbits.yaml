@@ -4,6 +4,12 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: google-testing-blog
+  category: programming
+  date: 2026-09-16
+  text: |
+    For some time I've been looking for a blog post I once read about incidental duplication. LLM-assisted search helped me finally locate it on the [Google Testing Blog](https://testing.googleblog.com/2024/05/dont-dry-your-code-prematurely.html), which contains many more nice tips. Highly recommend!
+
 - id: hard-problems
   category: programming
   date: 2026-09-15
