@@ -16,6 +16,13 @@ the list is rather incomplete.
   These two posts finally pushed me to understand that design patterns are _tools_, not rules to
   follow, and that sometimes the best abstraction is no abstraction (or a minimal one).
 
+[Don't DRY Your Code Prematurely][premature-dry]
+
+- When you see two pieces of code that superficially looks the same, don't rush to deduplicate; in particular, ask yourself
+  whether the duplication is merely incidental.
+
+  > When designing abstractions, do not prematurely couple behaviors that may evolve separately in the longer term.
+
 [Notes on Programming in C][pikestyle]
 
 - Among other interesting notes about data-oriented design, there's the observation that simple
@@ -41,6 +48,7 @@ the list is rather incomplete.
 
 [wrong-abstraction]: https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction
 [goodbye-clean-code]: https://overreacted.io/goodbye-clean-code/
+[premature-dry]: https://testing.googleblog.com/2024/05/dont-dry-your-code-prematurely.html
 [pikestyle]: http://doc.cat-v.org/bell_labs/pikestyle
 [names]: https://research.swtch.com/names
 [ddevault-comments]: https://drewdevault.com/2023/03/09/2023-03-09-Comment-or-no-comment.html
