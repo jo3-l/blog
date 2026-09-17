@@ -4,6 +4,13 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: code-notes-101
+  category: programming
+  date: 2026-09-16
+  text: |
+    Let $P \in \mathbb{C}[z]$ be a complex polynomial. Then all the zeros of $P'$ lie in the convex hull of the roots of $P$.
+    ([Gauss-Lucas theorem](https://en.wikipedia.org/wiki/Gauss%E2%80%93Lucas_theorem))
+
 - id: google-testing-blog
   category: programming
   date: 2026-09-16
