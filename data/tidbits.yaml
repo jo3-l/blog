@@ -4,6 +4,12 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: jules-jacobs-website
+  category: programming
+  date: 2026-09-22
+  text: |
+    [Jules Jacobs' website](https://julesjacobs.com/) has a bunch of interesting notes on math and CS. I've enjoyed reading every single one I've clicked on so far.
+
 - id: gauss-lucas 
   category: math
   date: 2026-09-16
