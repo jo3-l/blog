@@ -4,6 +4,13 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: proofs-am-gm
+  category: math
+  date: 2026-09-26
+  text: |
+    A cute proof that the harmonic series diverges: recall Bernoulli's inequality $e^x \ge 1+x$; letting $x=1/k$ one gets $e^{1/k} \ge \frac{k+1}{k}$. Now take the product over $k = 1, 2, \dots, n$ and telescope to get $e^{H_n} \ge n+1$. Hence $H_n \ge \log(n+1)$ and we have divergence.
+    ([Math Stack Exchange](https://math.stackexchange.com/q/691807/1674765))
+
 - id: jules-jacobs-website
   category: programming
   date: 2026-09-22
