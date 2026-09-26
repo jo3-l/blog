@@ -4,12 +4,13 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
-- id: proofs-am-gm
+- id: harmonic-series-divergence
   category: math
   date: 2026-09-26
   text: |
-    A cute proof that the harmonic series diverges: recall Bernoulli's inequality $e^x \ge 1+x$; letting $x=1/k$ one gets $e^{1/k} \ge \frac{k+1}{k}$. Now take the product over $k = 1, 2, \dots, n$ and telescope to get $e^{H_n} \ge n+1$. Hence $H_n \ge \log(n+1)$ and we have divergence.
-    ([Math Stack Exchange](https://math.stackexchange.com/q/691807/1674765))
+    A cute proof that the harmonic series diverges: recall the inequality $e^x \ge 1+x$; setting $x=1/k$ one gets $e^{1/k} \ge \frac{k+1}{k}$. Now take the product over $k = 1, 2, \dots, n$ and telescope to obtain $e^{H_n} \ge n+1$. It follows that $H_n \ge \log(n+1)$,
+    which diverges as claimed.
+    ([Math Stack Exchange](https://math.stackexchange.com/questions/691807/proofs-of-am-gm-inequality#comment1715806_691893))
 
 - id: jules-jacobs-website
   category: programming
@@ -17,7 +18,7 @@
   text: |
     [Jules Jacobs' website](https://julesjacobs.com/) has a bunch of interesting notes on math and CS. I've enjoyed reading every single one I've clicked on so far.
 
-- id: gauss-lucas 
+- id: gauss-lucas
   category: math
   date: 2026-09-16
   text: |
