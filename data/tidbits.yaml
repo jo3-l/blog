@@ -4,6 +4,13 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: graham-rearrangement
+  category: math
+  date: 2026-09-30
+  text: |
+    Graham's rearrangement conjecture states that for any subset of $\mathbb{Z}/p\mathbb{Z} \setminus \{0\}$, there exists a way to order the subset such that the partial sums are all distinct mod $p$. This conjecture was recently proved for sufficiently large primes.
+    ([Quanta](https://www.quantamagazine.org/mathematicians-harness-randomness-to-crack-a-55-year-old-conjecture-20260928/))
+
 - id: harmonic-series-divergence
   category: math
   date: 2026-09-26
