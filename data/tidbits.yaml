@@ -4,6 +4,12 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: fibonacci-test
+  category: math
+  date: 2026-10-06
+  text: |
+    A positive integer $n$ is a Fibonacci number if and only if either $5n^2 + 4$ or $5n^2 - 4$ is a perfect square. (See the section "Fibonacci is a Square" in [this 1972 issue of the Fibonacci Quarterly](https://5010.mathed.usu.edu/Fall2017/DNielsen/proofs.pdf).)
+
 - id: graham-rearrangement
   category: math
   date: 2026-09-30
