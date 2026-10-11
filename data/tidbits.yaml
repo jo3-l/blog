@@ -4,6 +4,15 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: eudoxus-reals
+  category: math
+  date: 2026-10-11
+  text: |
+    A fun construction of the reals: define a function $f : \mathbb{Z}\to\mathbb{Z}$ to be an _almost homomorphism_ if the set $\{f(a+b)-f(a)-f(b) :a,b \in \mathbb{Z}\}$ is finite. (This set is exactly $\{0\}$ when $f$ is
+    a homomorphism, hence the name.) Let $S \subseteq \mathbb{Z}^\mathbb{Z}$ be the set of almost homomorphisms, and let $B \subseteq \mathbb{Z}^\mathbb{Z}$ be the set of bounded functions.
+
+    Then the quotient $S/B$, equipped with pointwise addition and composition as multiplication, is isomorphic to the real numbers. (["The Eudoxus Real Numbers"](https://arxiv.org/abs/math/0405454))
+
 - id: fibonacci-test
   category: math
   date: 2026-10-06
