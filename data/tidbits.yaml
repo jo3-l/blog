@@ -4,6 +4,18 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: go-inference-weird
+  category: programming
+  date: 2026-10-16
+  text: |
+    In Go, type inference of type parameters doesn't traverse parens.
+    ```go
+    func id[T any](x T) T { return x }
+    var _ func(int) int = id    // infers T=int
+    var _ func(int) int = (id)  // type error
+    ```
+    (I found the example above in [this GitHub issue](https://github.com/golang/go/issues/82170).)
+
 - id: eudoxus-reals
   category: math
   date: 2026-10-11
