@@ -1,6 +1,6 @@
 :root {
-	/* slate; 8.0:1 on --theme. Links in text keep underlines since it is close to body text. */
-	--accent: #3b5368;
+	/* slate; 6.8:1 on --theme. Links in text keep underlines since it is close to body text. */
+	--accent: #425d75;
 	--code-block-bg: var(--theme);
 	--main-width: 768px;
 	/* align the header with the content column */

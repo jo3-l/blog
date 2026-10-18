@@ -57,9 +57,9 @@ I'll mostly give intuition, definitions, and statements of results instead of pr
 
 ## Regular expressions revisited
 
-To start, we should clarify what we mean by a regular expression: only 'basic' features such as sequencing, alternation, and repetition ($*$) are permitted; fancy stuff like capturing groups, backreferences, and the like are all out of scope. We define regular expressions formally as a recursive datatype.
+To start, we should clarify what we mean by a regular expression: only basic features such as sequencing, alternation, and repetition ($*$) are permitted; fancy stuff like capturing groups, backreferences, and the like are all out of scope. Formally:
 
-> **Definition (regular expression).** A _regular expression_ (regexp) is one of the following:
+> **Definition (regular expression).** A _regular expression_ (regexp) is a recursive datatype given by one of the following cases:
 > 
 > - $\mathbf{1}$, matching the empty string
 > - a literal symbol $c \in \Sigma$, where $\Sigma$ is a fixed alphabet of valid symbols
@@ -71,9 +71,9 @@ To start, we should clarify what we mean by a regular expression: only 'basic' f
 
 We declare two regexps to be equal when they match the same set of strings. Formally, we define recursively a function $\mathcal{L}(r)$ that returns the set of strings that $r$ matches: $\mathcal{L}(\mathbf{1}) = \{\epsilon\}$, $\mathcal{L}(r_1 + r_2) = \mathcal{L}(r_1) \cup \mathcal{L(r_2)}$, etc. (What should the definition for $\mathcal{L}(r_1 \cdot r_2)$ be?[^2]) Two regexps are then equal if $\mathcal{L}(r_1) = \mathcal{L}(r_2)$.
 
-[^2]: A bit of pondering leads to the definition $\{s_1 s_2 : s_1 \in \mathcal{L}(r_1), s_2 \in \mathcal{L}(r_2)\}$, where $s_1 s_2$ denotes the concatenation of strings $s_1$ and $s_2$.
+[^2]: After a bit of pondering one arrives at the definition $\{s_1 s_2 : s_1 \in \mathcal{L}(r_1), s_2 \in \mathcal{L}(r_2)\}$, where $s_1 s_2$ denotes the concatenation of strings $s_1$ and $s_2$.
 
-As you have probably gleaned, the object $\mathbf{1}$ and the operations $+$, $\cdot$ behave somewhat like their real number counterparts. Here's a non-exhaustive list of nice properties:
+As you have probably inferred, the object $\mathbf{1}$ and the operations $+$, $\cdot$ behave somewhat like their real number counterparts. Here's a non-exhaustive list of nice properties:
 
 - addition is commutative: $a + b = b + a$, since both match either $b$ or $a$.
 - $\mathbf{1}$ is the identity with respect to multiplication: $\mathbf{1} \cdot a = a$, since the left side means "match $\mathbf{1}$, then match $a$", and $\mathbf{1}$ matches the empty string.

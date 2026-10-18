@@ -29,7 +29,7 @@ Besides addressing a whole bunch of user suggestions and reported bugs, some of 
 - and migrating multiple legacy plugins away from GORM to SQLBoiler, impacting several hundred
   million database rows.
 
-Other than the main YAGPDB project, I have also worked on a [language server and VS Code extension](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's custom scripting language. As part of this project, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan, a [symbol resolution algorithm](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope), and a [Wadler-style pretty printer](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-format). The last subsystem was developed in collaboration with GPT-5.6 Sol as an experiment with agentic development.
+Other than the main YAGPDB project, I have also worked on a [language server and VS Code extension](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's custom scripting language. As part of this project, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan, a [symbol resolution algorithm](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope), and a [Wadler-style pretty printer](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-format).
 
 ### Other open-source projects
 
@@ -54,9 +54,9 @@ Other than the main YAGPDB project, I have also worked on a [language server and
 
 ### Professional experience
 
-- In Summer 2025, I interned at TD Bank as a software developer on the Enterprise Innovation team, where I prototyped an open banking integration using Plaid.
-- In Summer 2026, I interned at Bloomberg L.P. as a software engineer on Bloomberg Vault, where I designed and shipped a distributed concurrency limiter for a high-volume Airflow pipeline.
+- In Summer 2026, I interned at Bloomberg L.P. in the compliance engineering team, where I built a distributed concurrency limiter for a high-volume Airflow data pipeline.
+- In Summer 2025, I interned at TD Bank in the enterprise innovation team, where I prototyped an open banking integration using Plaid.
 
 ## Contact
 
-I'm happy to chat! You can reach me through `jliu1602 [at] gmail.com` or via Discord (username `jo3_l`).
+I'm happy to chat! You can reach me at jliu1602 [at] gmail.com or via Discord (username `jo3_l`).

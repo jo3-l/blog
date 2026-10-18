@@ -16,7 +16,8 @@
 body {
 	font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, "Helvetica Neue", sans-serif;
-	font-size: 17px;
+	/* rem so the user's browser font-size preference still applies */
+	font-size: 1.0625rem; /* 17px */
 }
 
 code,
@@ -34,7 +35,7 @@ pre {
 }
 
 .post-title {
-	font-size: 36px;
+	font-size: 2.25rem;
 	letter-spacing: -0.01em;
 }
 
@@ -43,19 +44,19 @@ pre {
 }
 
 .md-content h1 {
-	font-size: 36px;
+	font-size: 2.25rem;
 }
 
 .md-content h2 {
-	font-size: 26px;
+	font-size: 1.625rem;
 }
 
 .md-content h3 {
-	font-size: 20px;
+	font-size: 1.25rem;
 }
 
 .md-content h4 {
-	font-size: 17px;
+	font-size: 1.0625rem;
 }
 
 .highlight pre.chroma code {
@@ -70,6 +71,10 @@ figure.center img {
 	position: relative;
 	display: inline-flex;
 	padding: 10px;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
 	cursor: pointer;
 }
 
@@ -118,7 +123,9 @@ figure.center img {
 	border-top-color: var(--entry);
 }
 
-.discord-container:hover .tooltip {
+/* :focus rather than :focus-visible so a tap on touch screens also shows it */
+.discord-container:hover .tooltip,
+.discord-container:focus .tooltip {
 	opacity: 1;
 	visibility: visible;
 }
@@ -163,7 +170,14 @@ figure.center img {
 	font-weight: 600;
 }
 
-/* PaperMod tints list pages (home, tags, search) grey in light mode; use the
+/* post tags, at the end of the meta line (see layouts/_default/single.html);
+   the theme's dotted underline turns solid on hover */
+.post-meta-tags a:hover {
+	color: var(--primary);
+	text-decoration-style: solid;
+}
+
+/* PaperMod tints list pages (home, search) grey in light mode; use the
    same background as every other page */
 .list {
 	background: var(--theme);
@@ -177,26 +191,34 @@ figure.center img {
 }
 
 .home-info .entry-header h1 {
-	font-size: 36px;
+	font-size: 2.25rem;
 	font-weight: 600;
 	letter-spacing: -0.01em;
 }
 
 .home-info .entry-content {
-	font-size: 17px;
+	font-size: 1.0625rem;
 	line-height: 1.7;
 	color: var(--content);
 }
 
+/* the heading doubles as the divider between the intro and the posts: an
+   underline matching the codeblock borders, with the list hanging off it */
+.home-posts {
+	margin-top: 36px;
+}
+
 .home-posts-title {
-	margin-bottom: 20px;
-	font-size: 20px;
+	margin-bottom: 18px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--tertiary);
+	font-size: 1.25rem;
 	font-weight: 600;
 }
 
 .year-label {
 	margin-bottom: 6px;
-	font-size: 13px;
+	font-size: 0.8125rem;
 	font-weight: 600;
 	letter-spacing: 0.06em;
 	color: var(--secondary);
@@ -209,16 +231,14 @@ figure.center img {
 .home-entry {
 	position: relative;
 	padding: 22px 0;
-	border-top: 1px solid var(--border);
 }
 
 .home-entry:first-of-type {
 	padding-top: 4px;
-	border-top: 0;
 }
 
 .home-entry-title {
-	font-size: 22px;
+	font-size: 1.375rem;
 	line-height: 1.3;
 	font-weight: 500;
 	color: var(--accent);
@@ -233,17 +253,18 @@ figure.center img {
 
 .home-entry-summary {
 	margin: 8px 0;
-	font-size: 16px;
+	font-size: 1rem;
 	line-height: 1.6;
 	color: var(--content);
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
+	line-clamp: 2;
 	overflow: hidden;
 }
 
 .home-entry-meta {
-	font-size: 13px;
+	font-size: 0.8125rem;
 	color: var(--secondary);
 	font-variant-numeric: tabular-nums;
 }
@@ -325,13 +346,13 @@ figure.center img {
 		overflow-y: auto;
 		overscroll-behavior: contain;
 		scrollbar-width: thin;
-		font-size: 14px;
+		font-size: 0.875rem;
 		line-height: 1.45;
 	}
 
 	.toc-sidebar-title {
 		margin-bottom: 0.75rem;
-		font-size: 12px;
+		font-size: 0.75rem;
 		font-weight: 600;
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
@@ -363,7 +384,7 @@ figure.center img {
 
 	.toc-sidebar ul ul a {
 		padding-inline-start: 1.5rem;
-		font-size: 13px;
+		font-size: 0.8125rem;
 	}
 
 	.toc-sidebar ul ul ul a {
@@ -378,5 +399,60 @@ figure.center img {
 	.toc-sidebar a.active {
 		color: var(--accent);
 		border-inline-start-color: var(--accent);
+	}
+}
+
+/* phones: PaperMod drops --gap to 14px at this breakpoint, which leaves text
+   nearly touching the screen edge; restore the 24px gutter (the usual phone
+   margin, as in Material's layout grid) and step the type scale down */
+@media screen and (max-width: 768px) {
+	:root {
+		--gap: 24px;
+	}
+
+	body {
+		font-size: 1rem;
+	}
+
+	.post-content {
+		line-height: 1.65;
+	}
+
+	.post-title,
+	.md-content h1,
+	.home-info .entry-header h1 {
+		font-size: 1.75rem;
+	}
+
+	.md-content h2 {
+		font-size: 1.375rem;
+	}
+
+	.md-content h3 {
+		font-size: 1.125rem;
+	}
+
+	.md-content h4 {
+		font-size: 1rem;
+	}
+
+	.home-info {
+		margin: 24px 0;
+	}
+
+	.home-info .entry-content {
+		font-size: 1rem;
+	}
+
+	.home-entry {
+		padding: 18px 0;
+	}
+
+	.home-entry-title {
+		font-size: 1.1875rem;
+	}
+
+	.home-entry-summary {
+		font-size: 0.9375rem;
 	}
 }

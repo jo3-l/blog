@@ -9,13 +9,11 @@ params:
   homeInfoParams:
     title: Hi, I'm Joseph.
     content: |
-      I'm a third-year undergraduate student at the University of Waterloo, double majoring
-      in computer science and pure mathematics. Welcome to my small slice of the web :) Here, I
-      write about math, programming, and other things that happen to pique my interest. In addition
-      to longer-form blogs, I also post shorter notes and links to pieces I liked on the [tidbits page](/tidbits).
+      I study computer science and pure mathematics at the University of Waterloo. Welcome to my small slice of the web :)
+      In addition to longer-form blogs, I also post shorter notes and links to pieces I enjoyed on the [tidbits page](/tidbits).
 
-      If you would like to know more about me or my projects, head over to my [about page](/about).
-      To contact me, email me at jliu1602 [at] gmail.com; I am also active on Discord as jo3_l.
+      Perhaps you'd like to learn a bit more [about me](/about). To get in touch, email me at jliu1602 [at] gmail.com;
+      I am also active on Discord as jo3_l.
 
   title: Joe's Blog
   author: Joseph Liu
@@ -36,7 +34,6 @@ params:
     - name: linkedin
       url: https://www.linkedin.com/in/joseph-h-liu/
   showCodeCopyButtons: true
-  showWordCount: true
 
 cascade:
   - target:
@@ -58,10 +55,6 @@ menu:
       name: Tidbits
       url: /tidbits/
       weight: 3
-    - identifier: tags
-      name: Tags
-      url: /tags/
-      weight: 4
 
 markup:
   highlight:
