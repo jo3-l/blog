@@ -11,8 +11,12 @@
 {{ if $hasMath }}
 	{{ partial "katex.html" . }}
 {{ end }}
+{{ if and .IsPage (.Param "ShowToc") (strings.Contains .TableOfContents "<li>") }}
+	{{ $toc := resources.Get "js/toc.js" | js.Build (dict "minify" true) | fingerprint }}
+	<script defer src="{{ $toc.RelPermalink }}" integrity="{{ $toc.Data.Integrity }}"></script>
+{{ end }}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <script data-goatcounter="https://jo3-l.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

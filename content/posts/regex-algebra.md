@@ -59,13 +59,13 @@ I'll mostly give intuition, definitions, and statements of results instead of pr
 
 To start, we should clarify what we mean by a regular expression: only 'basic' features such as sequencing, alternation, and repetition (`*`) are permitted; fancy stuff like capturing groups, backreferences, and the like are all out of scope. We define regular expressions formally as a recursive datatype.
 
-**Definition.** A _regular expression_ (regexp) is one of the following:
-
-- $\mathbf{1}$, matching the empty string
-- a literal symbol $c \in \Sigma$, where $\Sigma$ is a fixed alphabet of valid symbols
-- a sequence $r_1 \cdot r_2$ of two smaller regexps $r_1, r_2$; often we will omit the $\cdot$ symbol and just juxtapose the regexps
-- an alternation $r_1 + r_2$
-- or a repetition $r^*$.
+> **Definition.** A _regular expression_ (regexp) is one of the following:
+> 
+> - $\mathbf{1}$, matching the empty string
+> - a literal symbol $c \in \Sigma$, where $\Sigma$ is a fixed alphabet of valid symbols
+> - a sequence $r_1 \cdot r_2$ of two smaller regexps $r_1, r_2$; often we will omit the $\cdot$ symbol and just juxtapose the regexps
+> - an alternation $r_1 + r_2$
+> - or a repetition $r^*$.
 
 (There's in fact one more case, which we'll get to later---in particular there is also such as a thing as $\mathbf{0}$; see the first paragraph of the next section.)
 

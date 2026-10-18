@@ -1,0 +1,36 @@
+{{- /*
+	Overrides PaperMod's list.html for the home page only: the intro, then every
+	post as a flat list grouped by year. Headings nest h1 (intro) > h2 (Posts) >
+	h3 (year) > h4 (post title); their sizes come from custom.css.
+*/ -}}
+{{- define "main" }}
+{{- partial "home_info.html" . }}
+
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true" }}
+{{- with $pages }}
+<section class="home-posts" aria-labelledby="home-posts-title">
+	<h2 id="home-posts-title" class="home-posts-title">Posts</h2>
+	{{- range .GroupByDate "2006" }}
+	<section class="year-group" aria-labelledby="year-{{ .Key }}">
+		<h3 id="year-{{ .Key }}" class="year-label">{{ .Key }}</h3>
+		{{- range .Pages }}
+		<article class="home-entry">
+			<h4 class="home-entry-title">
+				{{- .Title }}
+				{{- if .Draft }} <span class="entry-hint" title="Draft">(draft)</span>{{ end -}}
+			</h4>
+			{{- if ne (.Param "hideSummary") true }}
+			<p class="home-entry-summary">{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}…{{ end }}</p>
+			{{- end }}
+			<footer class="home-entry-meta">
+				<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 Jan" }}</time>&nbsp;·&nbsp;{{ .ReadingTime }} min read
+			</footer>
+			<a class="entry-link" aria-label="{{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+		</article>
+		{{- end }}
+	</section>
+	{{- end }}
+</section>
+{{- end }}
+{{- end }}

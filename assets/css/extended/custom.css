@@ -11,14 +11,51 @@
 	font-size: 1.1em !important;
 }
 
+/* typography: IBM Plex Sans + Mono, headings on a ~1.2 scale */
+
+body {
+	font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, "Helvetica Neue", sans-serif;
+	font-size: 17px;
+}
+
 code,
 pre {
-	font-family: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco,
+	font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
 		Consolas, "Liberation Mono", monospace;
-	font-variant-ligatures: contextual;
-	font-feature-settings:
-		"calt" 1,
-		"liga" 1;
+}
+
+.post-content {
+	line-height: 1.7;
+}
+
+.post-content code {
+	font-size: 0.88em;
+}
+
+.post-title {
+	font-size: 36px;
+	letter-spacing: -0.01em;
+}
+
+.md-content :is(h1, h2, h3, h4, h5, h6) {
+	font-weight: 600;
+}
+
+.md-content h1 {
+	font-size: 36px;
+}
+
+.md-content h2 {
+	font-size: 26px;
+}
+
+.md-content h3 {
+	font-size: 20px;
+}
+
+.md-content h4 {
+	font-size: 17px;
 }
 
 .highlight pre.chroma code {
@@ -36,10 +73,20 @@ figure.center img {
 	cursor: pointer;
 }
 
+/* social icons (Tabler outlines, see layouts/partials/svg.html) */
+.social-icons a svg,
 .discord-container svg {
 	color: var(--primary);
 	width: 26px;
 	height: 26px;
+}
+
+/* the Discord glyph sits smaller within its box than the others; scale it up
+   optically, with a negative margin so the row's spacing stays even */
+.discord-container svg {
+	width: 28px;
+	height: 28px;
+	margin: -1px;
 }
 
 .tooltip {
@@ -111,13 +158,99 @@ figure.center img {
 	outline-offset: 0; /* keep border inside the radius */
 }
 
-/* reduce font weight of post titles on home page */
+/* reduce font weight of post titles, in posts and tag/section lists */
 .entry-hint-parent {
 	font-weight: 600;
 }
 
-.post-single .entry-hint-parent {
-	font-weight: 700;
+/* PaperMod tints list pages (home, tags, search) grey in light mode; use the
+   same background as every other page */
+.list {
+	background: var(--theme);
+}
+
+/* home page (layouts/home.html): intro, then a flat list of posts grouped by year */
+
+.home-info {
+	min-height: 0;
+	margin: 40px 0;
+}
+
+.home-info .entry-header h1 {
+	font-size: 36px;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+}
+
+.home-info .entry-content {
+	font-size: 17px;
+	line-height: 1.7;
+	color: var(--content);
+}
+
+.home-posts-title {
+	margin-bottom: 20px;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.year-label {
+	margin-bottom: 6px;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	color: var(--secondary);
+}
+
+.year-group + .year-group {
+	margin-top: 28px;
+}
+
+.home-entry {
+	position: relative;
+	padding: 22px 0;
+	border-top: 1px solid var(--border);
+}
+
+.home-entry:first-of-type {
+	padding-top: 4px;
+	border-top: 0;
+}
+
+.home-entry-title {
+	font-size: 22px;
+	line-height: 1.3;
+	font-weight: 500;
+	color: var(--accent);
+}
+
+.home-entry:hover .home-entry-title {
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-decoration-color: color-mix(in srgb, var(--accent) 50%, transparent);
+	text-underline-offset: 0.2em;
+}
+
+.home-entry-summary {
+	margin: 8px 0;
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--content);
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
+.home-entry-meta {
+	font-size: 13px;
+	color: var(--secondary);
+	font-variant-numeric: tabular-nums;
+}
+
+.home-entry .entry-link:focus-visible {
+	outline: 2px solid var(--primary);
+	outline-offset: 4px;
 }
 
 /* subtler link underlines: thin, muted, solid on hover */
@@ -131,17 +264,22 @@ figure.center img {
 	transition: text-decoration-color 0.15s;
 }
 
+/* links in content take the accent; the underline stays, as the accent alone
+   doesn't contrast enough with body text to mark a link */
+.md-content a:not(.anchor) {
+	color: var(--accent);
+	text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
 .md-content a:not(.anchor):hover,
 .footer a:hover {
 	text-decoration-color: currentColor;
 }
 
-:root[data-theme="dark"] .md-content a:not(.anchor),
 :root[data-theme="dark"] .footer a {
 	text-decoration-color: var(--secondary);
 }
 
-:root[data-theme="dark"] .md-content a:not(.anchor):hover,
 :root[data-theme="dark"] .footer a:hover {
 	text-decoration-color: currentColor;
 }
@@ -149,4 +287,96 @@ figure.center img {
 /* thinner blockquote bar */
 .md-content blockquote {
 	border-inline-start-width: 0.15rem;
+}
+
+/* table of contents */
+
+.post-content :is(h2, h3, h4) {
+	scroll-margin-top: var(--gap);
+}
+
+/* narrow screens get the theme's collapsible box (details.toc); wide screens get
+   a sticky sidebar in the left margin (see layouts/partials/toc.html) */
+.toc-sidebar {
+	display: none;
+}
+
+@media screen and (min-width: 1280px) {
+	details.toc {
+		display: none;
+	}
+
+	/* Floated into the left margin, sidenote-style: the negative margin gives the
+	   float a zero-width footprint so the body text doesn't wrap around it, and it
+	   starts level with the first line of the body text. Sticky keeps it pinned
+	   until the end of the post. */
+	.toc-sidebar {
+		--toc-width: min(240px, calc((100vw - var(--main-width)) / 2 - 3 * var(--gap)));
+		display: block;
+		float: left;
+		position: sticky;
+		top: calc(var(--gap) * 2);
+		width: var(--toc-width);
+		margin-inline-start: calc(-1 * (var(--toc-width) + 2 * var(--gap)));
+	}
+
+	.toc-sidebar-inner {
+		max-height: calc(100vh - 4 * var(--gap));
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		scrollbar-width: thin;
+		font-size: 14px;
+		line-height: 1.45;
+	}
+
+	.toc-sidebar-title {
+		margin-bottom: 0.75rem;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--secondary);
+	}
+
+	.toc-sidebar ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	/* a single rail on the outer list; nested entries are indented via their links */
+	.toc-sidebar-inner > ul {
+		border-inline-start: 1px solid var(--border);
+	}
+
+	.toc-sidebar a {
+		display: block;
+		margin-inline-start: -1px;
+		padding: 0.25rem 0 0.25rem 0.75rem;
+		border-inline-start: 2px solid transparent;
+		color: var(--secondary);
+		text-wrap: pretty;
+		transition:
+			color 0.15s,
+			border-color 0.15s;
+	}
+
+	.toc-sidebar ul ul a {
+		padding-inline-start: 1.5rem;
+		font-size: 13px;
+	}
+
+	.toc-sidebar ul ul ul a {
+		padding-inline-start: 2.25rem;
+	}
+
+	.toc-sidebar a:hover {
+		color: var(--primary);
+		text-decoration: none;
+	}
+
+	.toc-sidebar a.active {
+		color: var(--accent);
+		border-inline-start-color: var(--accent);
+	}
 }

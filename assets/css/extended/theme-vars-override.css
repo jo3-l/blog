@@ -1,8 +1,15 @@
 :root {
+	/* slate; 8.0:1 on --theme. Links in text keep underlines since it is close to body text. */
+	--accent: #3b5368;
 	--code-block-bg: var(--theme);
+	--main-width: 768px;
+	/* align the header with the content column */
+	--nav-width: var(--main-width);
 }
 
 :root[data-theme="dark"] {
+	/* 8.6:1 on --theme */
+	--accent: #a9bccd;
 	--code-block-bg: #28292b;
 	--code-bg: #28292b;
 }

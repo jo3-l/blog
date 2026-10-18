@@ -1,0 +1,23 @@
+{{- /*
+	Overrides PaperMod's toc.html. Renders the TOC twice: the theme's collapsible
+	box above the post for narrow screens, and a sticky sidebar in the left margin
+	for wide screens (see the "table of contents" section of custom.css). Only one
+	is shown at a time.
+*/ -}}
+{{- /* Strip Hugo's <nav id="TableOfContents"> wrapper so the list can be emitted twice without duplicate ids. */ -}}
+{{- $list := .TableOfContents | replaceRE `(?s)^\s*<nav[^>]*>\s*(.*?)\s*</nav>\s*$` "$1" -}}
+{{- if strings.Contains $list "<li>" -}}
+	{{- $title := i18n "toc" | default "Table of Contents" -}}
+	<details class="toc"{{ if .Param "TocOpen" }} open{{ end }}>
+		<summary accesskey="c" title="(Alt + C)">
+			<span class="title">{{ $title }}</span>
+		</summary>
+		<div class="inner">{{ $list | safeHTML }}</div>
+	</details>
+	<nav class="toc-sidebar" aria-label="{{ $title }}">
+		<div class="toc-sidebar-inner">
+			<p class="toc-sidebar-title">Contents</p>
+			{{ $list | safeHTML }}
+		</div>
+	</nav>
+{{- end -}}
