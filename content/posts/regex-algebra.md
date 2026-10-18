@@ -17,18 +17,18 @@ In this post, I'd like to share a rather peculiar method to compute the answer t
 
 [^1]: Don't worry if you haven't a clue what it means to solve a linear system over regular expressions. I had no idea what was going on under the hood initially either!
 
-Let $r_0$ be a regular expression that matches strings that end in state $Q_0$ when you run them through the automaton, and similarly let $r_1$ be a regular expression that matches strings ending in state $Q_1$. Although we don't know what $r_0$ and $r_1$ are yet---if we did, we'd be done!---we can try to write down some constraints that they ought to satisfy. For instance, looking at the NFA diagram, the only way to get to state $Q_0$ is if we haven't seen any characters yet (an empty string), or if we were previously in state $Q_1$ and saw the character $b$. In other words, the regular expression $r_0$ should match either the empty string, or $r_1$ followed by the character $b$.
+Let $r_0$ be a regular expression that matches strings that end in state $Q_0$ when you run them through the automaton, and similarly let $r_1$ be a regular expression that matches strings ending in state $Q_1$. Although we don't know what $r_0$ and $r_1$ are yet---if we did, we'd be done!---we can write down some constraints that they ought to satisfy. For instance, from the NFA diagram, the only way to get to state $Q_0$ is if we haven't seen any characters yet (an empty string), or if we were previously in state $Q_1$ and saw the character $b$. In other words, the regular expression $r_0$ should match either the empty string, or $r_1$ followed by the character $b$.
 
-Let's now agree on two (seemingly unmotivated) conventions for writing regular expressions: instead of using | to denote alternation as in $r_1 |r_2$, we will instead write $r_1 + r_2$, and additionally we will use $\mathbf{1}$ to denote the regular expression matching the empty string. We'll also agree to say that two regular expressions are equal if they match the same set of strings.
+Let's now agree on two (seemingly unmotivated) conventions for writing regular expressions: instead of using | to denote alternation as in $r_1 |r_2$, we will instead write $r_1 + r_2$, and additionally we will use $\mathbf{1}$ to denote the regular expression matching the empty string. We'll also agree that two regular expressions are equal if they match the same set of strings.
 
 Using these strange conventions, we get
 $$ r_0 = \mathbf{1} + r_1 b \tag{1} $$
 which says that $r_0$ matches either the empty string, or $r_1$ followed by the character $b$, as required. Similarly, for $r_1$, we have the equation
 $$ r_1 = r_1 a + r_0 a. \tag{2} $$
 
-Let's now throw caution to the wind completely and attempt to solve these equations algebraically, ignoring for the moment that we haven't the faintest clue what manipulations on these "regular expression equations" are legal or what laws they obey, if any.
+We now throw caution to the wind completely and attempt to solve these equations algebraically, ignoring that we haven't the faintest clue what manipulations on these "regular expression equations" are legal or what laws they obey, if any.
 
-By some questionable manipulations on equation (2), we get
+By manipulating equation (2), we get
 $$ r_1 - r_1 a = r_0 a \implies r_1(\mathbf{1} - a) = r_0 a \implies r_1 = r_0 a ({\mathbf{1} - a})^{-1}. $$
 Everyone and their mother knows that $(\mathbf{1} - a)^{-1}$ is just the sum of the infinite geometric series $\mathbf{1} + a + a^2 + \cdots$. Alas, we can't have a regular expression of infinite length, but recalling that $+$ means alternation, the expression $\mathbf{1} + a + a^2 + \cdots$ seems like it matches all the strings that are the character $a$ repeated. But that's just the regular expression $a^*$! So:
 $$ r_1 = r_0 a a^*. \tag{3} $$
@@ -45,7 +45,7 @@ What the hell just happened?
 
 Summarizing what we just did, here's our tried-and-true method to convert NFAs to equivalent regular expressions: if the NFA has states $Q_1, ..., Q_n$, let $r_1, ..., r_n$ denote indeterminate regular expressions that match the strings ending in the respective states. Write down $n$ equations of the form $r_i = f_i(r_1, ..., r_n)$ relating the regular expressions to one another according to the transitions of the NFA, using the notation $\mathbf{1}$ and $+$ as defined before.
 
-Then, simply solve this system of $n$ equations in $n$ variables by substitution, using the rule $r = q + r s \implies r = q s^*$ when needed (the "geometric series inverse trick"). The answer is given by adding up (i.e., taking an alternation of) the regular expressions corresponding to the accepting states of the NFA.
+Then, simply solve this system of $n$ equations in $n$ variables by substitution, using the rule $r = q + r s \implies r = q s^*$ when needed (the "geometric series inverse trick"). The answer is given by adding (i.e., taking an alternation of) the regular expressions corresponding to the accepting states of the NFA.
 
 ---
 
@@ -57,9 +57,9 @@ I'll mostly give intuition, definitions, and statements of results instead of pr
 
 ## Regular expressions revisited
 
-To start, we should clarify what we mean by a regular expression: only 'basic' features such as sequencing, alternation, and repetition (`*`) are permitted; fancy stuff like capturing groups, backreferences, and the like are all out of scope. We define regular expressions formally as a recursive datatype.
+To start, we should clarify what we mean by a regular expression: only 'basic' features such as sequencing, alternation, and repetition ($*$) are permitted; fancy stuff like capturing groups, backreferences, and the like are all out of scope. We define regular expressions formally as a recursive datatype.
 
-> **Definition.** A _regular expression_ (regexp) is one of the following:
+> **Definition (regular expression).** A _regular expression_ (regexp) is one of the following:
 > 
 > - $\mathbf{1}$, matching the empty string
 > - a literal symbol $c \in \Sigma$, where $\Sigma$ is a fixed alphabet of valid symbols
@@ -135,7 +135,7 @@ which (under a mild technical condition) validates our original rule $r = p + rs
 Returning to the motivating question of this post---what algebraic structure allows us to make sense of "linear systems in regular expressions"?---one answer is thus that the regular expressions $(R, +, \cdot, *)$ form a _Kleene algebra_, which is a special case of a _semiring_. In a Kleene algebra, substitution is valid and so is the rule $r = p + rs \implies r = ps^*$ is valid (under a mild technical condition), somewhat justifying what we did to solve the linear system at the start of the post.
 
 One could certainly declare this to be the end of the story. However, one element of the Kleene algebra viewpoint that I personally find unsatisfying is that we originally "derived" the rule $r = p + r s \implies r = ps^*$ by heuristically manipulating $r - rs = r(1 - s) = p$, then multiplying by the inverse of $1-s$ and using a geometric series expansion to get $$r = p(1-s)^{-1} = p(1 + s + s^2 + \cdots) = ps^*.$$
-From the viewpoint of Kleene algebras, even though the end result is justified by Arden's lemma and $*$ can be understood as a kind of pseudoinverse, the intermediate steps are nothing more than a heuristic and cannot be justified formally. One would be excused for dismissing the argument above as nothing more than heuristic thinking that chances upon the right answer---but in fact we _can_ make this argument fully rigorous in the right setting. In particular, by interpreting regular expressions as formal noncommutative power series or _formal power series over words_, the "inverse" of a regular expression exists in a larger ring. In the last section of this post I will outline this viewpoint and sketch nice proofs of existence and uniqueness of solutions.
+From the viewpoint of Kleene algebras, even though the end result is justified by Arden's lemma and $*$ can be understood as a kind of pseudoinverse, the intermediate steps are nothing more than a heuristic and cannot be justified formally. One would be excused for dismissing the argument above as nothing more than wishful thinking that chances upon the right answer---but in fact we _can_ make this argument fully rigorous in the right setting. In particular, by interpreting regular expressions as formal noncommutative power series or _formal power series over words_, the "inverse" of a regular expression exists in a larger ring. In the last section of this post I will outline this viewpoint and sketch nice proofs of existence and uniqueness of solutions.
 
 ## Formal power series over words
 
