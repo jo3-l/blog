@@ -31,12 +31,12 @@ Let's now throw caution to the wind completely and attempt to solve these equati
 By some questionable manipulations on equation (2), we get
 $$ r_1 - r_1 a = r_0 a \implies (\mathbf{1} - a)r_1 = r_0 a \implies r_1 = r_0 a ({\mathbf{1} - a})^{-1}. $$
 Everyone and their mother knows that $(\mathbf{1} - a)^{-1}$ is just the sum of the infinite geometric series $\mathbf{1} + a + a^2 + \cdots$. Alas, we can't have a regular expression of infinite length, but recalling that $+$ means alternation, the expression $\mathbf{1} + a + a^2 + \cdots$ seems like it matches all the strings that are the character $a$ repeated. But that's just the regular expression $a^*$! So:
-$$ r_1 = r_0 a a^\*. \tag{3} $$
+$$ r_1 = r_0 a a^*. \tag{3} $$
 
 Now substitute (3) into (1) to get $r_0 = \mathbf{1} + r_0 a a^* b$. By applying our questionable geometric series trick again,
-$$ r*0 = (a a^* b)^_. $$
+$$ r_0 = (a a^* b)^*. $$
 Substituting into (3) yields
-$$ r_1 = \boxed{(a a^_ b)^\_ a a^\*} $$
+$$ r_1 = \boxed{(a a^* b)^* a a^*} $$
 and since $Q_1$ is the only accepting state of the automaton, this regexp should match exactly the strings that are accepted by the NFA. And it truly does! This is the right answer to the original problem (!)
 
 What the hell just happened?
@@ -86,9 +86,8 @@ There are some oddities, of course. For instance:
 - we do not have multiplicative inverses in general.[^3]
 - multiplication is not commutative: in general $r_1 \cdot r_2 \ne r_2 \cdot r_1$, since $r_1 \cdot r_2$ means to match $r_1$ followed by $r_2$ and the order matters.
 
-[^3]:
-    Consider the regexp $a$ matching the literal character $a$. Then, if $a^{-1}$ is a multiplicative inverse of $a$, we must have $$\mathcal{L}(aa^{-1}) = \{s_1 s_2 : s_1 \in \mathcal{L}(a), s_2 \in \mathcal{L}(a^{-1})\}$$
-    and in particular this set cannot equal $\mathcal{L}(\mathbf{1}) = \{\epsilon\}$: the displayed set is either empty, or contains one or more strings starting with character $a$.
+[^3]: Consider the regexp $a$ matching the literal character $a$. Then, if $a^{-1}$ is a multiplicative inverse of $a$, we must have $$\mathcal{L}(aa^{-1}) = \{s_1 s_2 : s_1 \in \mathcal{L}(a), s_2 \in \mathcal{L}(a^{-1})\}$$
+  and in particular this set cannot equal $\mathcal{L}(\mathbf{1}) = \{\epsilon\}$: the displayed set is either empty, or contains one or more strings starting with character $a$.
 
 With these properties and not-so-nice properties in mind, let's ask again: what kind of algebraic structure do regular expressions possess?
 
@@ -153,7 +152,7 @@ By _commuting indeterminates_, we mean that we can freely interchange the order 
 If we drop this condition, and instead adjoin _non-commutative_ indeterminates, we naturally obtain the definition of formal noncommutative power series. We indicate noncommutativity by using angled brackets instead of square brackets: that is, in $R[[X_1, X_2]]$ the indeterminates $X_1$ and $X_2$ commute, whereas in $R\langle\langle X_1, X_2\rangle\rangle$ they do not.
 
 Let's think about what the power series living in $R\langle\langle X_1, X_2\rangle\rangle$ look like. In particular, what form do individual terms take? In the commutative case each term had the form $a_{k_1k_2} X_1^{k_1}X_2^{k_2}$, which does not distinguish between (say) $5 x_1 x_2 x_1 x_1$ and $5 x_1^3 x_2$. In the noncommutative case these terms are distinct, so we should instead think about terms having the form
-$$ c X*{w_1} X*{w*2} \cdots X*{w_m} $$
+$$ c X_{w_1} X_{w_2} \cdots X_{w_m} $$
 where $w_1, \dots, w_m$ is a finite sequence of 1s and 2s. The term $x_1 x_2 x_1 x_1$ corresponds to $(1, 2, 1, 1)$, whereas $x_1^3 x_2$ corresponds to $(1, 1, 1, 2)$, which is a different sequence.
 
 In this way, we see that the power series living in $R\langle\langle X_1, \dots, X_m\rangle\rangle$ are naturally indexed by _words_ (finite sequences) where each symbol is in $\{1,...,m\} =: \Sigma$, of the form $\sum_{\omega \in \Sigma*} a_\omega X_\omega$. This leads us to the definition
@@ -209,14 +208,16 @@ The condition $r$ does not match the empty string in $[r^*]$ guarantees that $[r
 In the power series interpretation of regular expressions, the heuristic argument that we originally made has a completely rigorous interpretation in $\mathbb{Z}\langle\langle \Sigma \rangle\rangle$, since subtraction is well-defined and the geometric series expansion $(1-r)^{-1} = 1 + r + r^2 + \cdots$ is valid whenever $r$ has no constant term!
 
 Working in $\mathbb{Z}\langle\langle \Sigma \rangle\rangle$ also permits us to prove that the system of linear equations arising from NFA to regexp conversion has a solution. Indeed, take a $\epsilon$-free NFA with states $Q_1, \dots, Q_n$, initial states $I$ and accepting states $F$. Define a row vector $\mathbf{u}$ by $u_i = 1$ if $Q_i \in I$ and $u_i = 0$ otherwise. Also define a $n \times n$ matrix by
-$$ \textstyle A*{ji} = \sum*{c \in \Sigma\ : \ \text{exists transition } Q*j \xrightarrow{c} Q_i} c. $$
-For instance, if the alphabet is $\{a, b\}$ and the NFA contains transitions $Q_1 \xrightarrow{a} Q_2$ and $Q_2 \xrightarrow{b} Q_2$, then $A*{12} = a + b$.
+$$ \textstyle A_{ji} = \sum_{c \in \Sigma\ : \ \text{exists transition } Q_j \xrightarrow{c} Q_i} c. $$
+For instance, if the alphabet is $\{a, b\}$ and the NFA contains transitions $Q_1 \xrightarrow{a} Q_2$ and $Q_2 \xrightarrow{b} Q_2$, then $A_{12} = a + b$.
 
 Each entry of $A$ is a nonempty sum of literal symbols (as there are no $\epsilon$-transitions), so $A$ has no constant term. Writing $\mathbf{r} = (r_1, \dots, r_n)$, the equations $r_i = u_i + \sum_j r_j A_{ji}$ produced by our method become the single matrix equation
 $$ \mathbf{r} = \mathbf{u} + \mathbf{r} A. $$
 
 > **Theorem (existence and uniqueness).** Let $A$ and $\mathbf{u}$ be as above. Then the system $\mathbf{r} = \mathbf{u} + \mathbf{r}A$ has a unique solution $\mathbf{r} \in \mathbb{Z}\langle\langle \Sigma \rangle\rangle^n$, given by
-> $$ \mathbf{r} = \mathbf{u}(I*{n \times n} - A)^{-1} = \mathbf{u}(\mathrm{Id} + A + A^2 + \cdots). $$
-> Moreover, the coefficient of a word $w$ in $r_i$ is the number of paths in the NFA that start in a state of $I$, read $w$, and end in $Q_i$. In particular, the words with nonzero coefficient in $\sum*{Q_i \in F} r_i$ are exactly the words accepted by the NFA.
+> $$ \mathbf{r} = \mathbf{u}(I_{n \times n} - A)^{-1} = \mathbf{u}(\mathrm{Id} + A + A^2 + \cdots). $$
+> Moreover, the coefficient of a word $w$ in $r_i$ is the number of paths in the NFA that start in a state of $I$, read $w$, and end in $Q_i$. In particular, the words with nonzero coefficient in $\sum_{Q_i \in F} r_i$ are exactly the words accepted by the NFA.
 
 TODO some subleties (proper regexps, does the answer represent a valid regexp, provenance of these ideas, conclusion)
+
+<!-- prettier-ignore-end -->
