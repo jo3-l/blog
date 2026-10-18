@@ -99,7 +99,7 @@ Unfortunately, even with $\mathbf{0}$ the regular expressions do not have a ring
 
 [^4]: Every regular expression $r$ is idempotent with respect to $+$, since matching either $r$ or $r$ is the same as matching $r$; that is, $r + r = r$. If additive inverses exist, adding $-r$ then gives $r = \mathbf{0}$. But $r$ was arbitrary, so this says that the only regular expression is $\mathbf{0}$---no good!
 
-Thus $(R, +, \cdot)$ is not a ring, since additive inverses do not exist. However, one can actually check that the lack of additive inverses is the _only_ obstruction to $(R, +, \cdot)$ being a ring. There is a name for structures that are almost rings but lack only additive inverses: _semirings_.
+Thus $(R, +, \cdot)$ is not a ring. However, one can actually check that the lack of additive inverses is the _sole_ obstruction to $(R, +, \cdot)$ being a ring. There is a name for structures that are almost rings but lack only additive inverses: _semirings_.
 
 > **Definition (semiring).** A semiring $(R, +, \cdot)$ satisfies all the ring axioms, except that additive inverses need not exist.
 
@@ -132,11 +132,9 @@ which (under a mild technical condition) validates our original rule $r = p + rs
 
 ---
 
-Returning to the motivating question of this post---what algebraic structure allows us to make sense of "linear systems in regular expressions"?---one answer is thus that the regular expressions $(R, +, \cdot, *)$ form a _Kleene algebra_, which is a special case of a _semiring_. In a Kleene algebra, we may of course solve by substitution and moreover the rule $r = p + rs \implies r = ps^*$ is valid (under a mild technical condition) and known more generally as Arden's lemma.
+Returning to the motivating question of this post---what algebraic structure allows us to make sense of "linear systems in regular expressions"?---one answer is thus that the regular expressions $(R, +, \cdot, *)$ form a _Kleene algebra_, which is a special case of a _semiring_. In a Kleene algebra, substitution is valid and so is the rule $r = p + rs \implies r = ps^*$ is valid (under a mild technical condition), somewhat justifying what we did to solve the linear system at the start of the post.
 
-Is that the whole story? We haven't discussed existence and uniqueness of solutions yet, but one can imagine that with the formal definitions above it is not too hard to slog through a proof.
-
-One element of the Kleene algebra viewpoint that I personally find unsatisfying is that we originally "derived" the rule $r = p + r s \implies r = ps^*$ by heuristically manipulating $r - rs = r(1 - s) = p$, then multiplying by the inverse of $1-s$ and using a geometric series expansion to get $$r = p(1-s)^{-1} = p(1 + s + s^2 + \cdots) = ps^*.$$
+One could certainly declare this to be the end of the story. However, one element of the Kleene algebra viewpoint that I personally find unsatisfying is that we originally "derived" the rule $r = p + r s \implies r = ps^*$ by heuristically manipulating $r - rs = r(1 - s) = p$, then multiplying by the inverse of $1-s$ and using a geometric series expansion to get $$r = p(1-s)^{-1} = p(1 + s + s^2 + \cdots) = ps^*.$$
 From the viewpoint of Kleene algebras, even though the end result is justified by Arden's lemma and $*$ can be understood as a kind of pseudoinverse, the intermediate steps are nothing more than a heuristic and cannot be justified formally. One would be excused for dismissing the argument above as nothing more than heuristic thinking that chances upon the right answer---but in fact we _can_ make this argument fully rigorous in the right setting. In particular, by interpreting regular expressions as formal noncommutative power series or _formal power series over words_, the "inverse" of a regular expression exists in a larger ring. In the last section of this post I will outline this viewpoint and sketch nice proofs of existence and uniqueness of solutions.
 
 ## Formal power series over words
