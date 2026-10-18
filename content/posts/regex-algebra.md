@@ -29,7 +29,7 @@ $$ r_1 = r_1 a + r_0 a. \tag{2} $$
 Let's now throw caution to the wind completely and attempt to solve these equations algebraically, ignoring for the moment that we haven't the faintest clue what manipulations on these "regular expression equations" are legal or what laws they obey, if any.
 
 By some questionable manipulations on equation (2), we get
-$$ r_1 - r_1 a = r_0 a \implies (\mathbf{1} - a)r_1 = r_0 a \implies r_1 = r_0 a ({\mathbf{1} - a})^{-1}. $$
+$$ r_1 - r_1 a = r_0 a \implies r_1(\mathbf{1} - a) = r_0 a \implies r_1 = r_0 a ({\mathbf{1} - a})^{-1}. $$
 Everyone and their mother knows that $(\mathbf{1} - a)^{-1}$ is just the sum of the infinite geometric series $\mathbf{1} + a + a^2 + \cdots$. Alas, we can't have a regular expression of infinite length, but recalling that $+$ means alternation, the expression $\mathbf{1} + a + a^2 + \cdots$ seems like it matches all the strings that are the character $a$ repeated. But that's just the regular expression $a^*$! So:
 $$ r_1 = r_0 a a^*. \tag{3} $$
 
@@ -63,7 +63,7 @@ To start, we should clarify what we mean by a regular expression: only 'basic' f
 
 - $\mathbf{1}$, matching the empty string
 - a literal symbol $c \in \Sigma$, where $\Sigma$ is a fixed alphabet of valid symbols
-- a sequence $r_1 \cdot r_2$ of smaller two regexps $r_1, r_2$; often we will omit the $\cdot$ symbol and just juxtapose the regexps
+- a sequence $r_1 \cdot r_2$ of two smaller regexps $r_1, r_2$; often we will omit the $\cdot$ symbol and just juxtapose the regexps
 - an alternation $r_1 + r_2$
 - or a repetition $r^*$.
 
@@ -71,14 +71,14 @@ To start, we should clarify what we mean by a regular expression: only 'basic' f
 
 We declare two regexps to be equal when they match the same set of strings. Formally, we define recursively a function $\mathcal{L}(r)$ that returns the set of strings that $r$ matches: $\mathcal{L}(\mathbf{1}) = \{\epsilon\}$, $\mathcal{L}(r_1 + r_2) = \mathcal{L}(r_1) \cup \mathcal{L(r_2)}$, etc. (What should the definition for $\mathcal{L}(r_1 \cdot r_2)$ be?[^2]) Two regexps are then equal if $\mathcal{L}(r_1) = \mathcal{L}(r_2)$.
 
-[^2]: A bit of pondering leads to the definition $\{s_1 s_2 : s_1 \in \mathcal{L}(r_1) \mathcal{L}(r_2)\}$, where $s_1 s_2$ denotes the concatenation of strings $s_1$ and $s_2$.
+[^2]: A bit of pondering leads to the definition $\{s_1 s_2 : s_1 \in \mathcal{L}(r_1), s_2 \in \mathcal{L}(r_2)\}$, where $s_1 s_2$ denotes the concatenation of strings $s_1$ and $s_2$.
 
 As you have probably gleaned, the object $\mathbf{1}$ and the operations $+$, $\cdot$ behave somewhat like their real number counterparts. Here's a non-exhaustive list of nice properties:
 
 - addition is commutative: $a + b = b + a$, since both match either $b$ or $a$.
 - $\mathbf{1}$ is the identity with respect to multiplication: $\mathbf{1} \cdot a = a$, since the left side means "match $\mathbf{1}$, then match $a$", and $\mathbf{1}$ matches the empty string.
 - multiplication is associative: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$.
-- multiplication distributes over a sum: $a\cdot (b + c) = ab + ab$, since the left side means "match $a$, then either $b$ or $c$, which is the same as matching either $ab$ or $ac$".
+- multiplication distributes over a sum: $a\cdot (b + c) = ab + ac$, since the left side means "match $a$, then either $b$ or $c$, which is the same as matching either $ab$ or $ac$".
 
 There are some oddities, of course. For instance:
 
@@ -112,7 +112,7 @@ The notion of a _Kleene algebra_ extends the notion of a semiring to include the
 > **Definition (Kleene algebra).** A Kleene algebra $(K, +, \cdot, *)$ is an idempotent semiring $(K, +, \cdot)$ with a unary operation $*$ such that
 >
 > - for all $a \in K$, we have $1 + a(a^*) \le a^*$ and $1 + (a^*)a \le a^*$,
-> - for all $a, x \in K$ such that $ax \le x$, then $a^*x \le x$ and $x(a^*) \le x$,
+> - for all $a, x \in K$, if $ax \le x$ then $a^*x \le x$, and if $xa \le x$ then $x(a^*) \le x$,
 >
 > where $x \le y$ means $x + y = y$.
 
@@ -143,7 +143,7 @@ From the viewpoint of Kleene algebras, even though the end result is justified b
 
 We build up to the notion of a formal noncommutative power series from more familiar definitions.
 
-> **Definition (formal power series in one variable)**. Let $R$ be a ring. Then $R[[X]]$ denotes the ring of formal power series $\sum_{k=0}^\infty a_n X^n$ in the indeterminate $X$ with coefficients in $R$.
+> **Definition (formal power series in one variable)**. Let $R$ be a ring. Then $R[[X]]$ denotes the ring of formal power series $\sum_{n=0}^\infty a_n X^n$ in the indeterminate $X$ with coefficients in $R$.
 
 > **Definition (formal power series in multiple commuting variables)**. Let $R$ be a ring. Then $R[[X_1, ..., X_r]]$ denotes the ring of formal power series $\sum_{k_1, \dots, k_r \ge 0} a_\mathbf{k} X_1^{k_1} \cdots X_r^{k_r}$ in $r$ commuting indeterminates $X_1, ..., X_r$ with coefficients in $R$.
 
@@ -151,17 +151,17 @@ By _commuting indeterminates_, we mean that we can freely interchange the order 
 
 If we drop this condition, and instead adjoin _non-commutative_ indeterminates, we naturally obtain the definition of formal noncommutative power series. We indicate noncommutativity by using angled brackets instead of square brackets: that is, in $R[[X_1, X_2]]$ the indeterminates $X_1$ and $X_2$ commute, whereas in $R\langle\langle X_1, X_2\rangle\rangle$ they do not.
 
-Let's think about what the power series living in $R\langle\langle X_1, X_2\rangle\rangle$ look like. In particular, what form do individual terms take? In the commutative case each term had the form $a_{k_1k_2} X_1^{k_1}X_2^{k_2}$, which does not distinguish between (say) $5 x_1 x_2 x_1 x_1$ and $5 x_1^3 x_2$. In the noncommutative case these terms are distinct, so we should instead think about terms having the form
+Let's think about what the power series living in $R\langle\langle X_1, X_2\rangle\rangle$ look like. In particular, what form do individual terms take? In the commutative case each term had the form $c X_1^{k_1}X_2^{k_2}$, which does not distinguish between (say) $5 x_1 x_2 x_1 x_1$ and $5 x_1^3 x_2$. In the noncommutative case these terms are distinct, so we should instead think about terms having the form
 $$ c X_{w_1} X_{w_2} \cdots X_{w_m} $$
 where $w_1, \dots, w_m$ is a finite sequence of 1s and 2s. The term $x_1 x_2 x_1 x_1$ corresponds to $(1, 2, 1, 1)$, whereas $x_1^3 x_2$ corresponds to $(1, 1, 1, 2)$, which is a different sequence.
 
-In this way, we see that the power series living in $R\langle\langle X_1, \dots, X_m\rangle\rangle$ are naturally indexed by _words_ (finite sequences) where each symbol is in $\{1,...,m\} =: \Sigma$, of the form $\sum_{\omega \in \Sigma*} a_\omega X_\omega$. This leads us to the definition
+In this way, we see that the power series living in $R\langle\langle X_1, \dots, X_m\rangle\rangle$ are naturally indexed by _words_ (finite sequences) where each symbol is in $\{1,...,m\} =: \Sigma$, of the form $\sum_{\omega \in \Sigma^*} a_\omega X_\omega$. This leads us to the definition
 
 > **Definition (formal power series on words)**. Let $R$ be a ring and $\Sigma$ be a finite alphabet of symbols. Then $R\langle\langle \Sigma \rangle\rangle$ denotes the ring of formal noncommutative power series $\sum_{\omega \in \Sigma^*} a_\omega X_\omega$.
 
 and as a special case
 
-> **Definition (formal power series in multiple noncommuting variables)**. Let $R$ be a ring. Then $R\langle\langle X_1, \dots, X_n \rangle \rangle$ denotes the ring of formal power series $\sum_{\omega \in \{1,\dots,n\}^*} X_\omega X_\omega$.
+> **Definition (formal power series in multiple noncommuting variables)**. Let $R$ be a ring. Then $R\langle\langle X_1, \dots, X_n \rangle \rangle$ denotes the ring of formal power series $\sum_{\omega \in \{1,\dots,n\}^*} a_\omega X_\omega$.
 
 It took us a bit to arrive at the right definitions, but I hope that the scenic route we took above gives some intuition for why power series on words is a natural non-commutative generalization of regular power series.
 
@@ -201,6 +201,10 @@ Let's define the correspondence between regular expressions and formal power ser
 >
 > Here $[\cdot]$ is a partial function $R \to \mathbb{Z}\langle\langle \Sigma \rangle\rangle$.
 
+> **Theorem.** Let $r$ be a regular expression and suppose $[r]$ exists. Then the coefficient on each word $\omega \in \Sigma^*$ in $[r]$ counts the number of ways that $r$ matches $\omega$.
+
+> **Corollary.** Let $r$ be a regular expression and suppose $[r]$ exists. Then the set of strings matched by $r$ is exactly the set of words with nonzero coefficient in the power series $[r]$.
+
 The condition $r$ does not match the empty string in $[r^*]$ guarantees that $[r]$ has no constant term and hence $1 - [r]$ is invertible. Intuitively, when $r$ matches the empty string, we should not expect $r^*$ to have a well-defined power series interpretation since there are infinitely many ways for $r^*$ match the empty string, hence the constant term of $[r^*]$ must be $\infty$, which is not in $\mathbb{Z}$.
 
 ---
@@ -214,10 +218,25 @@ For instance, if the alphabet is $\{a, b\}$ and the NFA contains transitions $Q_
 Each entry of $A$ is a nonempty sum of literal symbols (as there are no $\epsilon$-transitions), so $A$ has no constant term. Writing $\mathbf{r} = (r_1, \dots, r_n)$, the equations $r_i = u_i + \sum_j r_j A_{ji}$ produced by our method become the single matrix equation
 $$ \mathbf{r} = \mathbf{u} + \mathbf{r} A. $$
 
+We can then prove
+
 > **Theorem (existence and uniqueness).** Let $A$ and $\mathbf{u}$ be as above. Then the system $\mathbf{r} = \mathbf{u} + \mathbf{r}A$ has a unique solution $\mathbf{r} \in \mathbb{Z}\langle\langle \Sigma \rangle\rangle^n$, given by
 > $$ \mathbf{r} = \mathbf{u}(I_{n \times n} - A)^{-1} = \mathbf{u}(\mathrm{Id} + A + A^2 + \cdots). $$
 > Moreover, the coefficient of a word $w$ in $r_i$ is the number of paths in the NFA that start in a state of $I$, read $w$, and end in $Q_i$. In particular, the words with nonzero coefficient in $\sum_{Q_i \in F} r_i$ are exactly the words accepted by the NFA.
 
-TODO some subleties (proper regexps, does the answer represent a valid regexp, provenance of these ideas, conclusion)
+The above result is not entirely complete, in the sense that it only guarantees a solution in $\mathbb{Z}\langle\langle \Sigma \rangle\rangle$, which may not correspond to a valid regular expression. Indeed, since the interpretation of a regular expression $[r]$ is the power series in which the coefficient on each word records the number of ways for $r$ to match the word, no power series with negative coefficients corresponds to a regular expression. One might then hope that every power series with non-negative coefficients corresponds to a regular expression, but this is not true either.[^5]
+
+[^5]: Indeed, taking $\Sigma = \{a,b\}$, suppose that the power series $\sum_{n\ge 0} 1 \cdot a^nb^n \in \mathbb{Z}\langle\langle\Sigma\rangle\rangle$ corresponds to a regular expression $r$. The set of strings matched by $r$ must then be the set of words with nonzero coefficient in $[r]$, so that $r$ matches the language $\{a^nb^n : n\ge 0\}$---but this language is not regular.
+
+In other words, only certain power series in $\mathbb{Z}\langle\langle \Sigma \rangle\rangle$ can be converted back into valid regular expressions. Let $\mathbb{N}^\text{rat} \langle\langle \Sigma \rangle\rangle$ denote the subsemiring of power series corresponding to valid regular expressions. It turns out that one can prove that the Gaussian elimination-like process we used to solve the original example problem stays in $\mathbb{N}^\text{rat} \langle\langle \Sigma \rangle\rangle$, which fills the gap in the result.
+
+## Conclusion
+
+There's lots more interesting things to say on this topic, but for now I will leave this post here---I hope it was a fun introduction to some more mathematical aspects of regular expressions. The ideas here are all quite classic, so let me conclude with a brief chronology:
+- Kleene invented regular expressions in 1951;
+- Schützenberger made the connection between automata and noncommutative power series in 1961;
+- Arden proved that $x = xa + b$ has solution $x = ba^*$, also in 1961;
+- Brzozowski popularized the linear system method to convert NFAs to regexps in his seminal 1964 paper on derivatives of regular expressions;
+- and Kozen introduced the modern definition of Kleene algebra used in this post in 1991, though similar ideas were around earlier.
 
 <!-- prettier-ignore-end -->
