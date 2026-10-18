@@ -145,3 +145,8 @@ figure.center img {
 :root[data-theme="dark"] .footer a:hover {
 	text-decoration-color: currentColor;
 }
+
+/* thinner blockquote bar */
+.md-content blockquote {
+	border-inline-start-width: 0.15rem;
+}
