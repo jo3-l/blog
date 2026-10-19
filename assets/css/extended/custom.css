@@ -316,17 +316,14 @@ figure.center img {
 	scroll-margin-top: var(--gap);
 }
 
-/* narrow screens get the theme's collapsible box (details.toc); wide screens get
-   a sticky sidebar in the left margin (see layouts/partials/toc.html) */
+/* wide screens get a sticky sidebar in the left margin (see
+   layouts/partials/toc.html); narrow screens, where there's no margin to put it
+   in, get no TOC */
 .toc-sidebar {
 	display: none;
 }
 
 @media screen and (min-width: 1280px) {
-	details.toc {
-		display: none;
-	}
-
 	/* Floated into the left margin, sidenote-style: the negative margin gives the
 	   float a zero-width footprint so the body text doesn't wrap around it, and it
 	   starts level with the first line of the body text. Sticky keeps it pinned
