@@ -42,7 +42,7 @@ and compiles it into a [_probability generating function (pgf)_](https://en.wiki
 
 **References.** The implementation and all the ideas in this blog post follow the (very nice) paper ["Compiling with Generating Functions" (Li and Zhang)](https://dl.acm.org/doi/10.1145/3747534). Indeed, the compiler we shall implement is a small toy subset of the one described in that paper. All mistakes and oddities are mine, and I intentionally deviate from the paper in places for narrative simplicity. In addition, though I will give intuition for most mathematical results I need along the way via examples, I defer to the paper for all formal proofs.
 
-## A high-level view of probablistic programming and compilers
+## A high-level view of probabilistic programming
 
 In my opinion, the best way to interpret the program above is not as a series of procedural instructions that are executed repeatedly under different seeds. Rather, **the program is just syntax sugar for defining a particular exact statistical model** in a declarative way; such programs are called [probabilistic programs](https://en.wikipedia.org/wiki/Probabilistic_programming). The role of a compiler for such a program is to lower the program into a representation of the statistical model that allows one to easily query properties of the distribution, for example to answer questions such as "what is the probability of [given event] in this model" or "what is the expectation of this variable within the model?"
 

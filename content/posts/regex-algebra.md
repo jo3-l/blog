@@ -11,17 +11,17 @@ Consider the following non-deterministic finite automaton (NFA):
 
 {{< figure src="/nfa.svg" alt="NFA with two states" width="450" align="center" >}}
 
-If you've studied automata theory, you likely learnt that NFAs are equivalent to regular expressions, in the sense that for every NFA there is a regular expression that recognizes the same set of strings as the NFA. So, **what is an equivalent regular expression for the NFA above?**
+From formal language theory, we know that NFAs are equivalent to regular expressions, in the sense that for every NFA there is a regular expression that recognizes the same set of strings as the NFA. So, **what is an equivalent regular expression for the NFA above?**
 
-In this post, I'd like to share a rather peculiar method to compute the answer to such questions by solving a system of linear equations over regular expressions[^1]. I first learnt this method from [Dr. Christian Urban](https://www.kcl.ac.uk/people/christian-urban)'s course on compilers and formal languages at KCL on exchange.
+In this post, I'd like to share a rather peculiar method to answer such questions by solving a system of linear equations over regular expressions[^1]. Then, in order to justify this method rigorously, I'll discuss two different approaches to put an algebraic structure on regular expressions---namely, Kleene algebras and non-commutative power series.
 
-[^1]: Don't worry if you haven't a clue what it means to solve a linear system over regular expressions. I had no idea what was going on under the hood initially either!
+[^1]: I first learnt this method from [Dr. Christian Urban](https://www.kcl.ac.uk/people/christian-urban)'s course on compilers and formal languages at KCL on exchange.
 
-Let $r_0$ be a regular expression that matches strings that end in state $Q_0$ when you run them through the automaton, and similarly let $r_1$ be a regular expression that matches strings ending in state $Q_1$. Although we don't know what $r_0$ and $r_1$ are yet---if we did, we'd be done!---we can write down some constraints that they ought to satisfy. For instance, from the NFA diagram, the only way to get to state $Q_0$ is if we haven't seen any characters yet (an empty string), or if we were previously in state $Q_1$ and saw the character $b$. In other words, the regular expression $r_0$ should match either the empty string, or $r_1$ followed by the character $b$.
+## A suspicious question
 
-Let's now agree on two (seemingly unmotivated) conventions for writing regular expressions: instead of using | to denote alternation as in $r_1 |r_2$, we will instead write $r_1 + r_2$, and additionally we will use $\mathbf{1}$ to denote the regular expression matching the empty string. We'll also agree that two regular expressions are equal if they match the same set of strings.
+To the question, let $r_0$ be a regular expression that matches strings that end in state $Q_0$ when you run them through the automaton, and similarly let $r_1$ be a regular expression that matches strings ending in state $Q_1$. Although we don't know what $r_0$ and $r_1$ are yet---if we did, we'd be done!---we can write down some constraints that they ought to satisfy. For instance, from the NFA diagram, the only way to get to state $Q_0$ is if we haven't seen any characters yet (an empty string), or if we were previously in state $Q_1$ and saw the character $b$. In other words, the regular expression $r_0$ should match either the empty string, or $r_1$ followed by the character $b$.
 
-Using these strange conventions, we get
+Let's now agree on two conventions for writing regular expressions: instead of using | to denote alternation as in $r_1 |r_2$, we will instead write $r_1 + r_2$, and additionally we'll use $\mathbf{1}$ to denote the regular expression matching the empty string. We'll also agree that two regular expressions are equal if they match the same set of strings. Using these strange conventions, we get
 $$ r_0 = \mathbf{1} + r_1 b \tag{1} $$
 which says that $r_0$ matches either the empty string, or $r_1$ followed by the character $b$, as required. Similarly, for $r_1$, we have the equation
 $$ r_1 = r_1 a + r_0 a. \tag{2} $$
@@ -41,19 +41,9 @@ and since $Q_1$ is the only accepting state of the automaton, this regexp should
 
 What the hell just happened?
 
-## A suspicious algorithm
-
-Summarizing what we just did, here's our tried-and-true method to convert NFAs to equivalent regular expressions: if the NFA has states $Q_1, ..., Q_n$, let $r_1, ..., r_n$ denote indeterminate regular expressions that match the strings ending in the respective states. Write down $n$ equations of the form $r_i = f_i(r_1, ..., r_n)$ relating the regular expressions to one another according to the transitions of the NFA, using the notation $\mathbf{1}$ and $+$ as defined before.
-
-Then, simply solve this system of $n$ equations in $n$ variables by substitution, using the rule $r = q + r s \implies r = q s^*$ when needed (the "geometric series inverse trick"). The answer is given by adding (i.e., taking an alternation of) the regular expressions corresponding to the accepting states of the NFA.
-
 ---
 
-It turns out that this method does work in general! However, if you're like me, you are probably scratching your head at this point: clearly these equations have to be interpreted in some kind of underlying algebraic structure on regular expressions. In the remainder of this post, I thus want to answer the following
-
-> **Question.** What is the algebraic structure on regular expressions that allows us to make sense of the equations above? How can we be sure that a unique solution to linear systems formed by the method above exists?
-
-I'll mostly give intuition, definitions, and statements of results instead of proofs---partly because I'm lazy, and partly because I think the proofs are not really enlightening, but the definitions are.
+Somewhat surprisingly, it turns out that this method does work in general! However, to understand what's going on beneath the surface, we clearly first need to put some kind of _algebraic structure_ on regular expressions that allows us to manipulate them formally. The goal of the rest of this post is to build up to two sensible algebraic interpretations of regular expressions.
 
 ## Regular expressions revisited
 
@@ -77,7 +67,6 @@ As you have probably inferred, the object $\mathbf{1}$ and the operations $+$, $
 
 - addition is commutative: $a + b = b + a$, since both match either $b$ or $a$.
 - $\mathbf{1}$ is the identity with respect to multiplication: $\mathbf{1} \cdot a = a$, since the left side means "match $\mathbf{1}$, then match $a$", and $\mathbf{1}$ matches the empty string.
-- multiplication is associative: $(a \cdot b) \cdot c = a \cdot (b \cdot c)$.
 - multiplication distributes over a sum: $a\cdot (b + c) = ab + ac$, since the left side means "match $a$, then either $b$ or $c$, which is the same as matching either $ab$ or $ac$".
 
 There are some oddities, of course. For instance:
@@ -88,8 +77,6 @@ There are some oddities, of course. For instance:
 
 [^3]: Consider the regexp $a$ matching the literal character $a$. Then, if $a^{-1}$ is a multiplicative inverse of $a$, we must have $$\mathcal{L}(aa^{-1}) = \{s_1 s_2 : s_1 \in \mathcal{L}(a), s_2 \in \mathcal{L}(a^{-1})\}$$
   and in particular this set cannot equal $\mathcal{L}(\mathbf{1}) = \{\epsilon\}$: the displayed set is either empty, or contains one or more strings starting with character $a$.
-
-With these properties and not-so-nice properties in mind, let's ask again: what kind of algebraic structure do regular expressions possess?
 
 ## Rings, semirings, and Kleene algebras
 
@@ -104,6 +91,8 @@ Thus $(R, +, \cdot)$ is not a ring. However, one can actually check that the lac
 > **Definition (semiring).** A semiring $(R, +, \cdot)$ satisfies all the ring axioms, except that additive inverses need not exist.
 
 > **Proposition.** The set of regular expressions $R$ equipped with alternation as addition $+$ and sequencing as multiplication $\cdot$ forms a semiring.
+
+_Proof_. All the proofs in this post are left as exercises, partly because I am lazy :-) and partly because I think that the definitions and statements of results are more important than the proofs. $\square$
 
 But this does not explain everything. In particular, we have not said how the star operation $r^*$ fits into the algebraic structure. If you recall how we "solved" the equation $r_1 = r_1 a + r_0 a$ by heuristically writing "$r_1 (1 - a) = r_0 a$" and then using a "geometric series expansion" to get $r_1 = r_0 a a^*$, it seems that the star operation acts as a kind of pseudoinverse.
 
@@ -120,24 +109,28 @@ For intuition about the definition of $\le$, observe that generally we may inter
 
 > **Proposition**. The set of regular expressions $(R, +, \cdot, *)$ is a Kleene algebra.
 
-(Exercise: interpret the two additional axioms concerning $*$ in the context of regular expressions. Why do they make sense?)
-
 In fact, regular expressions are the _prototypical_ example of a Kleene algebra; that is, Kleene algebras were introduced to study regular expressions!
 
 In any case, from the defining axioms of a Kleene algebra, we can deduce the following
 
 > **Lemma (Arden's lemma)**. In a Kleene algebra, $ba^*$ is the least solution of $x = xa + b$ with respect to $\le$.
 
-which (under a mild technical condition) validates our original rule $r = p + rs \implies r = ps^*$ for regular expressions.
+which (under a mild technical condition) validates our original rule $r = p + rs \implies r = ps^*$ used to solve the system of regular expressions at the start of the post.
 
----
+### The end of the story?
 
-Returning to the motivating question of this post---what algebraic structure allows us to make sense of "linear systems in regular expressions"?---one answer is thus that the regular expressions $(R, +, \cdot, *)$ form a _Kleene algebra_, which is a special case of a _semiring_. In a Kleene algebra, substitution is valid and so is the rule $r = p + rs \implies r = ps^*$ is valid (under a mild technical condition), somewhat justifying what we did to solve the linear system at the start of the post.
+Kleene algebras are a cromulent and classical interpretation of regular expressions. Yet, one element of the Kleene algebra viewpoint that I personally find unsatisfying is that we originally "derived" the rule $r = p + r s \implies r = ps^*$ by heuristically manipulating $r - rs = r(1 - s) = p$, then multiplying by the inverse of $1-s$ and using a geometric series expansion to get $$r = p(1-s)^{-1} = p(1 + s + s^2 + \cdots) = ps^*.$$
+From the viewpoint of Kleene algebras, even though the end result is justified by Arden's lemma and $*$ can be understood as a kind of pseudoinverse, the intermediate steps are nothing more than a heuristic and cannot be justified formally.
 
-One could certainly declare this to be the end of the story. However, one element of the Kleene algebra viewpoint that I personally find unsatisfying is that we originally "derived" the rule $r = p + r s \implies r = ps^*$ by heuristically manipulating $r - rs = r(1 - s) = p$, then multiplying by the inverse of $1-s$ and using a geometric series expansion to get $$r = p(1-s)^{-1} = p(1 + s + s^2 + \cdots) = ps^*.$$
-From the viewpoint of Kleene algebras, even though the end result is justified by Arden's lemma and $*$ can be understood as a kind of pseudoinverse, the intermediate steps are nothing more than a heuristic and cannot be justified formally. One would be excused for dismissing the argument above as nothing more than wishful thinking that chances upon the right answer---but in fact we _can_ make this argument fully rigorous in the right setting. In particular, by interpreting regular expressions as formal noncommutative power series or _formal power series over words_, the "inverse" of a regular expression exists in a larger ring. In the last section of this post I will outline this viewpoint and sketch nice proofs of existence and uniqueness of solutions.
+One would be excused for dismissing the argument above as nothing more than wishful thinking that chances upon the right answer---but in fact we _can_ make this argument fully rigorous in the right setting. In particular, by interpreting regular expressions as formal noncommutative power series or _formal power series over words_, the "inverse" of a regular expression exists in a larger ring. In the last section of this post I will outline this viewpoint and sketch nice proofs of existence and uniqueness of solutions.
 
 ## Formal power series over words
+
+The motivation for this section is as follows: if you squint at a regular expression such as $x y + y x$, it looks uncannily like a power series in two variables $x$ and $y$. In fact, I claim this intuition is _perfectly valid_, and moreover it lets us subtract and invert things formally! The only sublety is that we need to work with a slightly exotic type of noncommutative power series[^5]. To this end, let's properly define what we mean by a _noncommutative power series_, also known as a _formal power series over words_.
+
+[^5]: Or maybe noncommutative power series are a triviality to you. Who knows?
+
+### Some definitions
 
 We build up to the notion of a formal noncommutative power series from more familiar definitions.
 
@@ -163,29 +156,21 @@ and as a special case
 
 It took us a bit to arrive at the right definitions, but I hope that the scenic route we took above gives some intuition for why power series on words is a natural non-commutative generalization of regular power series.
 
-> **Remark.** If you really don't like to reason about power series on words, you can also think of $R\langle\langle \Sigma \rangle\rangle$ as the set of functions $f : \Sigma^* \to R$ assigning each word an element of $R$. (Why is this equivalent to our definition?)
+> **Remark.** We can also see $R\langle\langle \Sigma \rangle\rangle$ as the set of functions $f : \Sigma^* \to R$ assigning each word a value in $R$. (Why is this equivalent?)
 
-### Regular expressions are just formal series
+### Regular expressions are just power series
 
-You may rightfully be wondering what the point of defining power series on words is. Well, let's write down a regular expression:
+As alluded to earlier, regular expressions map to noncommutative power series over words in a natural way: for instance, we can think of
 
-$$ r = a(a b + a c). $$
+$$ r = a(a b + a c) = a a b+ a a c $$
 
-Expand this out as $r = a a b + a a c$. The key insight is that we can think of this as a noncommutative power series in indeterminates $a$, $b$, $c$ over $\mathbb{Z}$, where the coefficient on $a a b$ is $1$ and the coefficient on $a a c$ is also $1$!
+as a noncommutative power series in indeterminates $a$, $b$, $c$ over $\mathbb{Z}$, where the coefficient on $a a b$ is $1$ and the coefficient on $a a c$ is also $1$. Note that the coefficients need not always be 0/1 in general: consider $a b + (c + a)b$, which expands to $a b + c b + a b = 2 a b + cb$. The coefficient $2$ on $ab$ counts the number of ways for the regular expression to match $ab$: see ${\color{red}ab} + (c + {\color{red}a}){\color{red}b}$. More generally, the coefficient on a word $\omega$ counts the number of distinct parse trees for $\omega$ (the number of different 'ways' for the regular expression to match $\omega$).
 
-Are the coefficients always one or zero? Not quite: consider $a b + (c + a)b$; it expands to $a b + c b + a b = 2 a b + cb$. The coefficient $2$ on $ab$ counts the number of ways for the regular expression to match $ab$: see ${\color{red}ab} + (c + {\color{red}a}){\color{red}b}$.
+What is the analogue of the star operation in $\mathbb{Z}\langle\langle \Sigma\rangle\rangle$? It seems that we're a bit stuck now, but let's try the most naive definition possible: define $r^*$ as shorthand for the infinite sum $1 + r + r^2 + r^3 + \cdots$. The beauty is that this sum really does exist under some assumptions on $r$!
 
-What is the analogue of the star operation in $\mathbb{Z}\langle\langle \Sigma\rangle\rangle$? It seems that we're a bit stuck now, but let's recall the heuristic geometric series argument we made earlier: we have $(1-r)^{-1} = 1 + r + r^2 + \cdots = r^*$, where the last equality is justified since $1 + r + r^2 + \cdots$ matches any repetition of $r$'s, which is precisely the definition of $r^*$.
+> **Theorem.** Let $R$ be a ring and suppose that $r \in R\langle\langle \Sigma \rangle\rangle$ has no constant term. Then $1 - r$ is invertible and moreover its inverse is $1 + r + r^2 + \cdots$.
 
-So perhaps the interpretation of $r^*$ as a formal power series should be $(1-[r])^{-1}$, where $[r]$ interprets $r$ as a power series in $\mathbb{Z}\langle\langle \Sigma\rangle\rangle$. The beauty is that we _can_ take inverses in the power series ring $\mathbb{Z}\langle\langle \Sigma \rangle\rangle$, as long as the constant term of the power series is a unit!
-
-> **Theorem.** Let $R$ be a ring and let $f \in R\langle\langle \Sigma \rangle\rangle$. Then $f^{-1}$ exists if and only if the constant term of $f$ is a unit in $R$.
-
-> **Corollary.** Let $R$ be a ring and suppose that $g \in R\langle\langle \Sigma \rangle\rangle$ has no constant term. Then $(1 - g)^{-1}$ exists.
-
-_Proof._ The constant term of $1 - g$ is $1 \in R^\times$.
-
-Let's define the correspondence between regular expressions and formal power series formally now.
+With this in hand, we can define the correspondence between regular expressions and formal power series formally.
 
 > **Definition (power series interpretation of regexp).** Let $R$ denote the semiring of regular expressions over $\Sigma$. Recall that $\mathbb{Z}\langle\langle \Sigma \rangle\rangle$ denotes the ring of formal power series on words over $\Sigma$.
 >
@@ -222,9 +207,9 @@ We can then prove
 > $$ \mathbf{r} = \mathbf{u}(I_{n \times n} - A)^{-1} = \mathbf{u}(\mathrm{Id} + A + A^2 + \cdots). $$
 > Moreover, the coefficient of a word $w$ in $r_i$ is the number of paths in the NFA that start in a state of $I$, read $w$, and end in $Q_i$. In particular, the words with nonzero coefficient in $\sum_{Q_i \in F} r_i$ are exactly the words accepted by the NFA.
 
-The above result is not entirely complete, in the sense that it only guarantees a solution in $\mathbb{Z}\langle\langle \Sigma \rangle\rangle$, which may not correspond to a valid regular expression. Indeed, since the interpretation of a regular expression $[r]$ is the power series in which the coefficient on each word records the number of ways for $r$ to match the word, no power series with negative coefficients corresponds to a regular expression. One might then hope that every power series with non-negative coefficients corresponds to a regular expression, but this is not true either.[^5]
+The above result is not entirely complete, in the sense that it only guarantees a solution in $\mathbb{Z}\langle\langle \Sigma \rangle\rangle$, which may not correspond to a valid regular expression. Indeed, since the interpretation of a regular expression $[r]$ is the power series in which the coefficient on each word records the number of ways for $r$ to match the word, no power series with negative coefficients corresponds to a regular expression. One might then hope that every power series with non-negative coefficients corresponds to a regular expression, but this is not true either.[^6]
 
-[^5]: Indeed, taking $\Sigma = \{a,b\}$, suppose that the power series $\sum_{n\ge 0} 1 \cdot a^nb^n \in \mathbb{Z}\langle\langle\Sigma\rangle\rangle$ corresponds to a regular expression $r$. The set of strings matched by $r$ must then be the set of words with nonzero coefficient in $[r]$, so that $r$ matches the language $\{a^nb^n : n\ge 0\}$---but this language is not regular.
+[^6]: Indeed, taking $\Sigma = \{a,b\}$, suppose that the power series $\sum_{n\ge 0} 1 \cdot a^nb^n \in \mathbb{Z}\langle\langle\Sigma\rangle\rangle$ corresponds to a regular expression $r$. The set of strings matched by $r$ must then be the set of words with nonzero coefficient in $[r]$, so that $r$ matches the language $\{a^nb^n : n\ge 0\}$---but this language is not regular.
 
 In other words, only certain power series in $\mathbb{Z}\langle\langle \Sigma \rangle\rangle$ can be converted back into valid regular expressions. Let $\mathbb{N}^\text{rat} \langle\langle \Sigma \rangle\rangle$ denote the subsemiring of power series corresponding to valid regular expressions. It turns out that one can prove that the Gaussian elimination-like process we used to solve the original example problem stays in $\mathbb{N}^\text{rat} \langle\langle \Sigma \rangle\rangle$, which fills the gap in the result.
 
