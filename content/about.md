@@ -6,9 +6,9 @@ hidemeta: true
 Hi! I'm Joseph Liu, a third-year undergraduate student at the University of Waterloo double majoring
 in computer science and pure mathematics.
 
-I love to program in my free time, and have built and contributed to various projects over the
-years—more on those below. Aside from programming, I also enjoy [reading](/reading-log), writing,
-math puzzles, and the occasional anime.
+I love to program in my free time, and have built and contributed to various open-source projects over the
+years. Aside from programming, I also enjoy blogging, math puzzles, and the occasional anime. On occasion
+I play tennis and hike. [Here's some places I've been.](/travel)
 
 ## Programming experience and projects
 
