@@ -10,53 +10,50 @@ I love to program in my free time, and have built and contributed to various ope
 years. Aside from programming, I also enjoy blogging, math puzzles, and the occasional anime. On occasion
 I play tennis and hike. [Here's some places I've been.](/travel)
 
-## Programming experience and projects
+## Open-source work
 
-Nowadays, I primarily work with Rust and Go on backend projects; however, I am comfortable working across the entire stack and have experience in
-Python, TypeScript, Swift, Java, and C++ among other technologies.
+My main open-source projects are YAGPDB, a large-scale Discord bot which I made significant contributions to (130+ merged PRs over the years); and Obscenity, a popular profanity detection library for Node.js, which I designed and built at 14.
 
-### Contributions to YAGPDB
+### YAGPDB: distributed Discord bot
 
-Most of my open-source work centers around the [YAGPDB project](https://yagpdb.xyz), a large-scale
-distributed Discord bot for which I am an administrator and code contributor. I have written [130+
-patches](https://github.com/botlabs-gg/yagpdb/commits?author=jo3-l) for YAGPDB over the years.
-Besides addressing a whole bunch of user suggestions and reported bugs, some of my personal highlights include
+[YAGPDB](https://yagpdb.xyz) is a large-scale bot for the Discord chat platform, written in Go. It's used in ~3.5 million Discord communities and is distributed over ~30 different nodes. I was a very active code contributor in high school and remain an administrator for the bot.
 
-- building core language features and security hardening for YAGPDB's custom scripting
-  engine;
-- collaborating with a small team of contributors to move the documentation off GitBook to Hugo, cutting load
-  time for tens of thousands of viewers;
-- and migrating multiple legacy plugins away from GORM to SQLBoiler, impacting several hundred
-  million database rows.
+My main interest is the bot's dynamic scripting runtime: YAGPDB allows users to write custom programs in a funky DSL, and have them run in the bot's environment. I implemented various new language features, such as `break/continue` in loops, returning from procedures, and exception handling via `try/catch`, which are now widely used.
 
-Other than the main YAGPDB project, I have also worked on a [language server and VS Code extension](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's custom scripting language. As part of this project, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan, a [symbol resolution algorithm](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope), and a [Wadler-style pretty printer](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-format).
+Some other work includes
+
+- contributing dozens of new features and bug fixes, working full-stack,
+- collaborating with other contributors to migrate the documentation webiste from GitBook to Hugo, cutting load time for thousands of viewers and enabling support for custom syntax highlighting,
+- migrating database access code handling hundreds of millions of records in legacy plugins from GORM to SQLBoiler, improving performance and type safety.
+
+---
+
+Other than the main YAGPDB project, I also developed a [**language server and VS Code extension**](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's scripting language, which provides key IDE features such as autocompletion, syntax highlighting, error diagnostics, refactoring tools, etc. From a technical standpoint the project comprises a Rust server component and a TypeScript VS Code extension communicating over LSP. As part of the server component, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan, a [symbol resolution algorithm](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope), and a [Wadler-style pretty printer](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-format).
+
+### Obscenity: profanity detection library
+
+One day in 2021 I decided to build a robust profanity detection library, as one does. These days it is the most widely used library for this purpose in the JavaScript backend ecosystem, with [300k+ downloads weekly](https://www.npmjs.com/package/obscenity). It's used in 600+ open-source projects, including UK government websites, Minecraft developer tools, forum software, streaming websites, and a whole lot of online multiplayer games.
+
+The problem is surprisingly tricker that it seems: there are many ways for a user to obsfucate a phrase to bypass a naive keyword searching algorithm. For instance, if we wish to block the word `apple`, a clever user can instead write `аpple`, where the `a` has been replaced by the Cryllic lookalike character `а`. (Try this in your browser console: `"a" === "а"`). My profanity detection library runs a highly configurable normalization step prior to matching to catch such cases and has various other intriguing bells and whistles.
 
 ### Other open-source projects
 
-- [obscenity](https://github.com/jo3-l/obscenity): A popular profanity detection library for Node.js
-  written in TypeScript. I designed and implemented its extensible transformer-based architecture, and wrote extensive tests with Vitest and fast-check.
+- [**markpdf**](https://github.com/jo3-l/markpdf), a command-line utility to edit PDF bookmarks using a
+  convenient indentation-based format, written in Go. Some academics seem to enjoy using it.
+- [**vsHacks**](https://vshacks.github.io/), a hackathon in Vancouver that I co-founded in high school.
+- [**turnstile**](https://github.com/jo3-l/turnstile), a Typst package for typesetting Fitch-style [natural deduction](https://en.wikipedia.org/wiki/Natural_deduction) proofs with a really nice syntax (ab)using Typst term-lists.
+- [**liftoff**](https://github.com/jo3-l/liftoff), an interpreter for a toy programming language in Python.
+- [**wwlocal**](https://github.com/jo3-l/wwlocal), a fast local viewer for the WaterlooWorks job board. Totally vibecoded, but very convenient to use and in my opinion the interface is very intuitive.
+- **assorted solutions to programming puzzles**, see for instance [my Advent of Code solutions](https://github.com/jo3-l/wwlocal) (I consistently ranked in the top ~150 fastest participants each year, back when the global leaderboard still existed) and [my solutions to various programming olympiad problems](https://github.com/jo3-l/cp-practice).
 
-  Obscenity is used by hundreds of open-source projects and in various corporate applications, and is downloaded 250k+ times weekly on npm.
+## Professional experience
 
-- [markpdf](https://github.com/jo3-l/markpdf): A command-line utility to edit PDF bookmarks using a
-  convenient indentation-based format, built in Go.
-- [liftoff](https://github.com/jo3-l/liftoff): An interpreter for a toy programming language, built
-  with Python. Though basic, the language is sufficiently complete to build some [interesting programs](https://github.com/jo3-l/liftoff/blob/main/examples/ccc21j5.rk).
-- [yagpdb-cc](https://github.com/yagpdb-cc/yagpdb-cc): A community collection of custom commands for
-  YAGPDB. I created and continue to maintain this project, having reviewed submissions from 30+
-  contributors over the years. I've also built some
-  [supporting](https://github.com/jo3-l/yagfuncdata)
-  [automation](https://github.com/jo3-l/action-check-yag-tmpl-syntax) which has seen use in other
-  YAGPDB-related projects.
-- [vsHacks](https://vshacks.github.io/): A now-annual hackathon I founded in high school, organized by my programming club in collaboration with other high schools across Greater
-  Vancouver. I led work on the hackathon website and helped run workshops during the event, which
-  saw 50+ participants from the district and beyond.
+I've had the pleasure of working a variety of different internships as a co-op student at Waterloo.
 
-### Professional experience
-
+- In Winter 2027, I'll be interning at
 - In Summer 2026, I interned at Bloomberg L.P. in the compliance engineering team, where I built a distributed concurrency limiter for a high-volume Airflow data pipeline.
 - In Summer 2025, I interned at TD Bank in the enterprise innovation team, where I prototyped an open banking integration using Plaid.
 
 ## Contact
 
-I'm happy to chat! You can reach me at jliu1602 [at] gmail.com or via Discord (username `jo3_l`).
+I'm happy to chat! You can reach me at jliu1602 [at] gmail.com or via Discord (username jo3_l).
