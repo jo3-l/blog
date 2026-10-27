@@ -28,13 +28,13 @@ Some other work includes
 
 ---
 
-Other than the main YAGPDB project, I also developed a [**language server and VS Code extension**](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's scripting language, which provides key IDE features such as autocompletion, syntax highlighting, error diagnostics, refactoring tools, etc. From a technical standpoint the project comprises a Rust server component and a TypeScript VS Code extension communicating over LSP. As part of the server component, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan, a [symbol resolution algorithm](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope), and a [Wadler-style pretty printer](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-format).
+Besides the main YAGPDB project, I also developed a [**language server and VS Code extension**](https://github.com/jo3-l/yag-template-lsp) for YAGPDB's scripting language, which provides key IDE features such as autocompletion, syntax highlighting, error diagnostics, refactoring tools, etc. From a technical standpoint the project comprises a Rust server component and a TypeScript VS Code extension communicating over LSP. As part of the server component, I implemented an [error-tolerant and lossless parser](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-syntax) generating a CST with rowan, a [symbol resolution algorithm](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-analysis/src/scope), and a [Wadler-style pretty printer](https://github.com/jo3-l/yag-template-lsp/tree/main/crates/yag-template-format).
 
 ### Obscenity: profanity detection library
 
 One day in 2021 I decided to build a robust profanity detection library, as one does. These days it is the most widely used library for this purpose in the JavaScript backend ecosystem, with [300k+ downloads weekly](https://www.npmjs.com/package/obscenity). It's used in 600+ open-source projects, including UK government websites, Minecraft developer tools, forum software, streaming websites, and a whole lot of online multiplayer games.
 
-The problem is surprisingly tricker that it seems: there are many ways for a user to obsfucate a phrase to bypass a naive keyword searching algorithm. For instance, if we wish to block the word `apple`, a clever user can instead write `аpple`, where the `a` has been replaced by the Cryllic lookalike character `а`. (Try this in your browser console: `"a" === "а"`). My profanity detection library runs a highly configurable normalization step prior to matching to catch such cases and has various other intriguing bells and whistles.
+The problem is surprisingly tricker than it seems: there are many ways for a user to obsfucate a phrase to bypass a naive keyword searching algorithm. For instance, if we wish to block the word `apple`, a clever user can instead write `аpple`, where the `a` has been replaced by the Cryllic lookalike character `а`. (Try this in your browser console: `"a" === "а"`). My profanity detection library runs a highly configurable normalization step prior to matching to catch such cases and has various other intriguing bells and whistles.
 
 ### Other open-source projects
 
@@ -48,9 +48,9 @@ The problem is surprisingly tricker that it seems: there are many ways for a use
 
 ## Professional experience
 
-I've had the pleasure of working a variety of different internships as a co-op student at Waterloo.
+I've had the pleasure of working at a variety of different internships as a co-op student at Waterloo.
 
-- In Winter 2027, I'll be interning at
+- In Winter 2027, I'll be interning at River Markets, a startup developing trading infrastructure for prediction markets.
 - In Summer 2026, I interned at Bloomberg L.P. in the compliance engineering team, where I built a distributed concurrency limiter for a high-volume Airflow data pipeline.
 - In Summer 2025, I interned at TD Bank in the enterprise innovation team, where I prototyped an open banking integration using Plaid.
 
