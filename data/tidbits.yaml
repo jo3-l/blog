@@ -4,6 +4,13 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: miller-primality-test
+  category: math
+  date: 2026-10-30
+  text: |
+    A new yet old polynomial-time primality test: OpenAI's recent proof of the quasi-Riemann hypothesis implies that [Miller's primality test](https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Miller_test) (a deterministic variant of the famous Miller-Rabin test) runs in polynomial time. I say new yet old since Miller's test was invented way back in 1976, but the polynomial runtime bound was only conditional until now.
+    ([MathOverflow](https://mathoverflow.net/q/516517/598704))
+
 - id: go-inference-weird
   category: programming
   date: 2026-10-16
