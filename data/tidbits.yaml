@@ -4,6 +4,13 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: tower-hanoi-asymptotic
+  category: math
+  date: 2026-11-01
+  text: |
+    The average number of moves in the Tower of Hanoi game with $n$ disks connecting a randomly chosen initial state to a randomly chosen terminal state with a shortest number of moves is asymptotically equal to $\frac{466}{885}\cdot 2^n$.
+    ([MathOverflow](https://mathoverflow.net/q/217854/598704))
+
 - id: miller-primality-test
   category: math
   date: 2026-10-30
