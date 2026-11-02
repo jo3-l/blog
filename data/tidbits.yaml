@@ -4,6 +4,14 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: foias-constant
+  category: programming
+  date: 2026-11-02
+  text: |
+    Given a number $x_1>0$, consider the sequence defined recursively by $$x_{n+1} = \left(1+ \frac{1}{x_n}\right)^n.$$
+    It turns out that there exists a unique starting value $\alpha = x_1$ such that the displayed sequence diverges to $\infty$; this value $\alpha=1.187\dots$ is called the _Foias constant_.
+    ([Wikipedia](https://en.wikipedia.org/wiki/Foias_constant))
+
 - id: tower-hanoi-asymptotic
   category: math
   date: 2026-11-01
