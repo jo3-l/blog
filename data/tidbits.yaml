@@ -4,12 +4,32 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: rust-inference-weird
+  category: programming
+  date: 2026-11-03
+  text: |
+    A peculiar interaction between blanket trait implementations and type inference in Rust:
+    ```rust
+    trait Foo {
+      fn abs(&self) -> i64 { 42 }
+    }
+    impl<T> Foo for T {}
+
+    fn main() {
+        let x = 5;
+        println!("{}", x.abs()); // outputs 42
+        let _: i64 = x;
+        println!("{}", x.abs()); // outputs 5
+    }
+    ```
+    (Seen on [r/rust](https://old.reddit.com/r/rust/comments/1xminos/very_surprising_fix_to_a_trait_solver_overflow/19s2kyiby9xl0/))
+
 - id: foias-constant
   category: math
   date: 2026-11-02
   text: |
     Given a number $x_1>0$, consider the sequence defined recursively by $$x_{n+1} = \left(1+ \frac{1}{x_n}\right)^n.$$
-    It turns out that there exists a unique starting value $\alpha = x_1$ such that the displayed sequence diverges to $\infty$; this value $\alpha=1.187\dots$ is called the _Foias constant_.
+    It turns out that there exists a unique starting value $x_1 = \alpha$ such that the displayed sequence diverges to $\infty$; this value $\alpha=1.187\dots$ is called the _Foias constant_.
     ([Wikipedia](https://en.wikipedia.org/wiki/Foias_constant))
 
 - id: tower-hanoi-asymptotic
