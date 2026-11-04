@@ -10,7 +10,7 @@
   text: |
     Pick two pairs of numbers at random. The probability that the pair with the larger sum also has the larger product is 11/12.
 
-    Formally, given $N \in \mathbb{N}$, choose integers $a,b,c,d$ uniformly at random in $[1,N]$. Then $P[ad>bc \mid a+d>b+c] \to 11/12$ as $N \to \infty$. (From [John Cook's blog](https://www.johndcook.com/blog/2026/11/03/fraction-comparison-trick-revisited/))
+    Formally, given $N \in \mathbb{N}$, choose integers $a,b,c,d$ uniformly at random from $[1,N]$. Then $P[ad>bc \mid a+d>b+c] \to 11/12$ as $N \to \infty$. ([John D. Cook's blog](https://www.johndcook.com/blog/2026/11/03/fraction-comparison-trick-revisited/))
 
 - id: rust-inference-weird
   category: programming
@@ -30,7 +30,7 @@
         println!("{}", x.abs()); // outputs 5
     }
     ```
-    (Seen on [r/rust](https://old.reddit.com/r/rust/comments/1xminos/very_surprising_fix_to_a_trait_solver_overflow/19s2kyiby9xl0/))
+    ([r/rust comment](https://old.reddit.com/r/rust/comments/1xminos/very_surprising_fix_to_a_trait_solver_overflow/19s2kyiby9xl0/))
 
 - id: foias-constant
   category: math
@@ -44,7 +44,7 @@
   category: math
   date: 2026-11-01
   text: |
-    The average number of moves in the Tower of Hanoi game with $n$ disks connecting a randomly chosen initial state to a randomly chosen terminal state with a shortest number of moves is asymptotically equal to $\frac{466}{885}\cdot 2^n$.
+    The average number of moves in the Tower of Hanoi game with $n$ disks connecting a randomly chosen initial state to a randomly chosen terminal state with a shortest number of moves is asymptotically equal to $(466/885)\cdot 2^n$.
     ([MathOverflow](https://mathoverflow.net/q/217854/598704))
 
 - id: miller-primality-test
@@ -58,7 +58,7 @@
   category: programming
   date: 2026-10-16
   text: |
-    In Go, type inference of type parameters doesn't traverse parens.
+    In Go, type inference of type parameters doesn't see through parentheses.
     ```go
     func id[T any](x T) T { return x }
     var _ func(int) int = id    // infers T=int
@@ -71,7 +71,7 @@
   date: 2026-10-11
   text: |
     A fun construction of the reals: define a function $f : \mathbb{Z}\to\mathbb{Z}$ to be an _almost homomorphism_ if the set $\{f(a+b)-f(a)-f(b) :a,b \in \mathbb{Z}\}$ is finite. (This set is exactly $\{0\}$ when $f$ is
-    a homomorphism, hence the name.) Let $S \subseteq \mathbb{Z}^\mathbb{Z}$ be the set of almost homomorphisms, and let $B \subseteq \mathbb{Z}^\mathbb{Z}$ be the set of bounded functions.
+    a homomorphism, hence the name.) Let $S \subseteq \mathbb{Z}^\mathbb{Z}$ be the set of almost homomorphisms, and let $B \subseteq S$ be the set of bounded functions.
 
     Then the quotient $S/B$, equipped with pointwise addition and composition as multiplication, is isomorphic to the real numbers. (["The Eudoxus Real Numbers"](https://arxiv.org/abs/math/0405454))
 
