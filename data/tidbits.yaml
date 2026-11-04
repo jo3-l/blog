@@ -4,6 +4,14 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: odani
+  category: math
+  date: 2026-11-04
+  text: |
+    Pick two pairs of numbers at random. The probability that the pair with the larger sum also has the larger product is 11/12.
+
+    Formally, given $N \in \mathbb{N}$, choose integers $a,b,c,d$ uniformly at random in $[1,N]$. Then $P[ad>bc \mid a+d>b+c] \to 11/12$ as $N \to \infty$. (From [John Cook's blog](https://www.johndcook.com/blog/2026/11/03/fraction-comparison-trick-revisited/))
+
 - id: rust-inference-weird
   category: programming
   date: 2026-11-03
