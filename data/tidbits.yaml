@@ -4,6 +4,13 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: zenzizenzizenzic
+  category: math
+  date: 2026-11-08
+  text: |
+    The second power of a number is called its square. Similarly, the eighth power of a number is called its _zenzizenzizenzic_; for instance the zenzizenzizenzic of $2$ is $2^8 = 256$.
+    ([Wikipedia](https://en.wikipedia.org/wiki/Zenzizenzizenzic))
+
 - id: odani
   category: math
   date: 2026-11-04
