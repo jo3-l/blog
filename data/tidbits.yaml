@@ -4,6 +4,13 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: operator-nilpotent
+  category: math
+  date: 2026-11-11
+  text: |
+    Choose a random linear operator on a vector space of finite cardinality $N$; the probability that it is nilpotent is $1/N$.
+    ([arXiv](https://arxiv.org/abs/1912.12562))
+
 - id: zenzizenzizenzic
   category: math
   date: 2026-11-08
