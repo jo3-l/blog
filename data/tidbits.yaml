@@ -4,6 +4,38 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: jaffray
+  category: programming
+  date: 2026-11-14
+  text: |
+    [Justin Jaffray's newsletter](https://buttondown.com/jaffray), mentioned in the previous tidbit, has an abundance of really interesting posts.
+    An especially cool read from the first page of the archives is [his post on intuition for the Boyer-Moore majority element algorithm](https://buttondown.com/jaffray/archive/boyer-moore-majority-element/).
+    I've seen this algorithm many times and forgotten it equally as many times, but the explanation there is really great and might stick in my mind for a bit :-)
+
+- id: cvm-algorithm
+  category: programming
+  date: 2026-11-14
+  text: |
+    A cute algorithm to estimate the number of distinct elements in a stream using a bounded amount of memory:
+    ```py
+    def count_distinct(stream, M=1000):
+      seen = set()
+      p = 1 # each distinct element has probability p to be in the seen set
+      for v in stream:
+        seen.discard(v)
+        if random() < p:
+          seen.add(v)
+        while len(seen) >= M:
+          # throw away elements until back under the memory bound by reducing p
+          seen = {v for v in seen if random() < 0.5}
+          p /= 2
+      return len(seen) * 1/p
+    ```
+    The classical solution to the distinct-values problem is of course HyperLogLog (which is still probably more efficient in practice).
+    However, the algorithm above remains very attractive to me due to how simple and intuitive it is.
+    See [the original paper](https://arxiv.org/abs/2301.10191) and a nice [post by Justin Jaffray](https://buttondown.com/jaffray/archive/the-cvm-algorithm/)
+     (who is, coincidentally, also from UWaterloo!).
+
 - id: operator-nilpotent
   category: math
   date: 2026-11-11
