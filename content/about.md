@@ -12,9 +12,8 @@ I play tennis and hike. [Here's some places I've visited.](/travel)
 
 ## Professional experience
 
-My [resume](/resume.pdf) is available.
+My [résumé](/resume.pdf) is available.
 
-- In Winter 2027, I'll be interning at River Markets, a startup developing trading infrastructure for prediction markets.
 - In Summer 2026, I interned at Bloomberg L.P. on the compliance engineering team, where I designed and built a distributed concurrency limiter for a high-volume Airflow data pipeline.
 - In Summer 2025, I interned at TD Bank on the enterprise innovation team, where I prototyped open banking integrations using Plaid.
 
@@ -26,7 +25,7 @@ My most popular open-source projects are YAGPDB, a Discord bot written in Go whi
 
 [YAGPDB](https://yagpdb.xyz) is a large-scale bot for the Discord messaging platform. It's used in ~3.5 million Discord communities and is a surprisingly complex piece of software. I am the top external code contributor with ~130 merged PRs to date---though I'm less active these days---and remain a community administrator.
 
-My main interest is the bot's dynamic scripting runtime: YAGPDB allows users to write custom programs in a funky DSL which run on the bot's environment. I implemented various new language features, such as `break/continue` in loops, returning from procedures, and exception handling via `try/catch`, which are now widely used.
+My main interest is the bot's dynamic scripting runtime: YAGPDB allows users to write custom programs in a funky DSL which run on the bot's environment. I implemented various new language features, such as break/continue in loops, returning from procedures, and exception handling via try/catch, which are now widely used.
 
 Some other noteworthy contributions include
 
@@ -49,7 +48,7 @@ The problem is surprisingly tricker than it seems: there are many ways for a use
 - [**turnstile**](https://github.com/jo3-l/turnstile), a Typst package for typesetting Fitch-style [natural deduction](https://en.wikipedia.org/wiki/Natural_deduction) proofs with a really nice syntax (ab)using Typst term-lists.
 - [**liftoff**](https://github.com/jo3-l/liftoff), an interpreter for a toy programming language in Python.
 - [**wwlocal**](https://github.com/jo3-l/wwlocal), a fast local viewer for the WaterlooWorks job board. Totally vibecoded, but very convenient to use and in my opinion the interface is very intuitive.
-- **assorted solutions to programming puzzles**, for instance [Advent of Code solutions](https://github.com/jo3-l/wwlocal) (I ranked in the top ~150 fastest participants each year, back when the global leaderboard still existed) and [solutions to various programming olympiad problems](https://github.com/jo3-l/cp-practice).
+- **assorted solutions to programming puzzles**, for instance [Advent of Code solutions](https://github.com/jo3-l/advent) (I ranked in the top ~150 fastest participants each year, back when the global leaderboard still existed) and [solutions to various programming olympiad problems](https://github.com/jo3-l/cp-practice).
 
 ## Contact
 

@@ -2,7 +2,7 @@
 title: Perspectives on LLM-assisted development
 date: '2026-07-14'
 summary: Articles and posts about LLM-assisted development that I found interesting and are not slop, plus some of my opinions
-tags: [llms]
+tags: [llms, programming]
 ---
 
 Work in progress.[^1]
