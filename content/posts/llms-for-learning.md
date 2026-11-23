@@ -29,7 +29,7 @@ An indicator that someone understands a topic thoroughly is that they can offer 
    >
    > **LLM:** Yes, that's the right picture, with one correction that matters and two refinements. The correction: what gets guessed is the occupation measure $\nu$, not the posterior. Refinements: the algorithm is "guess the shape, solve for the rest", and the verification predicate needs more than the fixed-point equation because [...]
 
-In general, I think this kind of 'progressive disclosure' style of learning with LLMs is quite effective: first obtain a good high-level understanding, then (with LLM assistance) identify which details lie just one level lower and understand them, and repeat.
+I think this kind of 'progressive disclosure' style of learning with LLMs is somewhat effective: first obtain a good high-level understanding, then (with LLM assistance) identify which details lie just one level lower and understand them, and repeat. LLMs are quite good at careful review, especially when one provides a baseline reference to compare against (for instance, a section of a textbook or a paper). Unfortunately, they are somewhat less effective at suggesting an optimal sequence of concepts for learning a subject, though their suggestions can be useful. In addition, in my opinion it is still important to try to write the summary yourself, since otherwise it is far too easy to convince yourself that you understand all the LLM output when the opposite is true.
 
 ## Exploring alternate proof methods
 
@@ -52,7 +52,7 @@ Here are two examples.
    >
    > **Me:** (after some thought) Review my proof carefully: [a proof of countable subadditivity of the outer measure using my lemma]
 
-   This example also illustrates the idea that one can retain some 'friction' or 'difficulty' when using LLMs by asking for a limited amount of information (see my first question).
+   This example also illustrates the idea that one can "adjust the difficulty" (thereby retaining some degree of friction) when using LLMs to learn by explicitly constraining the form of the response.
 
 2. I was reading Axler's argument that there exist disjoint subsets $A, B \subset \mathbb{R}$ such that $m^*(A \cup B) \ne m^*(A) + m^*(B)$, where $m^*$ denotes the outer measure. The argument is by contradiction and somewhat indirect in the sense that one does not really get a good sense of what the witness sets $A, B$ are other than that Vitali sets is involved. Rewriting the argument by contraposition does not help too much either.
 
@@ -86,9 +86,9 @@ Here are two examples.
 
    I then ran through this proof myself. It's quite elegant and perhaps I will clean up and post my notes on this someday.
 
-## Constructing a playground
+## Building toy codebases to explore subjects
 
-(I apologize for the horribly vague section title.) The final way that I am using LLMs for learning is somewhat computer-science specific and involves scaffolding a programming project in which I can play with toy examples, fill in the most important parts of the code myself, and see results easily, while leaving all other grunt project work to the LLM. It is easiest to explain using the example of my blog post on [building a compiler for a probabilistic programming language](https://jo3-l.dev/posts/probabilistic-programming/) using generating function. I[^3] wrote this post to better understand the papers ["Exact Bayesian Inference on Discrete Models via Probability Generating Functions"](https://arxiv.org/abs/2305.17058) and ["Compiling with Generating Functions"](https://dl.acm.org/doi/10.1145/3747534). After an initial read through, I realized that I really needed to play around with code and work through some more examples carefully myself. However, although both the papers come with code for their respective compilers, these codebases are not optimal playgrounds for learning: they are very featureful (whereas ideally one would start with a subset of features and build incrementally), somewhat optimized for performance, and written in a systems language (which obscures the underlying theoretical concepts).
+The final way that I am using LLMs for learning is somewhat computer-science specific and involves scaffolding a programming project in which I can play with toy examples, fill in the most important parts of the code myself, and see results easily, while leaving all other grunt project work to the LLM. It is easiest to explain using the example of my blog post on [building a compiler for a probabilistic programming language](https://jo3-l.dev/posts/probabilistic-programming/) using generating function. I[^3] wrote this post to better understand the papers ["Exact Bayesian Inference on Discrete Models via Probability Generating Functions"](https://arxiv.org/abs/2305.17058) and ["Compiling with Generating Functions"](https://dl.acm.org/doi/10.1145/3747534). After an initial read through, I realized that I really needed to play around with code and work through some more examples carefully myself. However, although both the papers come with code for their respective compilers, these codebases are not optimal playgrounds for learning: they are very featureful (whereas ideally one would start with a subset of features and build incrementally), somewhat optimized for performance, and written in a systems language (which obscures the underlying theoretical concepts).
 
 [^3]: Just to be clear, all the prose in that blog post was written by hand. There is no LLM-generated text. However, some of the code is LLM-generated, as I describe below.
 
@@ -116,4 +116,6 @@ I then derived all the compilation rules by hand, coded them up, and wrote the b
 
 ## Closing thoughts
 
-todo after my vacation ends lol
+As of late 2026 I find modern LLMs helpful for learning math and computer science; however, they are far from a silver bullet. In particular---and perhaps this is a contrarian opinion---I don't believe it is necssary to drastically restructure how math/CS are taught yet. The role of LLMs in learning for me as described here is largely similar to a highly available human expert (akin to a tutor or professor). The exception is the third technique (building toy codebases), which offers a markedly different approach to learning computer science than in the pre-LLM era. However, I have not used it enough to have an opinion on whether more computer science courses should adopt such a technique.
+
+In any case, I hope this post left you with some ideas for how to integrate LLMs into your learning process if you desire, though many of the techniques I discuss are fairly trivial. I am also new to this strange era of machine intelligence in our pockets, so I am sure there are many more useful techniques yet to be disseminated.
