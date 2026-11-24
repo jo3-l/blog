@@ -40,7 +40,7 @@ return s
 
 and compiles it into a [_probability generating function (pgf)_](https://en.wikipedia.org/wiki/Probability_generating_function) that specifies the probability distribution of `s` exactly. The expectation of `s`, and thus the answer to the original problem, can be recovered straightforwardly given the pgf by taking derivatives. The whole compiler will fit in 200 lines of Python.
 
-**References.** The implementation and all the ideas in this blog post follow the (very nice) paper ["Compiling with Generating Functions" (Li and Zhang)](https://dl.acm.org/doi/10.1145/3747534). Indeed, the compiler we shall implement is a small toy subset of the one described in that paper. All mistakes and oddities are mine, and I intentionally deviate from the paper in places for narrative simplicity. In addition, though I will give intuition for most mathematical results I need along the way via examples, I defer to the paper for all formal proofs.
+**References.** The implementation and all the ideas in this blog post follow the very nice papers ["Exact Bayesian Inference on Discrete Models via Probability Generating Functions" (Zaiser et al.)](https://arxiv.org/abs/2305.17058) and ["Compiling with Generating Functions" (Li and Zhang)](https://dl.acm.org/doi/10.1145/3747534). Indeed, the compiler we shall implement is a small toy version of the ones described in those papers.
 
 ## A high-level view of probabilistic programming
 
@@ -81,9 +81,7 @@ Thus, given the pgf $G_X (x)$ of a random variable $X$, the expectation of $X$ i
 
 ## Compiling with gfs
 
-We are now ready to begin assembling our compiler. Let me reiterate the key idea: a probabilistic program is just a sequence of statements that build up a statistical model (roughly) line-by-line, and the statistical model is represented by the joint probability generating function of the current set of variables. A natural implementation strategy is to model each language construct as a rule that accepts the gf `e` representing the current statistical model, and transforms it to a new gf `e'`.[^2] In this section, we'll therefore build up little helpers to handle various constructs in our language incrementally, starting from variable declarations. (For simplicity we'll represent generating functions as sympy objects; a better implementation would roll their own optimized representation.) Then, after implementing all these rules, we'll write a small parser that accepts programs in the syntax of the original example and converts them to gfs by calling our helpers.
-
-[^2]: The original paper refers to these functions as _gf transformers_.
+We are now ready to begin assembling our compiler. Let me reiterate the key idea: a probabilistic program is just a sequence of statements that build up a statistical model (roughly) line-by-line, and the statistical model is represented by the joint probability generating function of the current set of variables. A natural implementation strategy is to model each language construct as a rule that accepts the gf `e` representing the current statistical model, and transforms it to a new gf `e'`. In this section, we'll therefore build up little helpers to handle various constructs in our language incrementally, starting from variable declarations. (For simplicity we'll represent generating functions as sympy objects; a better implementation would roll their own optimized representation.) Then, after implementing all these rules, we'll write a small parser that accepts programs in the syntax of the original example and converts them to gfs by calling our helpers.
 
 ### Declaring variables following Bernoulli, Poisson, and Dirac distributions
 
@@ -94,7 +92,7 @@ To do so, we require two facts about pgfs:
 - the pgf of a $Y \sim\mathrm{Bernoulli}(\theta)$ distribution is $P[Y=0] + P[Y=1]y = (1-\theta) + \theta y$;
 - if $X$ and $Y$ are independent with pgfs $G_X$ and $G_Y$ respectively, then the pgf of $(X, Y)$ is $G_X(x) G_Y (y)$.
 
-    **Proof.** I'll give a proof of this second claim that illustrates a useful general formulation of pgfs. One can check that, by definition,
+    _Proof._ I'll give a proof of this second claim that illustrates a useful general formulation of pgfs. One can check that, by definition,
     the pgf of $X$ is $G_X (x) = E_X [x^X]$, the pgf of $Y$ is $G_Y (y) = E_Y [y^Y]$, and the joint pgf of $(X, Y)$ is
     $G_{XY} (x, y) = E[x^X y^Y]$. Since $X$ and $Y$ are independent, the last expectation splits as $G_{XY} (x, y) = E[x^X] E[y^Y]$.
     The result follows. $\square$
@@ -164,9 +162,9 @@ $$
 G_\mathrm{cond} (x) = \frac{1}{1 - G(0)} (G(x) - G(0)). 
 $$
 
-In other words, we kill off the terms corresponding to the event $X = 0$, and then rescale to ensure that the probabilities still sum to 1[^3]. The general case is analogous: compute $G - G|_{X=0}$ and then rescale accordingly.
+In other words, we kill off the terms corresponding to the event $X = 0$, and then rescale to ensure that the probabilities still sum to 1[^2]. The general case is analogous: compute $G - G|_{X=0}$ and then rescale accordingly.
 
-[^3]: It's also possible to not rescale intermediate gfs during compilation (allowing unnormalized measures). The original paper takes this approach, and in a production implementation one would certainly want this optimization, but for simplicity I'll work only with normalized measures in this post.
+[^2]: It's also possible to not rescale intermediate gfs during compilation (allowing unnormalized measures). In a production implementation one would certainly want this optimization, but for simplicity I'll work only with normalized measures in this post.
 
 ```py
 def total_mass(e):
@@ -422,7 +420,7 @@ and the second line gives us the long-coveted answer: we expect $0.247$ defectiv
 
 Writing this blog post has convinced me that probabilistic programming languages are incredibly useful tools for statistical modeling---jokes on wasted implementation time aside, if you compare with the [manual solution](#appendix-solving-the-problem-by-hand) in the appendix, I think it is indisputable that the probabilistic program is far preferable: it is easy to write and to modify for any future changes. Assuming that the compiler is correct, it is also easy to check that the program describes a statistical model that matches the problem statement.
 
-I find the implementation here using generating functions particularly delightful, and if you feel the same way, I strongly recommend that you read [Li and Zhang's original paper](https://dl.acm.org/doi/10.1145/3747534). It provides rigorous proofs as opposed to all my handwaving here, in addition to describing how to implement many more language constructs than the subset I have here. Generating functions are of course far from the only way to implement a compiler for a probabilistic programming language compiler; there are many other compiliation strategies in the literature with different tradeoffs, and the paper offers a nice comparison.
+I find the implementation here using generating functions particularly delightful, and if you feel the same way, I strongly recommend that you read both of the papers by [Zaiser et al.](https://arxiv.org/abs/2305.17058) and [Li and Zhang](https://dl.acm.org/doi/10.1145/3747534). They provide rigorous proofs as opposed to all my handwaving here, in addition to describing how to implement many more language constructs than the subset I have here. Generating functions are of course far from the only way to implement a compiler for a probabilistic programming language compiler; there are many other compiliation strategies in the literature with different tradeoffs, and the paper offers a nice comparison.
 
 In the end, I hope you enjoyed implementing this odd compiler and working through wacky pgf computations as much as I did. It was a ton of fun!
 
@@ -434,7 +432,7 @@ The problem is a nightmare to do by hand without the following fact about Poisso
 
 **Lemma.** (Splitting property of Poisson distributions) Let $X \sim \mathrm{Poisson}(\lambda)$ be a Poisson distribution, and suppose that each event falls independently into one of $k$ bins with probability $p_1, \dots, p_k$ respectively ($p_1 + \dots + p_k = 1$). Let $X_1, \dots, X_k$ be the number of events in each bin respectively. Then the $X_i$'s are independent and each follows a Poisson distribution $X_i \sim \mathrm{Poisson}(\lambda p_i)$ (i.e., $X$ _splits_ into multiple Poisson distribution).
 
-**Proof.** Induct on the result of [this Math Stack Exchange post](https://math.stackexchange.com/q/1777427/1674765).
+_Proof._ See for instance [this Math Stack Exchange post](https://math.stackexchange.com/q/1777427/1674765).
 
 In view of this lemma, the idea is relatively simple. Condition on the calibration state $C$, so that the defect probability $d$ is fixed: $d = 0.6$ when $C$ is off and $d = 0.05$ otherwise. Each of the $N \sim \mathrm{Poisson}(20)$ parts then falls independently into one of three bins: rejected with probability $p_R = 0.9d + 0.02(1-d)$, shipped and defective with probability $p_S = 0.1d$, or shipped and fine with the remaining probability. Letting $R$ and $S$ be the counts in the first two bins, the splitting property gives
 $$ R \sim \mathrm{Poisson}(20 p_R), \quad S \sim \mathrm{Poisson}(20 p_S) $$
@@ -445,7 +443,7 @@ $$
 E[S \mid R \ge 1] = \frac{E[S \cdot \mathbf{1}\{R \ge 1\}]}{P[R \ge 1]}
 = \frac{\sum_c P[C = c]\; E[S \cdot \mathbf{1}\{R \ge 1\} \mid C = c]}{\sum_c P[C = c]\; P[R \ge 1 \mid C = c]}.
 $$
-Given $C = c$, the variables $S$ and $R$ are independent, so the expectation in the numerator factors as $E[S \mid C = c]\, P[R \ge 1 \mid C = c]$. Conditional on $C$, both $R$ and $S$ are (by the argument of the first paragraph) Poisson distributions with known parameter. Direct computation yields
+Conditional on $C = c$, the variables $S$ and $R$ are independent, so the expectation in the numerator factors as $E[S \mid C = c]\, P[R \ge 1 \mid C = c]$. Moreover, conditionally, both $R$ and $S$ are (by the argument of the first paragraph) Poisson distributions with known parameter. Direct computation yields
 $$
 E[S \mid R \ge 1] = \frac{0.9 \cdot 0.1\,(1 - e^{-1.28}) + 0.1 \cdot 1.2\,(1 - e^{-10.96})}{0.9\,(1 - e^{-1.28}) + 0.1\,(1 - e^{-10.96})} \approx 0.2467,
 $$

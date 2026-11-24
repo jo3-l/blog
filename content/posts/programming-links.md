@@ -1,7 +1,7 @@
 ---
 title: A collection of my favorite blog posts
 date: '2024-08-09'
-summary: 'Some pieces of technical content that influence the way I think about programming.'
+summary: 'Some pieces of technical content that influence the way I think about programming'
 tags: [programming]
 ---
 
