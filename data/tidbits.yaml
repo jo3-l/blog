@@ -4,6 +4,19 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: scala-cooked
+  category: programming
+  date: 2026-11-25
+  text: |
+    In Scala, the following code compiles without warnings and prints 0 by default.
+    ```scala
+    val a = b
+    val b = 2
+
+    @main
+    def main() = println(a)
+    ```
+
 - id: fair-coin-simulation
   category: math
   date: 2026-11-24
