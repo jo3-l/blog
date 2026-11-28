@@ -4,6 +4,19 @@
 #   date:     YYYY-MM-DD           (optional; dated entries sort newest first,
 #                                   undated ones follow in file order)
 
+- id: gcc-optimization
+  category: programming
+  date: 2026-11-28
+  text: |
+    GCC optimizes the following function to just `return 87;`.
+    ```cpp
+    uint8_t returns87(uint8_t x) {
+        uint8_t product = 3 * x;
+        return product == 5 ? x : 87;
+    }
+    ```
+    ([Mastodon post](https://mastodon.social/@cfbolz/117690596048443792))
+
 - id: scala-cooked
   category: programming
   date: 2026-11-25
